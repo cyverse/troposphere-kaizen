@@ -14,7 +14,7 @@ export default {
    * and casingStyle for that model.
    */
 
-  endpoint: 'currentUser',
+  endpoint: 'profile',
 
   properties: {
 

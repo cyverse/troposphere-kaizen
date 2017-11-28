@@ -14,29 +14,34 @@ import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class';
 import { connect } from 'lore-hook-connect';
 import PayloadStates from '../constants/PayloadStates';
-import '../../assets/css/main.css';
+import auth from '../utils/auth';
+import LoadingScreen from './_common/LoadingScreen';
+import '../../assets/sass/main.scss';
 
 export default connect(function(getState, props) {
   return {
-    // user: getState('currentUser')
+    user: auth.isLoggedIn() ? getState('currentUser') : {
+      state: PayloadStates.ERROR_FETCHING,
+      data: {}
+    }
   };
 }, { subscribe: true })(
 createReactClass({
   displayName: 'Master',
 
-  // static propTypes = {
-  //   user: PropTypes.object.isRequired
-  // };
+  propTypes: {
+    user: PropTypes.object.isRequired
+  },
 
-  // static childContextTypes = {
-  //   user: PropTypes.object
-  // };
+  childContextTypes: {
+    user: PropTypes.object
+  },
 
-  // getChildContext() {
-  //   return {
-  //     user: this.props.user
-  //   };
-  // }
+  getChildContext() {
+    return {
+      user: this.props.user
+    };
+  },
 
   componentDidMount() {
     // If you want to play with the router through the browser's dev console then
@@ -48,15 +53,13 @@ createReactClass({
   },
 
   render() {
-    // const user = this.props.user;
+    const { user } = this.props;
 
-    // if (user.state === PayloadStates.FETCHING) {
-    //   return (
-    //     <h1 className="loading-text">
-    //       Loading...
-    //     </h1>
-    //   )
-    // }
+    if (user.state === PayloadStates.FETCHING) {
+      return (
+        <LoadingScreen />
+      )
+    }
 
     return (
       <div>

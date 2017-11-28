@@ -3,6 +3,7 @@
  *
  * This file is where you define overrides for the default collection behaviors.
  */
+import auth from '../src/utils/auth';
 
 export default {
 
@@ -149,6 +150,18 @@ export default {
 
     }
 
-  }
+  },
+
+  v1: {
+    apiRoot: 'https://atmobeta.cyverse.org/api/v1',
+
+    casingStyle: 'snake',
+
+    headers: function () {
+      return {
+        'Authorization': 'Token ' + auth.getToken()
+      };
+    },
+  },
 
 };

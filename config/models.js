@@ -31,8 +31,11 @@ export default {
    * }
    */
 
-  // connectionModelMap: {
-  //   default: []
-  // }
+  connectionModelMap: {
+    // default: [],
+    v1: [
+      'currentUser'
+    ]
+  }
 
 }

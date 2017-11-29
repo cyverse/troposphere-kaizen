@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute, Redirect } from 'react-router';
+import withMuiTheme from './src/decorators/withMuiTheme';
 
 /**
  * Wrapping the Master component with this decorator provides an easy way
@@ -14,8 +15,23 @@ import UserIsAuthenticated from './src/decorators/UserIsAuthenticated';
 import Master from './src/components/Master';
 import Layout from './src/components/Layout';
 
+// Login
+import LoginLayout from './src/components/Login';
+import LogoutLayout from './src/components/Logout';
+import OAuthLayout from './src/components/auth-oauth/Layout';
+
 export default (
-  <Route component={UserIsAuthenticated(Master)}>
-    <Route path="/" component={Layout} />
+  <Route>
+    <Route path="/login" component={LoginLayout} />
+    <Route path="/logout" component={LogoutLayout} />
+    <Route path="/auth/oauth" component={OAuthLayout} />
+
+    <Route component={UserIsAuthenticated(withMuiTheme(Master))}>
+      <Route component={Layout}>
+        <Route path="/" component={() => <div/>} />
+        <Route path="/projects" component={() => <div/>} />
+        <Route path="/images" component={() => <div/>} />
+      </Route>
+    </Route>
   </Route>
 );

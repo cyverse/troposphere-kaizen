@@ -20,6 +20,12 @@ import LoginLayout from './src/components/Login';
 import LogoutLayout from './src/components/Logout';
 import OAuthLayout from './src/components/auth-oauth/Layout';
 
+// Other
+import ProjectsLayout from './src/components/projects/Layout';
+
+// Placeholder Route
+import Placeholder from './src/components/_common/Header';
+
 export default (
   <Route>
     <Route path="/login" component={LoginLayout} />
@@ -28,9 +34,9 @@ export default (
 
     <Route component={UserIsAuthenticated(withMuiTheme(Master))}>
       <Route component={Layout}>
-        <Route path="/" component={() => <div/>} />
-        <Route path="/projects" component={() => <div/>} />
-        <Route path="/images" component={() => <div/>} />
+        <Route path="/" component={() => <Placeholder zDepth={2}/>} />
+        <Route path="/projects" component={ProjectsLayout} />
+        <Route path="/images" component={() => <Placeholder zDepth={2}/>} />
       </Route>
     </Route>
   </Route>

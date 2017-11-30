@@ -16,7 +16,7 @@ export default {
      * that in url in the apiRoot (e.g. 'https://www.example.com/api')
      */
 
-    // apiRoot: 'https://api.example.com',
+    apiRoot: 'https://atmobeta.cyverse.org/api/v2',
 
     /**
      * Pluralization setting used by the framework when composing API endpoints.
@@ -53,7 +53,7 @@ export default {
      *   snake     |  /BookAuthor
      */
 
-    // casingStyle: 'camel',
+    casingStyle: 'snake',
 
     /**
      * Headers that should be applied to all network requests.
@@ -70,9 +70,15 @@ export default {
      * }
      */
 
-    // headers() {
-    //   return {};
-    // },
+    headers: function() {
+      if (!auth.isLoggedIn()) {
+        return {};
+      }
+
+      return {
+        'Authorization': `Token ${auth.getToken()}`
+      };
+    },
 
 
     /****************************************************************************
@@ -142,9 +148,14 @@ export default {
          * automatically be processed by the parse method of the corresponding model.
          */
 
-        // parse(attributes) {
-        //   return attributes;
-        // }
+        parse: function(attributes) {
+          this.meta = {
+            totalCount: attributes.count,
+            perPage: attributes.results.length,
+            nextPage: attributes.next
+          };
+          return attributes.results;
+        }
 
       }
 
@@ -159,7 +170,7 @@ export default {
 
     headers: function () {
       return {
-        'Authorization': 'Token ' + auth.getToken()
+        'Authorization': `Token ${auth.getToken()}`
       };
     },
   },

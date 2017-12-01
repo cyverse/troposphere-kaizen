@@ -2,7 +2,7 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import { Paper, Divider, List } from 'material-ui';
-import SkeletonList from 'cyverse-ui/SkeletonList';
+import { SkeletonList } from 'cyverse-ui';
 import { connect } from 'lore-hook-connect';
 import _ from 'lodash';
 import PayloadStates from '../../constants/PayloadStates';

@@ -3,7 +3,7 @@ import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import { Avatar, MenuItem } from 'material-ui';
 import { DeviceStorage, ContentSave, EditorModeEdit, ActionDelete } from 'material-ui/svg-icons';
-import VolumeIcon from 'cyverse-ui/icons/VolumeIcon';
+import { VolumeIcon } from 'cyverse-ui/es/icons';
 import { connect } from 'lore-hook-connect';
 import moment from 'moment';
 import ColorHash from 'color-hash';

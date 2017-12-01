@@ -44,7 +44,9 @@ module.exports = function(env) {
     },
     resolve: {
       alias: {
-        'react': path.resolve(__dirname, 'node_modules/react')
+        'react': path.resolve(__dirname, 'node_modules/react'),
+        'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
+        'cyverse-ui-next': path.resolve(__dirname, 'cyverse-ui-next')
       }
     },
     module: {

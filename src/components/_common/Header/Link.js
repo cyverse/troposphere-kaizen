@@ -56,14 +56,12 @@ export default withRouter(createReactClass({
   },
 
   onMouseEnter(event) {
-    console.log('enter');
     this.setState({
       hovered: true
     });
   },
 
   onMouseLeave(event) {
-    console.log('leave');
     this.setState({
       hovered: false
     });

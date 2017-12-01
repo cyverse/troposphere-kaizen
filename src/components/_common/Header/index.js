@@ -21,6 +21,16 @@ import { ContentSave, FileFolder } from 'material-ui/svg-icons';
 export default withRouter(createReactClass({
   displayName: 'Header',
 
+  propTypes: {
+    zDepth: PropTypes.number.isRequired
+  },
+
+  getDefaultProps() {
+    return {
+      zDepth: 0
+    }
+  },
+
   contextTypes: {
     user: PropTypes.object.isRequired,
     muiTheme: PropTypes.object.isRequired
@@ -35,11 +45,11 @@ export default withRouter(createReactClass({
 
   getStyles() {
     const { muiTheme } = this.context;
-    const { router } = this.props;
+    const { router, zDepth } = this.props;
 
     return {
       paper: {
-        zDepth: 2,
+        zDepth: zDepth,
         style: {
           backgroundColor: muiTheme.palette.primary1Color,
           zIndex: muiTheme.zIndex.appBar,
@@ -55,7 +65,7 @@ export default withRouter(createReactClass({
       },
       dropdownMenu: {
         style: {
-          fontSize: '21px'
+          fontSize: '17px'
         },
         labelStyle: {
           color: 'rgba(255, 255, 255, 0.7)',

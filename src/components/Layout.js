@@ -5,17 +5,14 @@
  **/
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class';
-import Header from './_common/Header';
 
 export default createReactClass({
 
   render() {
     return (
       <div>
-        <Header/>
-        {/*{React.cloneElement(this.props.children)}*/}
+        {React.cloneElement(this.props.children)}
       </div>
     );
   }

@@ -6,21 +6,21 @@ import Header from '../_common/Header';
 import Subheader from '../_common/Subheader';
 
 export default createReactClass({
-  displayName: 'Layout',
+    displayName: 'Layout',
 
-  render: function() {
-    return (
-      <div>
-        <Header zDepth={0}/>
-        <Subheader title="Project List" />
-        <div className="container">
-          <div style={{ paddingTop: '64px' }}>
-            <ListHeader />
-            <Projects />
-          </div>
-        </div>
-      </div>
-    );
-  }
+    render: function () {
+        return (
+            <div>
+                <Header zDepth={0}/>
+                <Subheader title="Project List"/>
+                <div className="container">
+                    <div style={{paddingTop: '64px'}}>
+                        <ListHeader/>
+                        <Projects/>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
 });

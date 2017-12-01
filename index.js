@@ -30,20 +30,20 @@ import router from 'lore-hook-router';
 
 // Summon the app!
 lore.summon({
-  hooks: {
-    auth,
-    actions,
-    bindActions,
-    collections,
-    connections,
-    connect,
-    dialog,
-    models,
-    react,
-    reducers,
-    redux: _.extend(redux, {
-      dependencies: ['reducers', 'auth']
-    }),
-    router
-  }
+    hooks: {
+        auth,
+        actions,
+        bindActions,
+        collections,
+        connections,
+        connect,
+        dialog,
+        models,
+        react,
+        reducers,
+        redux: _.extend(redux, {
+            dependencies: ['reducers', 'auth']
+        }),
+        router
+    }
 });

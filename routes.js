@@ -27,17 +27,17 @@ import ProjectsLayout from './src/components/projects/Layout';
 import Placeholder from './src/components/_common/Header';
 
 export default (
-  <Route>
-    <Route path="/login" component={LoginLayout} />
-    <Route path="/logout" component={LogoutLayout} />
-    <Route path="/auth/oauth" component={OAuthLayout} />
+    <Route>
+        <Route path="/login" component={LoginLayout}/>
+        <Route path="/logout" component={LogoutLayout}/>
+        <Route path="/auth/oauth" component={OAuthLayout}/>
 
-    <Route component={UserIsAuthenticated(withMuiTheme(Master))}>
-      <Route component={Layout}>
-        <Route path="/" component={() => <Placeholder zDepth={2}/>} />
-        <Route path="/projects" component={ProjectsLayout} />
-        <Route path="/images" component={() => <Placeholder zDepth={2}/>} />
-      </Route>
+        <Route component={UserIsAuthenticated(withMuiTheme(Master))}>
+            <Route component={Layout}>
+                <Route path="/" component={() => <Placeholder zDepth={2}/>}/>
+                <Route path="/projects" component={ProjectsLayout}/>
+                <Route path="/images" component={() => <Placeholder zDepth={2}/>}/>
+            </Route>
+        </Route>
     </Route>
-  </Route>
 );

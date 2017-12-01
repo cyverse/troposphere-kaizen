@@ -6,27 +6,27 @@
 
 export default {
 
-  /**
-   * The name of the model with a URL property set to the endpoint
-   * that can return the current user.
-   */
+    /**
+     * The name of the model with a URL property set to the endpoint
+     * that can return the current user.
+     */
 
-  modelName: 'currentUser'
+    modelName: 'currentUser'
 
-  /**
-   * The name of the reducer that should be created that is responsible
-   * for storing the current user. This defaults to the name of the
-   * model.
-   */
+    /**
+     * The name of the reducer that should be created that is responsible
+     * for storing the current user. This defaults to the name of the
+     * model.
+     */
 
-  // reducerName: 'currentUser'
+    // reducerName: 'currentUser'
 
-  /**
-   * The name of the action that should be created at this responsible
-   * for fetching the current user. This defaults to the name of the
-   * model.
-   */
+    /**
+     * The name of the action that should be created at this responsible
+     * for fetching the current user. This defaults to the name of the
+     * model.
+     */
 
-  // actionName: 'currentUser'
+    // actionName: 'currentUser'
 
 }

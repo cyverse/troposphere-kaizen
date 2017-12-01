@@ -16,13 +16,13 @@ import React, { PropTypes } from 'react';
 import { AuthenticationGenerator } from 'lore-auth';
 
 export default AuthenticationGenerator({
-  wrapperDisplayName: 'UserIsAuthenticated',
+    wrapperDisplayName: 'UserIsAuthenticated',
 
-  // redirectUrl: '/login',
+    // redirectUrl: '/login',
 
-  // redirectQueryParamName: 'redirect',
+    // redirectQueryParamName: 'redirect',
 
-  isAuthenticated () {
-    return true;
-  }
+    isAuthenticated() {
+        return true;
+    }
 })

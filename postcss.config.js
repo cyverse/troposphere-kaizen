@@ -8,16 +8,16 @@
  */
 
 module.exports = {
-  plugins: [
+    plugins: [
 
-    /**
-     * Autoprefixer is a plugin to add vendor prefixes to CSS rules using values from Can I Use
-     *
-     * https://github.com/postcss/autoprefixer
-     */
+        /**
+         * Autoprefixer is a plugin to add vendor prefixes to CSS rules using values from Can I Use
+         *
+         * https://github.com/postcss/autoprefixer
+         */
 
-    require('autoprefixer')({
-      /* ...options... */
-    })
-  ]
+        require('autoprefixer')({
+            /* ...options... */
+        })
+    ]
 };

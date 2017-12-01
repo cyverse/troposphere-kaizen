@@ -4,42 +4,42 @@ import PropTypes from 'prop-types';
 import { ListItem } from 'material-ui';
 
 const styles = {
-  primaryText: {
-    textOverflow: 'ellipsis',
-    overflow: 'auto',
-    maxWidth: '95%',
-    whiteSpace: 'nowrap'
-  }
+    primaryText: {
+        textOverflow: 'ellipsis',
+        overflow: 'auto',
+        maxWidth: '95%',
+        whiteSpace: 'nowrap'
+    }
 };
 
 export default createReactClass({
-  displayName: 'MediaCardIdentity',
+    displayName: 'MediaCardIdentity',
 
-  propTypes: {
-    primaryText: PropTypes.string,
-    secondaryText: PropTypes.string,
-    avatar: PropTypes.node,
-  },
+    propTypes: {
+        primaryText: PropTypes.string,
+        secondaryText: PropTypes.string,
+        avatar: PropTypes.node,
+    },
 
-  render: function() {
-    const {
-      primaryText,
-      secondaryText,
-      avatar
-    } = this.props;
+    render: function () {
+        const {
+            primaryText,
+            secondaryText,
+            avatar
+        } = this.props;
 
-    return (
-      <ListItem
-        leftAvatar={avatar}
-        primaryText={(
-          <div style={styles.primaryText}>
-            {primaryText}
-          </div>
-        )}
-        secondaryText={secondaryText}
-        disabled={true}
-      />
-    );
+        return (
+            <ListItem
+                leftAvatar={avatar}
+                primaryText={(
+                    <div style={styles.primaryText}>
+                        {primaryText}
+                    </div>
+                )}
+                secondaryText={secondaryText}
+                disabled={true}
+            />
+        );
 
-  }
+    }
 });

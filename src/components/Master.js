@@ -18,54 +18,54 @@ import auth from '../utils/auth';
 import LoadingScreen from './_common/LoadingScreen';
 import '../../assets/sass/main.scss';
 
-export default connect(function(getState, props) {
-  return {
-    user: auth.isLoggedIn() ? getState('currentUser') : {
-      state: PayloadStates.ERROR_FETCHING,
-      data: {}
-    }
-  };
-}, { subscribe: true })(
-createReactClass({
-  displayName: 'Master',
-
-  propTypes: {
-    user: PropTypes.object.isRequired
-  },
-
-  childContextTypes: {
-    user: PropTypes.object
-  },
-
-  getChildContext() {
+export default connect(function (getState, props) {
     return {
-      user: this.props.user
+        user: auth.isLoggedIn() ? getState('currentUser') : {
+            state: PayloadStates.ERROR_FETCHING,
+            data: {}
+        }
     };
-  },
+}, { subscribe: true })(
+    createReactClass({
+        displayName: 'Master',
 
-  componentDidMount() {
-    // If you want to play with the router through the browser's dev console then
-    // uncomment out this line. React Router automatically provides 'router'
-    // to any components that are "routes" (such as Master and Layout), so this
-    // is a good location to attach it to the global lore object.
+        propTypes: {
+            user: PropTypes.object.isRequired
+        },
 
-    // lore.router = this.props.router;
-  },
+        childContextTypes: {
+            user: PropTypes.object
+        },
 
-  render() {
-    const { user } = this.props;
+        getChildContext() {
+            return {
+                user: this.props.user
+            };
+        },
 
-    if (user.state === PayloadStates.FETCHING) {
-      return (
-        <LoadingScreen />
-      )
-    }
+        componentDidMount() {
+            // If you want to play with the router through the browser's dev console then
+            // uncomment out this line. React Router automatically provides 'router'
+            // to any components that are "routes" (such as Master and Layout), so this
+            // is a good location to attach it to the global lore object.
 
-    return (
-      <div>
-        {React.cloneElement(this.props.children)}
-      </div>
-    );
-  }
+            // lore.router = this.props.router;
+        },
 
-}));
+        render() {
+            const { user } = this.props;
+
+            if (user.state === PayloadStates.FETCHING) {
+                return (
+                    <LoadingScreen/>
+                )
+            }
+
+            return (
+                <div>
+                    {React.cloneElement(this.props.children)}
+                </div>
+            );
+        }
+
+    }));

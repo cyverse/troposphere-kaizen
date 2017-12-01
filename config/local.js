@@ -15,18 +15,18 @@
 
 export default {
 
-  /**
-   * This file will override other config settings based on the environment
-   */
+    /**
+     * This file will override other config settings based on the environment
+     */
 
-  // actions: {
-  //   normalize: true
-  // },
+    // actions: {
+    //   normalize: true
+    // },
 
-  // connections: {
-  //   default: {
-  //     apiRoot: 'https://api.example.dev'
-  //   }
-  // }
+    // connections: {
+    //   default: {
+    //     apiRoot: 'https://api.example.dev'
+    //   }
+    // }
 
 }

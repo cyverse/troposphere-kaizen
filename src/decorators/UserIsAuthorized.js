@@ -23,9 +23,9 @@ import React, { PropTypes } from 'react';
 import { AuthorizationGenerator } from 'lore-auth';
 
 export default AuthorizationGenerator({
-  wrapperDisplayName: 'UserIsAuthorized',
+    wrapperDisplayName: 'UserIsAuthorized',
 
-  isAuthorized(storeState) {
-    return true;
-  }
+    isAuthorized(storeState) {
+        return true;
+    }
 })

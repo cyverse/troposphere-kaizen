@@ -4,22 +4,22 @@ import PropTypes from 'prop-types';
 import PayloadStates from '../../constants/PayloadStates';
 
 export default createReactClass({
-  displayName: 'IsPublic',
+    displayName: 'IsPublic',
 
-  contextTypes: {
-    user: PropTypes.object.isRequired
-  },
+    contextTypes: {
+        user: PropTypes.object.isRequired
+    },
 
-  render: function() {
-    const {
-      user
-    } = this.context;
+    render: function () {
+        const {
+            user
+        } = this.context;
 
-    if (user.state === PayloadStates.ERROR_FETCHING) {
-      return this.props.children;
+        if (user.state === PayloadStates.ERROR_FETCHING) {
+            return this.props.children;
+        }
+
+        return null;
     }
-
-    return null;
-  }
 
 });

@@ -8,7 +8,7 @@
 # This file is useful as a way to agnostically declare project settings, as it
 # can be consumed and applied by a wide variety of IDEs, text editors and
 # command line editing programs.  For example, if you write code in WebStorm,
-# the IDE will automatically see this file and apply the settings, so you 
+# the IDE will automatically see this file and apply the settings, so you
 # don't have to worry about whether the code you're writing adheres to project
 # settings.
 #
@@ -19,7 +19,7 @@ root = true
 
 [*]
 indent_style = space
-indent_size = 2
+indent_size = 4
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true

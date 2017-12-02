@@ -207,6 +207,9 @@ module.exports = function (env) {
                     yandex: false
                 }
             })
-        ])
+        ]),
+        devServer: {
+            port: 3000
+        }
     };
 };

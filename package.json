@@ -5,12 +5,16 @@
     "description": "Atmosphere Web Client",
     "keywords": [],
     "scripts": {
-        "build": "npm run clean && webpack --env=production",
-        "build:prod": "npm run clean && webpack --env=production -p",
+        "build": "npm run build:development",
+        "build:development": "npm run clean && webpack --env.webpack=production --env.lore=development",
+        "build:production": "npm run clean && webpack --env.webpack=production --env.lore=production -p",
         "clean": "rimraf dist",
         "server": "json-server --watch db.json --port=1337",
-        "start": "webpack-dev-server --history-api-fallback --hot --env=development --port=3000",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "webpack-dev-server --history-api-fallback --hot --env=development",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "stats": "npm run stats:development",
+        "stats:development": "webpack --json --env=development > stats.json",
+        "stats:production": "webpack --json --env=production -p > stats.json"
     },
     "dependencies": {
         "axios": "~0.12.0",

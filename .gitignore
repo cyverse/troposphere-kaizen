@@ -1,103 +1,25 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-env/
-.env/
-venv/
-bin/
-build/
-develop-eggs/
-dist/
-eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.cache
-nosetests.xml
-coverage.xml
-
-# Translations
-*.mo
-
-# Mr Developer
-.mr.developer.cfg
-.project
-.pydevproject
-
-# Rope
-.ropeproject
-
-# Django stuff:
-*.log
-*.pot
-# Sphinx documentation
-docs/_build/
-
-# vim
-*.swp
-*.bak
+##
+# This file specifies which project files should be kept out of version
+# control if you are using git. It includes things like code coverage reports,
+# npm installation error files, your config/local.js file, IDE specific files
+# and more.
+#
+# Feel free to add and remove things from this file as you see fit.
+##
 
 node_modules
-troposphere.key
-troposphere/settings/local.py
-troposphere/settings/secret_key.py
-troposphere/assets
-
-# Theme
-themeImagesPath.js
-troposphere/static/css/app/variables.scss
-troposphere/static/theme/themeImages
-troposphere/static/theme/theme.json
-variables.ini
-
-# JetBrains IDEs
-.idea
-
-# Include the lib folder for 3rd party files that need to be commited to git
-!troposphere/static/js/lib
-
-# Third party setting
-extras/newrelic
-
-# Emacs
+bower_components
+config/local.js
+lib-cov
+*.seed
+*.log
+*.out
+*.pid
+npm-debug.log
 *~
-
-# generated file backups
-*.bak.[0-9]*_[0-9]*
-
-# Webpack Bundle Tracker file (see ATMO-1356)
-webpack-stats.json
-
-# generated files
-extras/nginx/Makefile
-extras/nginx/site.conf
-extras/nginx/locations/tropo.conf
-extras/apache/tropo.conf
-extras/troposphere.uwsgi.ini
-
-# ignore any initialization files (aka secrets or sensitive infoz)
-clank_init
-clank
-*-extras/*
-secrets*
-scratch
+*#
+.DS_STORE
+.idea
+.node_history
+dist
+stats.json

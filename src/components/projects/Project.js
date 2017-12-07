@@ -16,6 +16,9 @@ import {
   MediaCardMenu
 } from 'cyverse-ui-next';
 import ResourceCount from './ResourceCount';
+import UpdateProjectDialog from '../../dialogs/project/update';
+import DestroyProjectDialog from '../../dialogs/project/destroy';
+import PayloadStates from '../../constants/PayloadStates';
 
 export default connect((getState, props) => {
     const {project} = props;
@@ -47,6 +50,24 @@ createReactClass({
         images: PropTypes.object.isRequired,
     },
 
+    getStyles: function() {
+        const {
+            project
+        } = this.props;
+
+        if (
+            project.state === PayloadStates.CREATING ||
+            project.state === PayloadStates.UPDATING ||
+            project.state === PayloadStates.DELETING
+        ) {
+            return {
+              opacity: '0.3'
+            }
+        }
+
+        return {};
+    },
+
     render: function () {
         const {
             project,
@@ -55,9 +76,10 @@ createReactClass({
             images,
         } = this.props;
         const colorHash = new ColorHash();
+        const styles = this.getStyles();
 
         return (
-            <MediaCard>
+            <MediaCard style={styles}>
                 <MediaCardSection width="25%">
                     <MediaCardIdentity
                         primaryText={project.data.name}
@@ -90,8 +112,20 @@ createReactClass({
                 </MediaCardSection>
                 <MediaCardSection right="0%">
                     <MediaCardMenu>
-                        <MenuItem primaryText="Edit" leftIcon={<EditorModeEdit/>}/>
-                        <MenuItem primaryText="Delete" leftIcon={<ActionDelete/>}/>
+                        <MenuItem primaryText="Edit" leftIcon={<EditorModeEdit/>} onClick={() => {
+                            lore.dialog.show(() => {
+                                return (
+                                    <UpdateProjectDialog model={project} />
+                                );
+                            });
+                        }}/>
+                        <MenuItem primaryText="Delete" leftIcon={<ActionDelete/>} onClick={() => {
+                            lore.dialog.show(() => {
+                                return (
+                                    <DestroyProjectDialog model={project} />
+                                );
+                            });
+                        }}/>
                     </MediaCardMenu>
                 </MediaCardSection>
             </MediaCard>

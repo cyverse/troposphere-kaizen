@@ -35,14 +35,14 @@ export default connect((getState, props) => {
                         {_.flatten(projects.data.map((project, index) => {
                             const items = [(
                                 <Project
-                                    key={project.id}
+                                    key={project.id || project.cid}
                                     project={project}
                                 />
                             )];
 
                             if (index < (projects.data.length - 1)) {
                                 items.push(
-                                    <Divider key={`divider-${project.id}`}/>
+                                    <Divider key={`divider-${project.id || project.cid}`}/>
                                 );
                             }
 

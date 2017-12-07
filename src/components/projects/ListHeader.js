@@ -3,6 +3,11 @@ import createReactClass from 'create-react-class';
 import { Paper } from 'material-ui';
 
 const styles = {
+    paper: {
+        height: '28px',
+        position: 'relative',
+        marginBottom: '8px'
+    },
     table: {
         fontSize: '14px',
         width: '100%',
@@ -16,15 +21,15 @@ export default createReactClass({
 
     render: function () {
         return (
-            <Paper style={{height: '28px', position: 'relative', marginBottom: '8px'}}>
+            <Paper style={styles.paper}>
                 <div style={styles.table}>
-                    <div style={{position: 'absolute', left: '8px'}}>
+                    <div style={{ position: 'absolute', left: '8px' }}>
                         Name
                     </div>
-                    <div style={{position: 'absolute', left: '25%'}}>
+                    <div style={{ position: 'absolute', left: '25%' }}>
                         Summary
                     </div>
-                    <div style={{position: 'absolute', left: '65%'}}>
+                    <div style={{ position: 'absolute', left: '65%' }}>
                         Resources
                     </div>
                 </div>

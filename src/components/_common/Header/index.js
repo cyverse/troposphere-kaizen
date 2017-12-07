@@ -56,6 +56,10 @@ export default withRouter(createReactClass({
                     position: 'relative'
                 }
             },
+            toolbar: {
+                position: 'relative',
+                paddingRight: '0px'
+            },
             logo: {
                 height: '100%'
             },
@@ -88,7 +92,7 @@ export default withRouter(createReactClass({
         return (
             <Paper rounded={false} {...styles.paper}>
                 <div className="container">
-                    <Toolbar style={{position: 'relative'}}>
+                    <Toolbar style={styles.toolbar}>
                         <ToolbarGroup firstChild={true}>
                             <div>
                                 <Link to="/">

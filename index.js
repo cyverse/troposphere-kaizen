@@ -10,6 +10,10 @@ import 'babel-polyfill';
 import lore from 'lore';
 import _ from 'lodash';
 
+// Needed for using onTouchTap and removing the 300ms touch delay from mobile devices
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 // Allows you to access your lore app globally as well as from within
 // the console. Remove this line if you don't want to be able to do that.
 window.lore = lore;

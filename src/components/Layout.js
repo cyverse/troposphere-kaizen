@@ -11,7 +11,7 @@ export default createReactClass({
 
     render() {
         return (
-            <div>
+            <div style={{ paddingBottom: '64px' }}>
                 {React.cloneElement(this.props.children)}
             </div>
         );

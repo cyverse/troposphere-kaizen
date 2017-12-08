@@ -25,7 +25,7 @@ export default {
          * operations and being able to retrieve the primary key by 'model.id'
          */
 
-        // idAttribute: 'id'
+        idAttribute: 'user',
 
         /**
          * Override the initialize method if you need to save data for use

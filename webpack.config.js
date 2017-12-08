@@ -46,7 +46,8 @@ module.exports = function (env) {
             alias: {
                 'react': path.resolve(__dirname, 'node_modules/react'),
                 'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
-                'cyverse-ui-next': path.resolve(__dirname, 'cyverse-ui-next')
+                'cyverse-ui-next': path.resolve(__dirname, 'cyverse-ui-next'),
+                'lore-react-forms': path.resolve(__dirname, './hooks/lore-react-forms'),
             }
         },
         module: {

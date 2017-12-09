@@ -1,3 +1,45 @@
 {
-
+    "image_bookmarks": {
+        "count": 6,
+        "next": null,
+        "previous": null,
+        "results": [
+            {
+                "id": 1,
+                "image": {
+                    "id": 1482
+                }
+            },
+            {
+                "id": 2,
+                "image": {
+                    "id": 1475
+                }
+            },
+            {
+                "id": 3,
+                "image": {
+                    "id": 1473
+                }
+            },
+            {
+                "id": 4,
+                "image": {
+                    "id": 1470
+                }
+            },
+            {
+                "id": 5,
+                "image": {
+                    "id": 1471
+                }
+            },
+            {
+                "id": 6,
+                "image": {
+                    "id": 1468
+                }
+            }
+        ]
+    }
 }

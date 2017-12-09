@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
 import PayloadStates from '../../constants/PayloadStates';
 
 export default createReactClass({
@@ -15,8 +15,15 @@ export default createReactClass({
             user
         } = this.context;
 
+        const {
+            children,
+            ...other
+        } = this.props;
+
         if (user.state !== PayloadStates.ERROR_FETCHING) {
-            return this.props.children;
+            return React.Children.map(children, (child) => {
+                return React.cloneElement(child, {...other});
+            });
         }
 
         return null;

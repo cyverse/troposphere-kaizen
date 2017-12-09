@@ -22,10 +22,10 @@ const styles = {
 };
 
 export default createReactClass({
-    displayName: 'Layout',
+    displayName: 'Subheader',
 
     propTypes: {
-        title: PropTypes.string.isRequired,
+        title: PropTypes.string,
         children: PropTypes.node
     },
 
@@ -38,9 +38,11 @@ export default createReactClass({
         return (
             <Paper {...styles.paper}>
                 <div className="container" style={styles.container}>
-                    <h1 {...styles.title}>
-                        {title}
-                    </h1>
+                    {title ? (
+                        <h1 {...styles.title}>
+                            {title}
+                        </h1>
+                    ) : null}
                     {children}
                 </div>
             </Paper>

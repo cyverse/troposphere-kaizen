@@ -22,6 +22,11 @@ import OAuthLayout from './src/components/auth-oauth/Layout';
 
 // Other
 import ProjectsLayout from './src/components/projects/Layout';
+import ProjectLayout from './src/components/project/Layout';
+import ProjectInstancesLayout from './src/components/project-instances/Layout';
+import ProjectVolumesLayout from './src/components/project-volumes/Layout';
+import ProjectImagesLayout from './src/components/project-images/Layout';
+import ProjectLinksLayout from './src/components/project-links/Layout';
 import ImagesLayout from './src/components/images/Layout';
 import ImageSearchLayout from './src/components/images-search/Layout';
 import ImageSearchAllLayout from './src/components/images-search-all/Layout';
@@ -43,6 +48,13 @@ export default (
             <Route component={Layout}>
                 <Route path="/" component={() => <Placeholder zDepth={2} />} />
                 <Route path="/projects" component={ProjectsLayout} />
+                <Route path="/projects/:projectId" component={ProjectLayout}>
+                    <IndexRedirect to="instances" />
+                    <Route path="instances" component={ProjectInstancesLayout} />
+                    <Route path="volumes" component={ProjectVolumesLayout} />
+                    <Route path="images" component={ProjectImagesLayout} />
+                    <Route path="links" component={ProjectLinksLayout} />
+                </Route>
                 <Route path="/images" component={ImagesLayout}>
                     <IndexRedirect to="search" />
                     <Route path="search" component={ImageSearchLayout}>

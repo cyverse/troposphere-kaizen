@@ -1,9 +1,9 @@
 export default {
 
     attributes: {
-        instance: {
+        external_link: {
             type: 'model',
-            model: 'instance'
+            model: 'link'
         }
     },
 

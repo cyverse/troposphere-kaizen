@@ -1,5 +1,12 @@
 export default {
 
+    attributes: {
+        volume: {
+            type: 'model',
+            model: 'volume'
+        }
+    },
+
     properties: {
 
         /**

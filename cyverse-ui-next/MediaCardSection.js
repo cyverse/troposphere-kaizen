@@ -22,7 +22,7 @@ export default createReactClass({
             position: 'absolute',
             left: left,
             right: right,
-            maxWidth: width || '100%'
+            width: width || '100%'
         };
     },
 

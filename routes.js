@@ -28,6 +28,7 @@ import ImageSearchAllLayout from './src/components/images-search-all/Layout';
 import ImageSearchFeaturedLayout from './src/components/images-search-featured/Layout';
 import ImageSearchFavoritesLayout from './src/components/images-search-favorites/Layout';
 import ImageSearchMineLayout from './src/components/images-search-mine/Layout';
+import ImageTagsLayout from './src/components/images-tags/Layout';
 
 // Placeholder Route
 import Placeholder from './src/components/_common/Header';
@@ -51,7 +52,7 @@ export default (
                         <Route path="favorites" component={ImageSearchFavoritesLayout} />
                         <Route path="mine" component={ImageSearchMineLayout} />
                     </Route>
-                    <Route path="tags" component={() => <div />} />
+                    <Route path="tags" component={ImageTagsLayout} />
                     <Route path="my-image-requests" component={() => <div />} />
                 </Route>
             </Route>

@@ -11,7 +11,7 @@ const styles = {
 };
 
 export default createReactClass({
-    displayName: 'Layout',
+    displayName: 'FloatingActionButton',
 
     propTypes: {
         onClick: PropTypes.func.isRequired

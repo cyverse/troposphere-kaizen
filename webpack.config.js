@@ -47,7 +47,7 @@ module.exports = function (env) {
                 'react': path.resolve(__dirname, 'node_modules/react'),
                 'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
                 'cyverse-ui-next': path.resolve(__dirname, 'cyverse-ui-next'),
-                'lore-react-forms': path.resolve(__dirname, './hooks/lore-react-forms'),
+                'lore-react-forms': path.resolve(__dirname, './hooks/lore-react-forms')
             }
         },
         module: {

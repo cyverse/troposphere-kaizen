@@ -110,7 +110,7 @@ createReactClass({
                         />
                     </MediaCardIcons>
                 </MediaCardSection>
-                <MediaCardSection right="0%">
+                <MediaCardSection right="0%" width="inherit">
                     <MediaCardMenu>
                         <MenuItem primaryText="Edit" leftIcon={<EditorModeEdit/>} onClick={() => {
                             lore.dialog.show(() => {

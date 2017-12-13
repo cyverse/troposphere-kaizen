@@ -1,12 +1,5 @@
 export default {
 
-    attributes: {
-        instance: {
-            type: 'model',
-            model: 'instance'
-        }
-    },
-
     properties: {
 
         /**

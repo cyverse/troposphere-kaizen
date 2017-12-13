@@ -1,6 +1,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import { Avatar, MenuItem } from 'material-ui';
 import { DeviceStorage, ContentSave, EditorModeEdit, ActionDelete } from 'material-ui/svg-icons';
 import { VolumeIcon } from 'cyverse-ui/es/icons';
@@ -40,7 +41,7 @@ export default connect((getState, props) => {
         })
     }
 })(
-createReactClass({
+withRouter(createReactClass({
     displayName: 'Project',
 
     propTypes: {
@@ -55,17 +56,28 @@ createReactClass({
             project
         } = this.props;
 
+        const styles = {
+            cursor: 'pointer'
+        };
+
         if (
             project.state === PayloadStates.CREATING ||
             project.state === PayloadStates.UPDATING ||
             project.state === PayloadStates.DELETING
         ) {
-            return {
-              opacity: '0.3'
-            }
+            styles.opacity = '0.3';
         }
 
-        return {};
+        return styles;
+    },
+
+    onClick() {
+      const {
+          project,
+          router
+      } = this.props;
+
+      router.push(`/projects/${project.id}`);
     },
 
     render: function () {
@@ -80,36 +92,38 @@ createReactClass({
 
         return (
             <MediaCard style={styles}>
-                <MediaCardSection width="25%">
-                    <MediaCardIdentity
-                        primaryText={project.data.name}
-                        secondaryText={`Created ${moment(project.data.start_date).format('MMM DD YYYY')}`}
-                        avatar={(
-                            <Avatar backgroundColor={colorHash.hex(project.id)}>
-                                {project.data.name[0]}
-                            </Avatar>
-                        )}
-                    />
-                </MediaCardSection>
-                <MediaCardSection left="25%" width="35%">
-                    <MediaCardText text={project.data.description}/>
-                </MediaCardSection>
-                <MediaCardSection left="65%" width="30%">
-                    <MediaCardIcons>
-                        <ResourceCount
-                            collection={instances}
-                            icon={<DeviceStorage/>}
+                <div onClick={this.onClick}>
+                    <MediaCardSection width="25%">
+                        <MediaCardIdentity
+                            primaryText={project.data.name}
+                            secondaryText={`Created ${moment(project.data.start_date).format('MMM DD YYYY')}`}
+                            avatar={(
+                                <Avatar backgroundColor={colorHash.hex(project.id)}>
+                                    {project.data.name[0]}
+                                </Avatar>
+                            )}
                         />
-                        <ResourceCount
-                            collection={volumes}
-                            icon={<VolumeIcon/>}
-                        />
-                        <ResourceCount
-                            collection={images}
-                            icon={<ContentSave/>}
-                        />
-                    </MediaCardIcons>
-                </MediaCardSection>
+                    </MediaCardSection>
+                    <MediaCardSection left="25%" width="35%">
+                        <MediaCardText text={project.data.description}/>
+                    </MediaCardSection>
+                    <MediaCardSection left="65%" width="30%">
+                        <MediaCardIcons>
+                            <ResourceCount
+                                collection={instances}
+                                icon={<DeviceStorage/>}
+                            />
+                            <ResourceCount
+                                collection={volumes}
+                                icon={<VolumeIcon/>}
+                            />
+                            <ResourceCount
+                                collection={images}
+                                icon={<ContentSave/>}
+                            />
+                        </MediaCardIcons>
+                    </MediaCardSection>
+                </div>
                 <MediaCardSection right="0%" width="inherit">
                     <MediaCardMenu>
                         <MenuItem primaryText="Edit" leftIcon={<EditorModeEdit/>} onClick={() => {
@@ -131,5 +145,5 @@ createReactClass({
             </MediaCard>
         );
     }
-})
+}))
 );

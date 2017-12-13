@@ -1,5 +1,12 @@
 export default {
 
+    attributes: {
+        image: {
+            type: 'model',
+            model: 'image'
+        }
+    },
+
     properties: {
 
         /**

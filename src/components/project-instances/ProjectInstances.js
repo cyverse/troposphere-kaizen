@@ -8,9 +8,9 @@ import { connect, Connect } from 'lore-hook-connect';
 import InfiniteScrolling from '../../decorators/InfiniteScrolling';
 import PayloadStates from '../../constants/PayloadStates';
 import LoadMoreButton from '../images-search/_common/LoadMoreButton';
-import ListHeader from '../images-search/_common/ListHeader';
 import { MediaCardPlaceholder } from 'cyverse-ui-next';
 import Instance from './Instance';
+import ListHeader from './ListHeader';
 
 export default connect(function(getState, props) {
     const { project } = props;
@@ -104,23 +104,11 @@ createReactClass({
             }))
         }));
 
-        let title = '';
-
-        if (!firstPage.meta || !firstPage.meta.totalCount) {
-            title = `Showing ${instanceListItems.length/2} instances`;
-        } else if (project) {
-            title = `Showing ${instanceListItems.length/2} instances for "${project.data.name}"`;
-        } else {
-            title = `Showing ${instanceListItems.length/2} of ${firstPage.meta.totalCount} instances`;
-        }
-
         return (
             <div>
-                <ListHeader>
-                    {title}
-                </ListHeader>
+                <ListHeader />
                 <Paper>
-                    <List style={{padding: '0px'}}>
+                    <List style={{ padding: '0px' }}>
                         {instanceListItems}
                     </List>
                 </Paper>

@@ -31,7 +31,7 @@ export default connect((getState, props) => {
 
             return (
                 <Paper>
-                    <List style={{padding: '0px'}}>
+                    <List style={{ padding: '0px' }}>
                         {_.flatten(projects.data.map((project, index) => {
                             const items = [(
                                 <Project

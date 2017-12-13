@@ -53,7 +53,9 @@ createReactClass({
             return (
                 <div>
                     <ListHeader>
-                        Fetching project links...
+                        <div style={{ paddingLeft: '8px' }}>
+                            Fetching project link...
+                        </div>
                     </ListHeader>
                     <SkeletonList cardCount={4} />
                 </div>
@@ -117,10 +119,12 @@ createReactClass({
         return (
             <div>
                 <ListHeader>
-                    {title}
+                    <div style={{ paddingLeft: '8px' }}>
+                        {title}
+                    </div>
                 </ListHeader>
                 <Paper>
-                    <List style={{padding: '0px'}}>
+                    <List style={{ padding: '0px' }}>
                         {linkListItems}
                     </List>
                 </Paper>

@@ -51,7 +51,9 @@ createReactClass({
             return (
                 <div>
                     <ListHeader>
-                        {query.search ? `Searching for "${query.search}"` : `Searching...`}
+                        <div style={{ paddingLeft: '8px' }}>
+                            {query.search ? `Searching for "${query.search}"` : `Searching...`}
+                        </div>
                     </ListHeader>
                     <SkeletonList cardCount={4} />
                 </div>
@@ -115,10 +117,12 @@ createReactClass({
         return (
             <div>
                 <ListHeader>
-                    {title}
+                    <div style={{ paddingLeft: '8px' }}>
+                        {title}
+                    </div>
                 </ListHeader>
                 <Paper>
-                    <List style={{padding: '0px'}}>
+                    <List style={{ padding: '0px' }}>
                         {imageListItems}
                     </List>
                 </Paper>

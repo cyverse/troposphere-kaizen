@@ -1,5 +1,16 @@
 export default {
 
+    attributes: {
+        size: {
+            type: 'model',
+            model: 'size'
+        },
+        provider: {
+            type: 'model',
+            model: 'provider'
+        }
+    },
+
     properties: {
 
         /**
@@ -55,9 +66,16 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        // parse: function(resp, options) {
-        //   return resp;
-        // },
+        parse: function(resp, options) {
+            resp.provider_uuid = resp.provider.uuid;
+            resp.identity_uuid = resp.identity.uuid;
+            resp.state = {
+                status_raw: resp.status,
+                status: resp.status.split(" - ")[0],
+                activity: resp.activity
+            };
+            return resp;
+        },
 
         /**
          * Override the sync method if you need to modify data before sending

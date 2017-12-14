@@ -1,5 +1,12 @@
 export default {
 
+    attributes: {
+        provider: {
+            type: 'model',
+            model: 'provider'
+        }
+    },
+
     properties: {
 
         /**
@@ -55,9 +62,11 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        // parse: function(resp, options) {
-        //   return resp;
-        // },
+        parse: function (resp, options) {
+            resp.provider_uuid = resp.provider.uuid;
+            resp.identity_uuid = resp.identity.uuid;
+            return resp;
+        },
 
         /**
          * Override the sync method if you need to modify data before sending

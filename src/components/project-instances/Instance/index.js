@@ -57,10 +57,10 @@ export default createReactClass({
 
         return (
             <MediaCard style={styles}>
-                <MediaCardSection width="35%">
+                <MediaCardSection width="30%">
                     <Identity instance={instance} />
                 </MediaCardSection>
-                <MediaCardSection left="35%" width="15%">
+                <MediaCardSection left="30%" width="20%">
                     <Status instance={instance} />
                 </MediaCardSection>
                 <MediaCardSection left="50%" width="15%">

@@ -64,7 +64,7 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        parse: function(resp, options) {
+        parse: function (resp, options) {
             if (_.isPlainObject(resp.volume)) {
                 resp.volume = resp.volume.id;
             }

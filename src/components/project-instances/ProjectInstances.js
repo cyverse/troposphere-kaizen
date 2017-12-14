@@ -39,7 +39,6 @@ createReactClass({
 
     render: function () {
         const {
-            project,
             pages,
             onLoadMore
         } = this.props;
@@ -52,9 +51,7 @@ createReactClass({
         if (numberOfPages === 1 && lastPage.state === PayloadStates.FETCHING) {
             return (
                 <div>
-                    <ListHeader>
-                        Fetching project instances...
-                    </ListHeader>
+                    <ListHeader />
                     <SkeletonList cardCount={4} />
                 </div>
             );

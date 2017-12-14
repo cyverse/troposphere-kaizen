@@ -33,7 +33,7 @@ export default createReactClass({
                     }}/>
                 </Subheader>
                 <div className="container">
-                    <div style={{paddingTop: '64px'}}>
+                    <div style={{ paddingTop: '64px' }}>
                         <ListHeader/>
                         <Projects/>
                     </div>

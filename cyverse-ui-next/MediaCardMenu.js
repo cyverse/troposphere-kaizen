@@ -34,6 +34,7 @@ export default createReactClass({
         return (
             <div style={styles.container}>
                 <IconMenu
+                    desktop={false}
                     iconButtonElement={(
                         <IconButton>
                             <NavigationMoreVert/>

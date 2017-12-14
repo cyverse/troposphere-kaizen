@@ -22,7 +22,7 @@ export default createReactClass({
     displayName: 'ListHeader',
 
     propTypes: {
-      children: PropTypes.string.isRequired
+      children: PropTypes.node.isRequired
     },
 
     render: function () {
@@ -31,7 +31,7 @@ export default createReactClass({
         return (
             <Paper style={styles.paper}>
                 <div style={styles.table}>
-                    <div style={{ position: 'absolute', left: '8px' }}>
+                    <div style={{ position: 'relative' }}>
                         {children}
                     </div>
                 </div>

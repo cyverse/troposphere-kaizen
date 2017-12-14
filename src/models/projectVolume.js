@@ -1,11 +1,13 @@
+import _ from 'lodash';
+
 export default {
 
-    attributes: {
-        volume: {
-            type: 'model',
-            model: 'volume'
-        }
-    },
+    // attributes: {
+    //     volume: {
+    //         type: 'model',
+    //         model: 'volume'
+    //     }
+    // },
 
     properties: {
 
@@ -62,9 +64,12 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        // parse: function(resp, options) {
-        //   return resp;
-        // },
+        parse: function(resp, options) {
+            if (_.isPlainObject(resp.volume)) {
+                resp.volume = resp.volume.id;
+            }
+            return resp;
+        },
 
         /**
          * Override the sync method if you need to modify data before sending

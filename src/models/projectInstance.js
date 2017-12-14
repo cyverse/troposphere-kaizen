@@ -1,11 +1,18 @@
+import _ from 'lodash';
+
 export default {
 
-    attributes: {
-        instance: {
-            type: 'model',
-            model: 'instance'
-        }
-    },
+    // todo:
+    // Normalize the instance response once normalization can accommodate nested
+    // resources. ProjectInstance includes an Instance that includes a Size, and
+    // this scenario isn't accounted for in the current normalization algorithm
+    //
+    // attributes: {
+    //     instance: {
+    //         type: 'model',
+    //         model: 'instance'
+    //     }
+    // },
 
     properties: {
 
@@ -62,9 +69,12 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        // parse: function(resp, options) {
-        //   return resp;
-        // },
+        parse: function(resp, options) {
+            if (_.isPlainObject(resp.instance)) {
+                resp.instance = resp.instance.id;
+            }
+            return resp;
+        },
 
         /**
          * Override the sync method if you need to modify data before sending

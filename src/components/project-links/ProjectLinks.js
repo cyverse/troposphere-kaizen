@@ -8,9 +8,9 @@ import { connect, Connect } from 'lore-hook-connect';
 import InfiniteScrolling from '../../decorators/InfiniteScrolling';
 import PayloadStates from '../../constants/PayloadStates';
 import LoadMoreButton from '../images-search/_common/LoadMoreButton';
-import ListHeader from '../images-search/_common/ListHeader';
 import { MediaCardPlaceholder } from 'cyverse-ui-next';
 import Link from './Link';
+import ListHeader from './ListHeader';
 
 export default connect(function(getState, props) {
     const { project } = props;
@@ -32,14 +32,12 @@ createReactClass({
     displayName: 'ProjectLinks',
 
     propTypes: {
-        project: PropTypes.object.isRequired,
         pages: PropTypes.array.isRequired,
         onLoadMore: PropTypes.func.isRequired
     },
 
     render: function () {
         const {
-            project,
             pages,
             onLoadMore
         } = this.props;
@@ -52,11 +50,7 @@ createReactClass({
         if (numberOfPages === 1 && lastPage.state === PayloadStates.FETCHING) {
             return (
                 <div>
-                    <ListHeader>
-                        <div style={{ paddingLeft: '8px' }}>
-                            Fetching project link...
-                        </div>
-                    </ListHeader>
+                    <ListHeader />
                     <SkeletonList cardCount={4} />
                 </div>
             );
@@ -106,23 +100,9 @@ createReactClass({
             }))
         }));
 
-        let title = '';
-
-        if (!firstPage.meta || !firstPage.meta.totalCount) {
-            title = `Showing ${linkListItems.length/2} links`;
-        } else if (project) {
-            title = `Showing ${linkListItems.length/2} links for "${project.data.name}"`;
-        } else {
-            title = `Showing ${linkListItems.length/2} of ${firstPage.meta.totalCount} links`;
-        }
-
         return (
             <div>
-                <ListHeader>
-                    <div style={{ paddingLeft: '8px' }}>
-                        {title}
-                    </div>
-                </ListHeader>
+                <ListHeader />
                 <Paper>
                     <List style={{ padding: '0px' }}>
                         {linkListItems}

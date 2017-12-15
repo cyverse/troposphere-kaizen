@@ -7,5 +7,6 @@ export { default as MediaCardMenu } from './MediaCardMenu';
 export { default as MediaCardPlaceholder } from './MediaCardPlaceholder';
 export { default as MediaCardSection } from './MediaCardSection';
 export { default as MediaCardText } from './MediaCardText';
+export { default as MediaCardLink } from './MediaCardLink';
 export { default as Pill } from './Pill';
 export { default as SkeletonText } from './SkeletonText';

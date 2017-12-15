@@ -7,11 +7,12 @@ export default createReactClass({
 
     propTypes: {
         text: PropTypes.string.isRequired,
-        maxCharacters:  PropTypes.number
+        maxCharacters: PropTypes.number
     },
 
     getDefaultProps() {
       return {
+          text: '',
           maxCharacters: 100
       }
     },

@@ -41,5 +41,34 @@
                 }
             }
         ]
+    },
+    "links": {
+        "count": 2,
+        "next": null,
+        "previous": null,
+        "results": [
+            {
+                "id": 1,
+                "title": "CyVerse",
+                "description": "CyVerse provides life scientists with powerful computational infrastructure to handle huge datasets and complex analyses, thus enabling data-driven discovery. Our extensible platforms provide data storage, bioinformatics tools, image analyses, cloud services, APIs, and more.",
+                "link": "https://www.cyverse.org",
+                "created_by": {
+                    "id": 2495,
+                    "uuid": "aff330cd-891f-421e-85b3-75afd1dcc688",
+                    "username": "jchansen"
+                }
+            },
+            {
+                "id": 2,
+                "title": "Atmosphere",
+                "description": "Create a custom cloud-based scientific analysis platform or use a ready-made one for your area of scientific interest.",
+                "link": "https://atmo.cyverse.org/application",
+                "created_by": {
+                    "id": 2495,
+                    "uuid": "aff330cd-891f-421e-85b3-75afd1dcc688",
+                    "username": "jchansen"
+                }
+            }
+        ]
     }
 }

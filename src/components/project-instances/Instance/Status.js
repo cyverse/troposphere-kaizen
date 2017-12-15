@@ -12,8 +12,13 @@ export default createReactClass({
         instance: PropTypes.object.isRequired
     },
 
+    componentDidMount() {
+        const {instance} = this.props;
+        lore.actions.instance.updateV1(instance);
+    },
+
     getLightStatus() {
-        const { instance } = this.props;
+        const {instance} = this.props;
 
         const {
             activity,
@@ -44,7 +49,7 @@ export default createReactClass({
     },
 
     getInstanceState() {
-        const { instance } = this.props;
+        const {instance} = this.props;
 
         if (instance.data.end_date) {
             return {
@@ -56,16 +61,25 @@ export default createReactClass({
         return instance.data.state;
     },
 
-    render: function () {
-        const { instance } = this.props;
-        const { status } = this.getInstanceState();
+
+    getMessage(status, activity) {
+        if (activity) {
+            return `${status} / ${activity}`
+        }
+
+        return status;
+    },
+
+    render: function() {
+        const {instance} = this.props;
+        const { status, activity } = this.getInstanceState();
         const lightStatus = this.getLightStatus();
         const percentComplete = instanceUtils(instance).getPercentComplete();
 
         if (!percentComplete || percentComplete === 100) {
             return (
                 <div style={{ paddingTop: '27px', paddingBottom: '27px' }}>
-                    <StatusLight status={lightStatus} /> <span style={{ textTransform: 'capitalize' }}>{status}</span>
+                    <StatusLight status={lightStatus}/> <span style={{textTransform: 'capitalize'}}>{this.getMessage(status, activity)}</span>
                 </div>
             );
         }
@@ -73,12 +87,12 @@ export default createReactClass({
         return (
             <div style={{ paddingTop: '21px', paddingBottom: '21px' }}>
                 <div style={{ marginBottom: '8px' }}>
-                    <StatusLight status={lightStatus} /> <span style={{ textTransform: 'capitalize' }}>{status}</span>
+                    <StatusLight status={lightStatus}/> <span style={{textTransform: 'capitalize'}}>{this.getMessage(status, activity)}</span>
                 </div>
                 <LinearProgress
                     mode="determinate"
                     value={percentComplete}
-                    style={{ maxWidth: '80%' }}
+                    style={{maxWidth: '80%'}}
                 />
             </div>
         );

@@ -34,6 +34,7 @@
         "lore-hook-connections": "~0.13.0-beta",
         "lore-hook-dialog": "~0.13.0-beta",
         "lore-hook-models": "~0.13.0-beta",
+        "lore-hook-polling": "~0.13.0-beta",
         "lore-hook-react": "~0.13.0-beta",
         "lore-hook-reducers": "~0.13.0-beta",
         "lore-hook-redux": "~0.13.0-beta",

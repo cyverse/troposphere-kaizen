@@ -27,6 +27,7 @@ import connections from 'lore-hook-connections';
 import connect from 'lore-hook-connect';
 import dialog from 'lore-hook-dialog';
 import models from 'lore-hook-models';
+import polling from 'lore-hook-polling';
 import react from 'lore-hook-react';
 import reducers from 'lore-hook-reducers';
 import redux from 'lore-hook-redux';
@@ -43,6 +44,7 @@ lore.summon({
         connect,
         dialog,
         models,
+        polling,
         react,
         reducers,
         redux: _.extend(redux, {

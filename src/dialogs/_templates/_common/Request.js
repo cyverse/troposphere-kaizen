@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class';
-import { PayloadStates } from 'lore-utils';
 import _ from 'lodash';
+import PayloadStates from '../../../constants/PayloadStates';
 
 export default createReactClass({
     displayName: 'Request',
@@ -54,6 +54,7 @@ export default createReactClass({
 
         if (
             request.state === PayloadStates.RESOLVED ||
+            request.state === PayloadStates.MANAGED ||
             request.state === PayloadStates.DELETED
         ) {
             this.props.onSuccess(request);

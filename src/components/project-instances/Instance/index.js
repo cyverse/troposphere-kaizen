@@ -1,32 +1,17 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import { MenuItem } from 'material-ui';
-import {
-    ContentSave,
-    ActionPowerSettingsNew,
-    ActionDelete,
-    FileFolder,
-    SocialPersonAdd,
-    CommunicationVpnKey,
-    NavigationChevronLeft
-} from 'material-ui/svg-icons';
-import {
-    IntercomIcon,
-    AttachInstanceIcon,
-    BootscriptIcon,
-    IPIcon
-} from 'cyverse-ui/es/icons';
 import {
     MediaCard,
-    MediaCardSection,
-    MediaCardMenu
+    MediaCardSection
 } from 'cyverse-ui-next';
 import PayloadStates from '../../../constants/PayloadStates';
 import Identity from './Identity';
 import Status from './Status';
 import Size from './Size';
 import Provider from './Provider';
+import Menu from './Menu';
+import Polling from './Polling';
 
 export default createReactClass({
     displayName: 'Instance',
@@ -57,6 +42,7 @@ export default createReactClass({
 
         return (
             <MediaCard style={styles}>
+                <Polling instance={instance} />
                 <MediaCardSection width="30%">
                     <Identity instance={instance} />
                 </MediaCardSection>
@@ -70,64 +56,7 @@ export default createReactClass({
                     <Provider instance={instance} />
                 </MediaCardSection>
                 <MediaCardSection right="0%" width="inherit">
-                    <MediaCardMenu>
-                        <MenuItem
-                            primaryText="Report"
-                            leftIcon={<IntercomIcon />}
-                            disabled={true}
-                        />
-                        <MenuItem
-                            primaryText="Request Image"
-                            leftIcon={<ContentSave />}
-                            disabled={true}
-                        />
-                        <MenuItem
-                            primaryText="Reboot"
-                            leftIcon={<ActionPowerSettingsNew />}
-                            disabled={true}
-                        />
-                        <MenuItem
-                            primaryText="Delete"
-                            leftIcon={<ActionDelete />}
-                            disabled={true}
-                        />
-                        <MenuItem
-                            primaryText="Attach Volume"
-                            leftIcon={<AttachInstanceIcon />}
-                            disabled={true}
-                        />
-                        <MenuItem
-                            primaryText="Move to Project"
-                            leftIcon={<FileFolder />}
-                            disabled={true}
-                        />
-                        <MenuItem
-                            primaryText="Advanced"
-                            leftIcon={<NavigationChevronLeft />}
-                            menuItems={[
-                                <MenuItem
-                                    primaryText="Share"
-                                    leftIcon={<SocialPersonAdd />}
-                                    disabled={true}
-                                />,
-                                <MenuItem
-                                    primaryText="Add SSH Key"
-                                    leftIcon={<CommunicationVpnKey />}
-                                    disabled={true}
-                                />,
-                                <MenuItem
-                                    primaryText="Add Bootscript"
-                                    leftIcon={<BootscriptIcon />}
-                                    disabled={true}
-                                />,
-                                <MenuItem
-                                    primaryText="Add Floating IP"
-                                    leftIcon={<IPIcon />}
-                                    disabled={true}
-                                />,
-                            ]}
-                        />
-                    </MediaCardMenu>
+                    <Menu instance={instance} />
                 </MediaCardSection>
             </MediaCard>
         );

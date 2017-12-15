@@ -22,7 +22,7 @@
         "bootstrap": "^4.0.0-beta.2",
         "color-hash": "^1.0.3",
         "create-react-class": "^15.6.2",
-        "cyverse-ui": "^1.0.0",
+        "cyverse-ui": "^1.0.2",
         "lodash": "^4.0.0",
         "lore": "~0.13.0-beta",
         "lore-auth": "~0.13.0-beta",

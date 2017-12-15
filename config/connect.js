@@ -7,6 +7,7 @@ import _ from 'lodash';
 import find from 'lore-hook-connect/es/blueprints/find';
 import findAll from 'lore-hook-connect/es/blueprints/findAll';
 import PayloadStates from '../src/constants/PayloadStates';
+import byIdV1 from '../blueprints/connect/byIdV1';
 
 export default {
 
@@ -95,6 +96,8 @@ export default {
             }
         }, findAll),
 
+        byIdV1: byIdV1
+
     },
 
     /**
@@ -153,6 +156,12 @@ export default {
         //   reducer: 'currentUser',
         //   blueprint: 'singleton'
         // },
+
+        '*.byIdV1': {
+          action: '*.get',
+          reducer: '*.byId',
+          blueprint: 'byIdV1'
+        },
 
         /**
          * If the built-in blueprints don't work for you, you can use a custom

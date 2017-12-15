@@ -5,12 +5,12 @@ import { Paper, Divider, List } from 'material-ui';
 import { SkeletonList } from 'cyverse-ui';
 import _ from 'lodash';
 import { connect, Connect } from 'lore-hook-connect';
+import { MediaCardPlaceholder } from 'cyverse-ui-next';
 import InfiniteScrolling from '../../decorators/InfiniteScrolling';
 import PayloadStates from '../../constants/PayloadStates';
 import LoadMoreButton from '../images-search/_common/LoadMoreButton';
-import ListHeader from '../images-search/_common/ListHeader';
-import { MediaCardPlaceholder } from 'cyverse-ui-next';
 import Volume from './Volume';
+import ListHeader from './ListHeader';
 
 export default connect(function(getState, props) {
     const { project } = props;
@@ -39,7 +39,6 @@ createReactClass({
 
     render: function () {
         const {
-            project,
             pages,
             onLoadMore
         } = this.props;
@@ -52,11 +51,7 @@ createReactClass({
         if (numberOfPages === 1 && lastPage.state === PayloadStates.FETCHING) {
             return (
                 <div>
-                    <ListHeader>
-                        <div style={{ paddingLeft: '8px' }}>
-                            Fetching project volumes...
-                        </div>
-                    </ListHeader>
+                    <ListHeader />
                     <SkeletonList cardCount={4} />
                 </div>
             );
@@ -106,23 +101,9 @@ createReactClass({
             }))
         }));
 
-        let title = '';
-
-        if (!firstPage.meta || !firstPage.meta.totalCount) {
-            title = `Showing ${volumeListItems.length/2} volumes`;
-        } else if (project) {
-            title = `Showing ${volumeListItems.length/2} volumes for "${project.data.name}"`;
-        } else {
-            title = `Showing ${volumeListItems.length/2} of ${firstPage.meta.totalCount} volumes`;
-        }
-
         return (
             <div>
-                <ListHeader>
-                    <div style={{ paddingLeft: '8px' }}>
-                        {title}
-                    </div>
-                </ListHeader>
+                <ListHeader />
                 <Paper>
                     <List style={{ padding: '0px' }}>
                         {volumeListItems}

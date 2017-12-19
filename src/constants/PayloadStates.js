@@ -62,4 +62,10 @@ export default _.defaults({
     // ERROR_UPDATING: 'ERROR_UPDATING',
     // ERROR_DELETING: 'ERROR_DELETING',
     // ERROR_FETCHING: 'ERROR_FETCHING'
+
+    // Used this state to signal that an action is managing the state of a
+    // resource and behaviors that would otherwise change that data should
+    // be avoided (such as polling)
+    MANAGED: 'MANAGED'
+
 }, PayloadStates);

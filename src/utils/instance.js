@@ -90,7 +90,7 @@ export default function (instance) {
                 return false;
             }
 
-            return _.contains(validStates, status_raw);
+            return _.includes(validStates, status_raw);
         },
 
         // This method is a slight hack, there is a larger problem with how we keep

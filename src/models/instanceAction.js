@@ -9,7 +9,7 @@ export default {
          * operations and being able to retrieve the primary key by 'model.id'
          */
 
-        idAttribute: 'uuid',
+        idAttribute: 'key',
 
         /**
          * Override the initialize method if you need to save data for use
@@ -45,19 +45,9 @@ export default {
          * the route doesn't use the primary key of the resource.
          */
 
-        url: function () {
-            const {
-                provider_uuid,
-                identity_uuid,
-                uuid
-            } = this.attributes;
-
-            const {
-                apiRoot
-            } = lore.config.connections.v1;
-
-            return `${apiRoot}/provider/${provider_uuid}/identity/${identity_uuid}/instance/${uuid}`;
-        },
+        // url: function() {
+        //   return 'https://api.example.com/unconventional/endpoint/123'
+        // },
 
         /**
          * Override the parse method if you need to modify data before using
@@ -65,14 +55,9 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        parse: function(resp, options) {
-            resp.state = {
-                status_raw: resp.status,
-                status: resp.status.split(" - ")[0],
-                activity: resp.activity
-            };
-            return resp;
-        },
+        // parse: function(resp, options) {
+        //   return resp;
+        // },
 
         /**
          * Override the sync method if you need to modify data before sending

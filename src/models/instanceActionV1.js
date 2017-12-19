@@ -9,7 +9,7 @@ export default {
          * operations and being able to retrieve the primary key by 'model.id'
          */
 
-        idAttribute: 'uuid',
+        // idAttribute: 'id',
 
         /**
          * Override the initialize method if you need to save data for use
@@ -56,7 +56,7 @@ export default {
                 apiRoot
             } = lore.config.connections.v1;
 
-            return `${apiRoot}/provider/${provider_uuid}/identity/${identity_uuid}/instance/${uuid}`;
+            return `${apiRoot}/provider/${provider_uuid}/identity/${identity_uuid}/instance/${uuid}/action`;
         },
 
         /**
@@ -65,12 +65,8 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        parse: function(resp, options) {
-            resp.state = {
-                status_raw: resp.status,
-                status: resp.status.split(" - ")[0],
-                activity: resp.activity
-            };
+        parse: function (resp, options) {
+            resp.id = resp.action;
             return resp;
         },
 

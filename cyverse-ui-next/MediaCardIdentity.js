@@ -1,7 +1,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import { ListItem } from 'material-ui';
+import { ListItem, Checkbox, RadioButton } from 'material-ui';
 
 const styles = {
     primaryText: {
@@ -19,18 +19,39 @@ export default createReactClass({
         primaryText: PropTypes.string,
         secondaryText: PropTypes.string,
         avatar: PropTypes.node,
+        isCheckable: PropTypes.bool,
+        checked: PropTypes.bool,
+        onCheck: PropTypes.func
+    },
+
+    getDefaultProps() {
+      return {
+          isCheckable: false,
+          checked: false,
+          onCheck: () => {}
+      };
     },
 
     render: function () {
         const {
             primaryText,
             secondaryText,
-            avatar
+            avatar,
+            isCheckable,
+            checked,
+            onCheck
         } = this.props;
 
         return (
             <ListItem
-                leftAvatar={avatar}
+                leftAvatar={isCheckable ? null : avatar}
+                leftCheckbox={isCheckable ? (
+                    <RadioButton
+                        style={{ left: 24 }}
+                        checked={checked}
+                        onCheck={onCheck}
+                    />
+                ) : null}
                 primaryText={(
                     <div style={styles.primaryText}>
                         {primaryText}

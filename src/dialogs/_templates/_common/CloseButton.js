@@ -8,7 +8,8 @@ const styles = {
     button: {
         position: 'absolute',
         top: '0px',
-        right: '0px'
+        right: '0px',
+        zIndex: 10
     },
     icon: {
         color: 'rgba(0, 0, 0, 0.54)'

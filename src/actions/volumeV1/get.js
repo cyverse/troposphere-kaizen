@@ -17,17 +17,10 @@ export default function get(modelId, query = {}) {
         model.fetch({
             data: query
         }).then(function() {
-            // look through the model and generate actions for any attributes with
-            // nested data that should be normalized
-            const actions = normalize(lore, 'volumeV1').model(model);
-
             dispatch({
                 type: ActionTypes.update('volumeV1'),
                 payload: payload(model, PayloadStates.RESOLVED)
             });
-
-            // dispatch any actions created from normalizing nested data
-            actions.forEach(dispatch);
         }).catch(function(response) {
             const error = response.data;
 

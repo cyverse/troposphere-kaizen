@@ -1,31 +1,24 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import { MenuItem } from 'material-ui';
-import {
-    ActionDelete,
-    FileFolder,
-    EditorModeEdit
-} from 'material-ui/svg-icons';
-import {
-    IntercomIcon
-} from 'cyverse-ui/es/icons';
 import {
     MediaCard,
-    MediaCardSection,
-    MediaCardMenu
+    MediaCardSection
 } from 'cyverse-ui-next';
 import PayloadStates from '../../../constants/PayloadStates';
 import Identity from './Identity';
 import Status from './Status';
 import Size from './Size';
 import Provider from './Provider';
+import Menu from './Menu';
+import Polling from './Polling';
 
 export default createReactClass({
     displayName: 'Volume',
 
     propTypes: {
-        volume: PropTypes.object.isRequired
+        volume: PropTypes.object.isRequired,
+        project: PropTypes.object.isRequired
     },
 
     getStyles: function() {
@@ -48,12 +41,14 @@ export default createReactClass({
 
     render: function () {
         const {
-            volume
+            volume,
+            project
         } = this.props;
         const styles = this.getStyles();
 
         return (
             <MediaCard style={styles}>
+                <Polling volume={volume} />
                 <MediaCardSection width="30%">
                     <Identity volume={volume} />
                 </MediaCardSection>
@@ -67,28 +62,10 @@ export default createReactClass({
                     <Provider volume={volume} />
                 </MediaCardSection>
                 <MediaCardSection right="0%" width="inherit">
-                    <MediaCardMenu>
-                        <MenuItem
-                            primaryText="Report"
-                            leftIcon={<IntercomIcon />}
-                            disabled={true}
-                        />
-                        <MenuItem
-                            primaryText="Delete"
-                            leftIcon={<ActionDelete />}
-                            disabled={true}
-                        />
-                        <MenuItem
-                            primaryText="Move Volume"
-                            leftIcon={<FileFolder />}
-                            disabled={true}
-                        />
-                        <MenuItem
-                            primaryText="Edit"
-                            leftIcon={<EditorModeEdit />}
-                            disabled={true}
-                        />
-                    </MediaCardMenu>
+                    <Menu
+                        volume={volume}
+                        project={project}
+                    />
                 </MediaCardSection>
             </MediaCard>
         );

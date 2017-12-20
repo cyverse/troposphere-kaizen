@@ -17,7 +17,7 @@ export default function(volume) {
     const {
         status,
         activity
-    } = volume.data;
+    } = volume.data.state;
 
     return {
 
@@ -27,7 +27,7 @@ export default function(volume) {
                 "in-use"
             ];
 
-            return validStates.indexOf(status_raw) >= 0;
+            return validStates.indexOf(status) >= 0;
         },
 
         isDeployError: function() {

@@ -40,7 +40,8 @@ createReactClass({
     render: function () {
         const {
             pages,
-            onLoadMore
+            onLoadMore,
+            project
         } = this.props;
         const numberOfPages = pages.length;
         const firstPage = pages[0];
@@ -85,6 +86,7 @@ createReactClass({
                                 <Volume
                                     key={volume.id || volume.cid}
                                     volume={volume}
+                                    project={project}
                                 />
                             );
                         }}

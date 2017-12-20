@@ -65,9 +65,17 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        // parse: function(resp, options) {
-        //   return resp;
-        // },
+        parse: function(resp, options) {
+            resp.state = {
+                status_raw: resp.status,
+                status: resp.status.split(" - ")[0],
+                activity: resp.status.split(" - ")[1] || ''
+            };
+            return _.pick(resp, [
+                'attach_data',
+                'state'
+            ]);
+        },
 
         /**
          * Override the sync method if you need to modify data before sending

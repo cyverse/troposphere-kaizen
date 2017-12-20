@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default {
 
     attributes: {
@@ -74,6 +76,11 @@ export default {
                 status: resp.status.split(" - ")[0],
                 activity: resp.activity
             };
+
+            if (_.isPlainObject(resp.project)) {
+                resp.project = resp.project.id;
+            }
+
             return resp;
         },
 

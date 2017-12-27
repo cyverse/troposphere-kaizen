@@ -16,6 +16,11 @@ export default connect(function(getState, props) {
     const { project } = props;
 
     return {
+        cachedProjectInstances: getState('instance.all', {
+            where: function(instance) {
+                return instance.data.project === project.id;
+            }
+        }),
         projectInstances: getState('projectInstance.find', {
             where: {
                 project__id: project.id
@@ -34,13 +39,15 @@ createReactClass({
     propTypes: {
         project: PropTypes.object.isRequired,
         pages: PropTypes.array.isRequired,
-        onLoadMore: PropTypes.func.isRequired
+        onLoadMore: PropTypes.func.isRequired,
+        cachedProjectInstances: PropTypes.object.isRequired
     },
 
     render: function () {
         const {
             pages,
-            onLoadMore
+            onLoadMore,
+            cachedProjectInstances
         } = this.props;
         const numberOfPages = pages.length;
         const firstPage = pages[0];
@@ -101,11 +108,34 @@ createReactClass({
             }))
         }));
 
+        const allProjectInstances = _.flatten(pages.map((page) => {
+            return page.data;
+        }));
+
+        const cachedInstanceListItems = _.flatten(cachedProjectInstances.data.map((instance) => {
+            const matchingProjectInstance = _.find(allProjectInstances, (projectInstance) => {
+                return projectInstance.data.instance === instance.id;
+            });
+
+            if (matchingProjectInstance) {
+                return [];
+            }
+
+            return [
+                <Instance
+                    key={instance.id || instance.cid}
+                    instance={instance}
+                />,
+                <Divider key={`divider-${instance.id || instance.cid}`}/>
+            ];
+        }));
+
         return (
             <div>
                 <ListHeader />
                 <Paper>
                     <List style={{ padding: '0px' }}>
+                        {cachedInstanceListItems}
                         {instanceListItems}
                     </List>
                 </Paper>

@@ -32,14 +32,16 @@ createReactClass({
     propTypes: {
         query: PropTypes.object.isRequired,
         pages: PropTypes.array.isRequired,
-        onLoadMore: PropTypes.func.isRequired
+        onLoadMore: PropTypes.func.isRequired,
+        children: PropTypes.func.isRequired
     },
 
     render: function () {
         const {
             query,
             pages,
-            onLoadMore
+            onLoadMore,
+            children
         } = this.props;
         const numberOfPages = pages.length;
         const firstPage = pages[0];
@@ -84,7 +86,7 @@ createReactClass({
                                     />
                                 );
                             }
-                            return (
+                            return children ? children(image) : (
                                 <Image
                                     key={image.id || image.cid}
                                     image={image}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, FormSection, PropBarrier } from 'lore-react-forms';
 import { TextField, Checkbox, SelectField, MenuItem, FlatButton, RaisedButton } from 'material-ui';
 import { Connect } from 'lore-hook-connect';
+import { result as _result } from 'lore-utils';
 
 export default {
 
@@ -169,6 +170,60 @@ export default {
                                         >
                                             {[renderOption({ value: null, text: '' })].concat(
                                                 mapDataToOptions(connect.options.data).map(renderOption)
+                                            )}
+                                        </SelectField>
+                                    )
+                                }}
+                            </Connect>
+                        )
+                    }}
+                </Field>
+            )
+        },
+        select2: function(form, props, name) {
+            const {
+                options,
+                label,
+                ...other
+            } = props;
+
+            return (
+                <Field name={name}>
+                    {(field) => {
+                        return (
+                            <Connect callback={(getState, props) => {
+                                return {
+                                    options: _.isFunction(options) ? options(getState, props) : options
+                                };
+                            }}>
+                                {(connect) => {
+                                    return (
+                                        <SelectField
+                                            value={field.value}
+                                            onChange={(event, key, value) => {
+                                                field.onBlur();
+                                                field.onChange(field.name, value);
+                                            }}
+                                            errorText={field.touched && field.error}
+                                            style={{ width: '100%' }}
+                                            {...other}
+                                        >
+                                            {[
+                                                <MenuItem
+                                                    key={null}
+                                                    value={null}
+                                                    primaryText={''}
+                                                />
+                                            ].concat(
+                                                connect.options.data.map((datum) => {
+                                                    return (
+                                                        <MenuItem
+                                                            key={datum.id}
+                                                            value={datum.id}
+                                                            primaryText={_.isFunction(label) ? label(datum) : datum.data[label]}
+                                                        />
+                                                    );
+                                                })
                                             )}
                                         </SelectField>
                                     )

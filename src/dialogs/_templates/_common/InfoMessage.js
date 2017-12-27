@@ -5,9 +5,8 @@ import { ActionInfo } from 'material-ui/svg-icons';
 
 const styles = {
     container: {
-        paddingLeft: '16px',
-        position: 'relative',
-        paddingBottom: '16px'
+        padding: '16px',
+        position: 'relative'
     },
     iconWrapper: {
         position: 'absolute'

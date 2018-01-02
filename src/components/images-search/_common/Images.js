@@ -32,7 +32,7 @@ createReactClass({
         query: PropTypes.object.isRequired,
         pages: PropTypes.array.isRequired,
         onLoadMore: PropTypes.func.isRequired,
-        children: PropTypes.func.isRequired
+        children: PropTypes.func
     },
 
     render: function () {

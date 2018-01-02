@@ -2,7 +2,8 @@
  * This file is where you define overrides for the default routing behavior.
  **/
 
-// import { browserHistory } from 'react-router';
+import { useRouterHistory } from 'react-router';
+import { createHistory } from 'history';
 
 export default {
 
@@ -11,7 +12,9 @@ export default {
      * See: https://github.com/reactjs/react-router/blob/master/docs/guides/Histories.md
      **/
 
-    // history: browserHistory,
+    history: useRouterHistory(createHistory)({
+        basename: __BASENAME__
+    }),
 
     /**
      * Returns the routes used by the application.

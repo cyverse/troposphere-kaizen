@@ -19,9 +19,11 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var { getIfUtils, removeEmpty } = require('webpack-config-utils');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+var fs = require('fs');
 
 module.exports = function (env) {
     var { ifProduction, ifNotProduction } = getIfUtils(env.webpack || env);
+    var BASENAME = env.basename || '';
 
     return {
         devtool: ifProduction('source-map', 'eval'),
@@ -40,7 +42,7 @@ module.exports = function (env) {
             ),
             path: path.resolve('dist'),
             pathinfo: ifNotProduction(),
-            publicPath: '/'
+            publicPath: `${BASENAME}/`
         },
         resolve: {
             alias: {
@@ -167,6 +169,7 @@ module.exports = function (env) {
         plugins: removeEmpty([
             new webpack.DefinePlugin({
                 __LORE_ROOT__: JSON.stringify(__dirname),
+                __BASENAME__: JSON.stringify(BASENAME),
                 'process.env': {
                     'NODE_ENV': JSON.stringify(env.lore || env)
                 }
@@ -191,6 +194,7 @@ module.exports = function (env) {
             new HtmlWebpackPlugin({
                 template: './index.html',
                 inject: 'body',
+                publicPath: `${BASENAME}/`
             }),
             new FaviconsWebpackPlugin({
                 logo: './assets/images/favicon.png',
@@ -210,7 +214,14 @@ module.exports = function (env) {
             })
         ]),
         devServer: {
-            port: 3000
+            https: env.https || false,
+            host: env.host || 'localhost',
+            port: env.port || 3000,
+            key: env.key ? fs.readFileSync(env.key) : '',
+            cert: env.cert ? fs.readFileSync(env.cert) : '',
+            historyApiFallback: {
+                index: `${BASENAME}/index.html`,
+            }
         }
     };
 };

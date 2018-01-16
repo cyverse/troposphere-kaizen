@@ -21,12 +21,18 @@ export default createReactClass({
             router
         } = this.props;
 
+        const state = query.state ? JSON.parse(query.state) : {
+            redirect: JSON.stringify({
+                pathname: '/'
+            })
+        };
+
         const accessTokenUrl = `${lore.config.cas.webtaskUrl}?code=${query.code}`;
 
         axios.get(accessTokenUrl).then(function (response) {
             const access_token = response.data.body.split('=')[1];
             auth.login(access_token);
-            router.push('/');
+            router.push(JSON.parse(state.redirect));
         }).catch(function (response) {
             const error = response.data;
 

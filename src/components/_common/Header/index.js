@@ -86,6 +86,7 @@ export default withRouter(createReactClass({
     },
 
     render: function () {
+        const { location } = this.props;
         const { user } = this.context;
         const styles = this.getStyles();
 
@@ -116,7 +117,15 @@ export default withRouter(createReactClass({
                                 </DropDownMenu>
                             </IsAuthenticated>
                             <IsPublic>
-                                <HeaderLink label="Login" to="/login" matches={[/^\/login\//]}/>
+                                <HeaderLink label="Login" to={{
+                                    pathname: '/login',
+                                    query: {
+                                        redirect: JSON.stringify({
+                                            pathname: location.pathname,
+                                            query: location.query
+                                        })
+                                    }
+                                }} matches={[/^\/login\//]}/>
                             </IsPublic>
                         </ToolbarGroup>
                     </Toolbar>

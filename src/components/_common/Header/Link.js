@@ -10,7 +10,10 @@ export default withRouter(createReactClass({
 
     propTypes: {
         label: PropTypes.string.isRequired,
-        to: PropTypes.string.isRequired,
+        to: PropTypes.oneOfType([
+            PropTypes.string.isRequired,
+            PropTypes.object.isRequired
+        ]).isRequired,
         matches: PropTypes.array.isRequired,
         icon: PropTypes.node,
     },

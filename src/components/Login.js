@@ -11,8 +11,10 @@ export default createReactClass({
             clientId,
             redirectUri
         } = lore.config.cas;
+        const { location } = this.props;
+        const state = JSON.stringify(location.query);
 
-        window.location.href = `${serverUrl}?client_id=${clientId}&redirect_uri=${redirectUri}`;
+        window.location.href = `${serverUrl}?client_id=${clientId}&redirect_uri=${redirectUri}&state=${state}`;
     },
 
     render: function () {

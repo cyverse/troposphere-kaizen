@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class';
-// import { FloatingActionButton } from 'material-ui';
-// import { ContentAdd } from 'material-ui/svg-icons';
 import ListHeader from './ListHeader';
 import Projects from './Projects';
 import Header from '../_common/Header';

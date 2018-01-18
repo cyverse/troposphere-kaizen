@@ -5,7 +5,7 @@ import { FloatingActionButton } from 'cyverse-ui-next';
 
 const styles = {
     position: 'absolute',
-    top: '50%',
+    top: '-28px',
     right: 15
 };
 

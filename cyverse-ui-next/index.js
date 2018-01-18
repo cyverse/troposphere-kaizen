@@ -1,3 +1,6 @@
+export { default as FloatingActionButton } from './FloatingActionButton';
+export { default as FloatingActionButtonAction } from './FloatingActionButtonAction';
+export { default as FloatingActionButtonActions } from './FloatingActionButtonActions';
 export { default as ListTab } from './ListTab';
 export { default as ListTabs } from './ListTabs';
 export { default as MediaCard } from './MediaCard';
@@ -10,3 +13,4 @@ export { default as MediaCardText } from './MediaCardText';
 export { default as MediaCardLink } from './MediaCardLink';
 export { default as Pill } from './Pill';
 export { default as SkeletonText } from './SkeletonText';
+export { default as Tooltip } from './Tooltip';

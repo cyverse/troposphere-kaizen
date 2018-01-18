@@ -1,23 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class';
-import { withRouter } from 'react-router';
 import { connect } from 'lore-hook-connect';
 import { CircularProgress } from 'material-ui';
 import PayloadStates from '../../constants/PayloadStates';
 import Header from '../_common/Header';
 import Subheader from '../_common/Subheader';
-import FloatingActionButton from '../projects/FloatingActionButton';
+import FloatingActionButton from './FloatingActionButton';
 import Tabs from './Tabs';
 import ProjectIdentity from './ProjectIdentity';
-import ImageLaunchDialog from '../../dialogs/image/launch';
 
 const styles = {
     container: {
         position :'relative'
-    },
-    floatingActionButton: {
-        top: '-28px'
     },
     page: {
         paddingTop: '32px'
@@ -35,19 +30,17 @@ export default connect(function(getState, props) {
         })
     }
 })(
-withRouter(createReactClass({
+createReactClass({
     displayName: 'Layout',
 
     propTypes: {
-        project: PropTypes.object.isRequired,
-        router: PropTypes.object.isRequired
+        project: PropTypes.object.isRequired
     },
 
     render: function () {
         const {
             children,
-            project,
-            router
+            project
         } = this.props;
         const {  } = this.props;
 
@@ -70,19 +63,7 @@ withRouter(createReactClass({
                 <Header zDepth={0}/>
                 <Subheader title="Project Resources" />
                 <div className="container" style={styles.container}>
-                    <FloatingActionButton
-                        style={styles.floatingActionButton}
-                        onClick={() => {
-                            lore.dialog.show(() => {
-                                return (
-                                    <ImageLaunchDialog
-                                        project={project}
-                                        router={router}
-                                    />
-                                )
-                            });
-                        }}
-                    />
+                    <FloatingActionButton project={project} />
                     <div style={styles.page}>
                         <ProjectIdentity project={project} />
                         <Tabs project={project}/>
@@ -93,5 +74,5 @@ withRouter(createReactClass({
         );
     }
 
-}))
+})
 );

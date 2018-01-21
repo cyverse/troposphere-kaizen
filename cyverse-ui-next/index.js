@@ -1,3 +1,4 @@
+export { default as BarGraph } from './BarGraph';
 export { default as FloatingActionButton } from './FloatingActionButton';
 export { default as FloatingActionButtonAction } from './FloatingActionButtonAction';
 export { default as FloatingActionButtonActions } from './FloatingActionButtonActions';

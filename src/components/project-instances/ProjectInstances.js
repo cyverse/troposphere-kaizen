@@ -27,7 +27,7 @@ export default connect(function(getState, props) {
             },
             pagination: {
                 page: '1',
-                page_size: 10
+                page_size: 100
             }
         }, { forceFetchOnMount: true })
     };

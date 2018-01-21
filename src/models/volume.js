@@ -65,6 +65,10 @@ export default {
         parse: function (resp, options) {
             resp.provider_uuid = resp.provider.uuid;
             resp.identity_uuid = resp.identity.uuid;
+
+            if (_.isPlainObject(resp.project)) {
+                resp.project = resp.project.id;
+            }
             return resp;
         },
 

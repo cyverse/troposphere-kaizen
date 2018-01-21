@@ -6,8 +6,26 @@ function isRequired(value) {
     }
 }
 
+function isNumber(value) {
+    if (value === null || value === undefined) {
+        return;
+    }
+
+    if (!validator.isInt(String(value), { allow_leading_zeroes: false })) {
+        return 'Must be a number'
+    }
+}
+
+function isNumberAndGreaterThan(min) {
+    return function(value) {
+        if (!isNumber(value) && !validator.isInt(String(value), { min: min })) {
+            return `Must be greater than ${min}`;
+        }
+    }
+}
+
 function isRequiredAndNumber(value) {
-    if (value === null || value === undefined || !validator.isNumeric(String(value))) {
+    if (value === null || value === undefined || isNumber(value)) {
         return 'This field is required'
     }
 }
@@ -40,7 +58,9 @@ export default {
     isRequired: isRequired,
     isEmail: isEmail,
     isUrl: isUrl,
+    isNumber: isNumber,
     number: {
+        minimum: isNumberAndGreaterThan,
         isRequired: isRequiredAndNumber,
     },
     boolean: {

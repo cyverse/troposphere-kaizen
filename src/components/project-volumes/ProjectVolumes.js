@@ -16,13 +16,18 @@ export default connect(function(getState, props) {
     const { project } = props;
 
     return {
+        cachedProjectVolumes: getState('volume.all', {
+            where: function(volume) {
+                return volume.data.project === project.id;
+            }
+        }),
         projectVolumes: getState('projectVolume.find', {
             where: {
                 project__id: project.id
             },
             pagination: {
                 page: '1',
-                page_size: 10
+                page_size: 100
             }
         }, { forceFetchOnMount: true })
     };
@@ -34,14 +39,16 @@ createReactClass({
     propTypes: {
         project: PropTypes.object.isRequired,
         pages: PropTypes.array.isRequired,
-        onLoadMore: PropTypes.func.isRequired
+        onLoadMore: PropTypes.func.isRequired,
+        cachedProjectVolumes: PropTypes.object.isRequired
     },
 
     render: function () {
         const {
             pages,
             onLoadMore,
-            project
+            project,
+            cachedProjectVolumes
         } = this.props;
         const numberOfPages = pages.length;
         const firstPage = pages[0];
@@ -103,11 +110,35 @@ createReactClass({
             }))
         }));
 
+        const allProjectVolumes = _.flatten(pages.map((page) => {
+            return page.data;
+        }));
+
+        const cachedVolumeListItems = _.flatten(cachedProjectVolumes.data.map((volume) => {
+            const matchingProjectVolume = _.find(allProjectVolumes, (projectVolume) => {
+                return projectVolume.data.volume === volume.id;
+            });
+
+            if (matchingProjectVolume) {
+                return [];
+            }
+
+            return [
+                <Volume
+                    key={volume.id || volume.cid}
+                    volume={volume}
+                    project={project}
+                />,
+                <Divider key={`divider-${volume.id || volume.cid}`}/>
+            ];
+        }));
+
         return (
             <div>
                 <ListHeader />
                 <Paper>
                     <List style={{ padding: '0px' }}>
+                        {cachedVolumeListItems}
                         {volumeListItems}
                     </List>
                 </Paper>

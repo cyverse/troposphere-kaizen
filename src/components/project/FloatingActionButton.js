@@ -4,8 +4,10 @@ import createReactClass from 'create-react-class';
 import { withRouter } from 'react-router';
 import { FloatingActionButton, FloatingActionButtonActions, FloatingActionButtonAction } from 'cyverse-ui-next';
 import { DeviceStorage } from 'material-ui/svg-icons';
+import { VolumeIcon } from 'cyverse-ui/es/icons';
 import onClickOutside from 'react-onclickoutside';
 import ImageLaunchDialog from '../../dialogs/image/launch';
+import CreateVolumeDialog from '../../dialogs/volume/create';
 
 const styles = {
     button: {
@@ -65,6 +67,22 @@ export default withRouter(onClickOutside(createReactClass({
                             lore.dialog.show(() => {
                                 return (
                                     <ImageLaunchDialog
+                                        project={project}
+                                        router={router}
+                                    />
+                                );
+                            });
+                        }}
+                        backgroundColor={styles.backgroundColor}
+                    />
+                    <FloatingActionButtonAction
+                        tooltip="New Volume"
+                        icon={<VolumeIcon/>}
+                        onClick={() => {
+                            this.onClick();
+                            lore.dialog.show(() => {
+                                return (
+                                    <CreateVolumeDialog
                                         project={project}
                                         router={router}
                                     />

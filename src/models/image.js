@@ -1,5 +1,12 @@
 export default {
 
+    attributes: {
+        tags: {
+            type: 'models',
+            model: 'tag'
+        }
+    },
+
     properties: {
 
         /**

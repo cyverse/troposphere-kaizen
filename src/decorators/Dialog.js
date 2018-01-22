@@ -92,6 +92,7 @@ export default function (options = {}) {
                             modal={false}
                             onRequestClose={this.onCancel}
                             open={this.state.isOpen}
+                            className="standard-dialog"
                             {...defaults}
                         >
                             <DecoratedComponent

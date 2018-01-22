@@ -65,13 +65,13 @@ createReactClass({
             );
         }
 
-        const volumeListItems = _.flatten(pages.map((projectVolumes, pageIndex) => {
+        const volumeListItems = _.flatten(pages.map((projectVolumes) => {
             if (projectVolumes.state === PayloadStates.FETCHING) {
                 return [];
             }
 
-            return _.flatten(projectVolumes.data.map((projectVolume, index) => {
-                const items = [(
+            return _.flatten(projectVolumes.data.map((projectVolume) => {
+                return [(
                     <Connect key={projectVolume.id || projectVolume.cid} callback={(getState, props) => {
                         return {
                             volume: getState('volume.byId', {
@@ -99,14 +99,6 @@ createReactClass({
                         }}
                     </Connect>
                 )];
-
-                if (true || index < (projectVolumes.data.length - 1)) {
-                    items.push(
-                        <Divider key={`divider-${projectVolume.id || projectVolume.cid}`}/>
-                    );
-                }
-
-                return items;
             }))
         }));
 
@@ -128,20 +120,15 @@ createReactClass({
                     key={volume.id || volume.cid}
                     volume={volume}
                     project={project}
-                />,
-                <Divider key={`divider-${volume.id || volume.cid}`}/>
+                />
             ];
         }));
 
         return (
             <div>
                 <ListHeader />
-                <Paper>
-                    <List style={{ padding: '0px' }}>
-                        {cachedVolumeListItems}
-                        {volumeListItems}
-                    </List>
-                </Paper>
+                {cachedVolumeListItems}
+                {volumeListItems}
                 <LoadMoreButton
                     label="Show More Volumes"
                     lastPage={lastPage}

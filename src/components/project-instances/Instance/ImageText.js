@@ -4,42 +4,35 @@ import PropTypes from 'prop-types';
 import PayloadStates from '../../../constants/PayloadStates';
 import { connect } from 'lore-hook-connect';
 
-const styles = {
-    paddingTop: '27px',
-    paddingBottom: '27px'
-};
-
 export default connect(function (getState, props) {
     const { instance } = props;
 
     return {
-        size: getState('size.byId', {
-            id: instance.data.size
+        image: getState('image.byId', {
+            id: instance.data.image
         })
     }
 })(
 createReactClass({
-    displayName: 'Size',
+    displayName: 'ImageText',
 
     propTypes: {
-        size: PropTypes.object.isRequired
+        image: PropTypes.object.isRequired
     },
 
     render: function () {
-        const {size} = this.props;
+        const { image } = this.props;
 
-        if (size.state === PayloadStates.FETCHING) {
+        if (image.state === PayloadStates.FETCHING) {
             return (
-                <div style={styles}>
-                    ...
-                </div>
+                <span>...</span>
             );
         }
 
         return (
-            <div style={styles}>
-                {size.data.name}
-            </div>
+            <span>
+                {image.data.name}
+            </span>
         );
     }
 })

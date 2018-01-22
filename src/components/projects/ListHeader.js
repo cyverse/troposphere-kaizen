@@ -6,11 +6,11 @@ const styles = {
     paper: {
         height: '28px',
         position: 'relative',
-        marginBottom: '8px'
+        marginBottom: '8px',
+        // width: '100%'
     },
     table: {
         fontSize: '14px',
-        width: '100%',
         color: 'rgba(0, 0, 0, 0.54)',
         lineHeight: '28px'
     }
@@ -22,16 +22,19 @@ export default createReactClass({
     render: function () {
         return (
             <Paper style={styles.paper}>
-                <div style={styles.table}>
-                    <div style={{ position: 'absolute', left: '8px' }}>
-                        Name
+                <div className="row" style={styles.table}>
+                    <div className="col-md-6 col-lg-4">
+                        <div style={{ paddingLeft: '16px' }}>
+                            Name
+                        </div>
                     </div>
-                    <div style={{ position: 'absolute', left: '25%' }}>
+                    <div className="d-none d-lg-block col-lg-4">
                         Summary
                     </div>
-                    <div style={{ position: 'absolute', left: '65%' }}>
+                    <div className="col-md-4 col-lg-3">
                         Resources
                     </div>
+                    <div className="col-md-2 col-lg-1" />
                 </div>
             </Paper>
         );

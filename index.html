@@ -14,7 +14,7 @@ overrides or event bubbling cancellation.
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Atmosphere</title>
 
-        <link href='https://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
 
         <style>
             html {
@@ -43,6 +43,21 @@ overrides or event bubbling cancellation.
                     opacity: 1;
                     filter: alpha(opacity=100)
                 }
+            }
+
+            .breathe {
+                -webkit-animation-name: logo-breathe;
+                animation-name: logo-breathe;
+                -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+                -webkit-animation-delay: .2s;
+                animation-delay: .2s;
+                -webkit-animation-timing-function: cubic-bezier(.73, .005, .42, 1.005);
+                animation-timing-function: cubic-bezier(.73, .005, .42, 1.005);
+                -webkit-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+                -webkit-animation-direction: alternate;
+                animation-direction: alternate
             }
 
             .logo {

@@ -61,7 +61,7 @@ export default withRouter(createReactClass({
                 paddingRight: '0px'
             },
             logo: {
-                height: '100%'
+                height: '56px'
             },
             links: {
                 position: 'absolute',

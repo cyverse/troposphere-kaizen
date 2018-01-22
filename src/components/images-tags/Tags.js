@@ -87,7 +87,7 @@ createReactClass({
         if (!firstPage.meta || !firstPage.meta.totalCount) {
             title = `Showing ${tagListItems.length/2} tags`;
         } else if (query.search) {
-            title = `Showing ${tagListItems.length/2} tags for "${query.search}"`;
+            title = `Showing ${tagListItems.length/2} of ${firstPage.meta.totalCount} tags for "${query.search}"`;
         } else {
             title = `Showing ${tagListItems.length/2} of ${firstPage.meta.totalCount} tags`;
         }

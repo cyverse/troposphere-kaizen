@@ -8,14 +8,7 @@ import { VolumeIcon } from 'cyverse-ui/es/icons';
 import { connect } from 'lore-hook-connect';
 import moment from 'moment';
 import ColorHash from 'color-hash';
-import {
-  MediaCard,
-  MediaCardSection,
-  MediaCardIdentity,
-  MediaCardText,
-  MediaCardIcons,
-  MediaCardMenu
-} from 'cyverse-ui-next';
+import { MediaCardIdentity, MediaCardText, MediaCardIcons, MediaCardMenu } from 'cyverse-ui-next';
 import ResourceCount from './ResourceCount';
 import UpdateProjectDialog from '../../dialogs/project/update';
 import DestroyProjectDialog from '../../dialogs/project/destroy';
@@ -91,9 +84,9 @@ withRouter(createReactClass({
         const styles = this.getStyles();
 
         return (
-            <MediaCard style={styles}>
-                <div onClick={this.onClick}>
-                    <MediaCardSection width="25%">
+            <div className="list-card">
+                <div className="row clickable" style={styles}>
+                    <div className="col-md-6 col-lg-4" onClick={this.onClick}>
                         <MediaCardIdentity
                             primaryText={project.data.name}
                             secondaryText={`Created ${moment(project.data.start_date).format('MMM DD YYYY')}`}
@@ -103,11 +96,11 @@ withRouter(createReactClass({
                                 </Avatar>
                             )}
                         />
-                    </MediaCardSection>
-                    <MediaCardSection left="25%" width="35%">
-                        <MediaCardText text={project.data.description}/>
-                    </MediaCardSection>
-                    <MediaCardSection left="65%" width="30%">
+                    </div>
+                    <div className="d-none d-lg-block col-lg-4" onClick={this.onClick}>
+                        <MediaCardText text={project.data.description} />
+                    </div>
+                    <div className="col-md-4 col-lg-3" onClick={this.onClick}>
                         <MediaCardIcons>
                             <ResourceCount
                                 collection={instances}
@@ -122,27 +115,27 @@ withRouter(createReactClass({
                                 icon={<ContentSave/>}
                             />
                         </MediaCardIcons>
-                    </MediaCardSection>
+                    </div>
+                    <div className="col-md-2 col-lg-1 text-right">
+                        <MediaCardMenu>
+                            <MenuItem primaryText="Edit" leftIcon={<EditorModeEdit/>} onClick={() => {
+                                lore.dialog.show(() => {
+                                    return (
+                                        <UpdateProjectDialog model={project} />
+                                    );
+                                });
+                            }}/>
+                            <MenuItem primaryText="Delete" leftIcon={<ActionDelete/>} onClick={() => {
+                                lore.dialog.show(() => {
+                                    return (
+                                        <DestroyProjectDialog model={project} />
+                                    );
+                                });
+                            }}/>
+                        </MediaCardMenu>
+                    </div>
                 </div>
-                <MediaCardSection right="0%" width="inherit">
-                    <MediaCardMenu>
-                        <MenuItem primaryText="Edit" leftIcon={<EditorModeEdit/>} onClick={() => {
-                            lore.dialog.show(() => {
-                                return (
-                                    <UpdateProjectDialog model={project} />
-                                );
-                            });
-                        }}/>
-                        <MenuItem primaryText="Delete" leftIcon={<ActionDelete/>} onClick={() => {
-                            lore.dialog.show(() => {
-                                return (
-                                    <DestroyProjectDialog model={project} />
-                                );
-                            });
-                        }}/>
-                    </MediaCardMenu>
-                </MediaCardSection>
-            </MediaCard>
+            </div>
         );
     }
 }))

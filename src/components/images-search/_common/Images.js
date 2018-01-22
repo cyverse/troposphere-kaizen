@@ -1,7 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import { Paper, Divider, List } from 'material-ui';
 import { SkeletonList } from 'cyverse-ui';
 import _ from 'lodash';
 import { connect } from 'lore-hook-connect';
@@ -67,31 +66,23 @@ createReactClass({
             }
 
             return _.flatten(images.data.map((image, index) => {
-                const items = [children ? children(image) : (
+                return [children ? children(image) : (
                     <Image
                         key={image.id || image.cid}
                         image={image}
                     />
                 )];
-
-                if (true || index < (images.data.length - 1)) {
-                    items.push(
-                        <Divider key={`divider-${image.id || image.cid}`}/>
-                    );
-                }
-
-                return items;
             }))
         }));
 
         let title = '';
 
         if (!firstPage.meta || !firstPage.meta.totalCount) {
-            title = `Showing ${imageListItems.length/2} images`;
+            title = `Showing ${imageListItems.length} images`;
         } else if (query.search) {
-            title = `Showing ${imageListItems.length/2} images for "${query.search}"`;
+            title = `Showing ${imageListItems.length} of ${firstPage.meta.totalCount} images for "${query.search}"`;
         } else {
-            title = `Showing ${imageListItems.length/2} of ${firstPage.meta.totalCount} images`;
+            title = `Showing ${imageListItems.length} of ${firstPage.meta.totalCount} images`;
         }
 
         return (
@@ -101,11 +92,9 @@ createReactClass({
                         {title}
                     </div>
                 </ListHeader>
-                <Paper>
-                    <List style={{ padding: '0px' }}>
-                        {imageListItems}
-                    </List>
-                </Paper>
+                <div>
+                    {imageListItems}
+                </div>
                 <LoadMoreButton
                     label="Show More Images"
                     lastPage={lastPage}

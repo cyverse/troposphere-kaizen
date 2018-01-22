@@ -6,7 +6,7 @@ import { ListItem, Checkbox, RadioButton } from 'material-ui';
 const styles = {
     primaryText: {
         textOverflow: 'ellipsis',
-        overflow: 'auto',
+        overflow: 'hidden',
         maxWidth: '95%',
         whiteSpace: 'nowrap'
     }

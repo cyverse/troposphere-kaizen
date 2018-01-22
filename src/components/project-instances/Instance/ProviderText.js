@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import PayloadStates from '../../../constants/PayloadStates';
 import { connect } from 'lore-hook-connect';
 
-const styles = {
-    paddingTop: '27px',
-    paddingBottom: '27px'
+const nameMap = {
+    'CyVerse Cloud - Marana': 'Marana',
+    'iPlant Cloud - Tucson': 'Tucson',
+    'iPlant Workshop Cloud - Tucson': 'Workshop'
 };
 
 export default connect(function (getState, props) {
@@ -30,16 +31,14 @@ createReactClass({
 
         if (provider.state === PayloadStates.FETCHING) {
             return (
-                <div style={styles}>
-                    ...
-                </div>
+                <span>...</span>
             );
         }
 
         return (
-            <div style={styles}>
-                {provider.data.name}
-            </div>
+            <span>
+                {nameMap[provider.data.name] || provider.data.name}
+            </span>
         );
     }
 })

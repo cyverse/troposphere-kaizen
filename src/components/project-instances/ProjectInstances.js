@@ -64,13 +64,13 @@ createReactClass({
             );
         }
 
-        const instanceListItems = _.flatten(pages.map((projectInstances, pageIndex) => {
+        const instanceListItems = _.flatten(pages.map((projectInstances) => {
             if (projectInstances.state === PayloadStates.FETCHING) {
                 return [];
             }
 
-            return _.flatten(projectInstances.data.map((projectInstance, index) => {
-                const items = [(
+            return _.flatten(projectInstances.data.map((projectInstance) => {
+                return [(
                     <Connect key={projectInstance.id || projectInstance.cid} callback={(getState, props) => {
                         return {
                             instance: getState('instance.byId', {
@@ -97,14 +97,6 @@ createReactClass({
                         }}
                     </Connect>
                 )];
-
-                if (true || index < (projectInstances.data.length - 1)) {
-                    items.push(
-                        <Divider key={`divider-${projectInstance.id || projectInstance.cid}`}/>
-                    );
-                }
-
-                return items;
             }))
         }));
 
@@ -125,20 +117,15 @@ createReactClass({
                 <Instance
                     key={instance.id || instance.cid}
                     instance={instance}
-                />,
-                <Divider key={`divider-${instance.id || instance.cid}`}/>
+                />
             ];
         }));
 
         return (
             <div>
                 <ListHeader />
-                <Paper>
-                    <List style={{ padding: '0px' }}>
-                        {cachedInstanceListItems}
-                        {instanceListItems}
-                    </List>
-                </Paper>
+                {cachedInstanceListItems}
+                {instanceListItems}
                 <LoadMoreButton
                     label="Show More Instances"
                     lastPage={lastPage}

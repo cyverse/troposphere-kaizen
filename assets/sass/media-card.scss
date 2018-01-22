@@ -1,0 +1,132 @@
+.list-card {
+    position: relative;
+    transition: all ease .1s;
+    background: white;
+    box-shadow: 0 -1px 0 #e5e5e5,0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
+    font-size: 14px;
+
+    &.expanded {
+        margin: 40px -20px;
+        border-left: solid 5px #0971ab;
+        box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    }
+
+    &.expanded-vertical {
+        margin: 40px -5px;
+        border-left: solid 5px #0971ab;
+        box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    }
+
+    .list-card-detail {
+        padding: 20px 20px;
+    }
+
+    hr {
+        border: 0px;
+        height: 1px;
+        background: rgba(0, 0, 0, 0.1);
+        margin: 0px;
+    }
+}
+
+.status-light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    //display: inline-block;
+    //margin: 6px 6px 6px 0px;
+    background: gray;
+
+    &.active {
+        background: green;
+    }
+
+    &.transition {
+        background: #f9cb49;
+    }
+
+    &.error {
+        background: crimson;
+    }
+
+    &.inactive {
+        background: crimson;
+    }
+
+    &.deleted {
+        background: gray;
+    }
+}
+
+.status-text {
+    text-transform: capitalize;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: calc(100% - 20px);
+    display: inline-block;
+    line-height: 32px;
+}
+
+.status-light {
+    position: absolute;
+    //left: 15px;
+    top: 10px;
+}
+
+.status-text {
+    margin-left: 20px;
+}
+
+.status-progress-bar {
+    display: block;
+}
+
+.detail-field {
+    line-height: 32px;
+
+    .label {
+        color: rgba(0, 0, 0, 0.54);
+    }
+
+    .value {
+        position: relative;
+    }
+
+    .status-progress-bar {
+        display: none !important;
+    }
+}
+
+.description-text {
+    @extend .status-text;
+}
+
+.description-text.multiline {
+    white-space: normal;
+    line-height: 20px;
+    text-transform: none;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.url-text {
+    @extend .status-text;
+    text-transform: none;
+    color: $primary1-color;
+}
+
+.card-header-col.text {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    line-height: 24px;
+}
+
+.card-header-col.status {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.markdown-body {
+    margin-top: 0px !important;
+}

@@ -1,10 +1,9 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import { MediaCardText } from 'cyverse-ui-next';
 
 export default createReactClass({
-    displayName: 'Description',
+    displayName: 'UrlText',
 
     propTypes: {
         link: PropTypes.object.isRequired
@@ -14,7 +13,9 @@ export default createReactClass({
         const { link } = this.props;
 
         return (
-            <MediaCardText text={link.data.description} />
+            <a className="url-text" href={link.data.link} target="_blank">
+                {link.data.link}
+            </a>
         );
     }
 });

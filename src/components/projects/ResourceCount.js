@@ -35,7 +35,11 @@ export default createReactClass({
 
         return (
             <FlatButton
-                label={label}
+                label={(
+                    <span style={{ fontWeight: 'normal' }}>
+                        {label}
+                    </span>
+                )}
                 icon={React.cloneElement(icon, {...styles.icon})}
                 {...styles.resource}
             />

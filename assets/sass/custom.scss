@@ -1,0 +1,43 @@
+.full-screen-dialog {
+    padding: 0 !important;
+
+    .content {
+        width: 100% !important;
+        max-width: 100% !important;
+        transform: inherit !important;
+    }
+
+    .paper {
+        border-radius: 0 !important;
+    }
+
+    .body {
+        height: 100% !important;
+        max-height: inherit !important;
+    }
+}
+
+.form-container {
+    background-color: #f2f2f2;
+
+    .form-navigation {
+        width: 25%;
+        display: inline-block;
+        background-color: white;
+        height: 100%;
+        vertical-align: top;
+    }
+
+    .form-content {
+        width: 75%;
+        display: inline-block;
+        height: 100%;
+        vertical-align: top;
+    }
+}
+
+.clearfix::after {
+    display: block;
+    content: "";
+    clear: both;
+}

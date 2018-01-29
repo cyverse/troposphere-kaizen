@@ -30,6 +30,19 @@ export default connect((getState, props) => {
             }
 
             return (
+              <div>
+                  {projects.data.map((project) => {
+                      return (
+                          <Project
+                              key={project.id || project.cid}
+                              project={project}
+                          />
+                      );
+                  })}
+              </div>
+            );
+
+            return (
                 <Paper>
                     <List style={{ padding: '0px' }}>
                         {_.flatten(projects.data.map((project, index) => {

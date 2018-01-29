@@ -2,13 +2,8 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
-const styles = {
-    paddingTop: '27px',
-    paddingBottom: '27px'
-};
-
 export default createReactClass({
-    displayName: 'Size',
+    displayName: 'SizeText',
 
     propTypes: {
         volume: PropTypes.object.isRequired
@@ -18,9 +13,9 @@ export default createReactClass({
         const { volume } = this.props;
 
         return (
-            <div style={styles}>
+            <span>
                 {`${volume.data.size}GB`}
-            </div>
+            </span>
         );
     }
 });

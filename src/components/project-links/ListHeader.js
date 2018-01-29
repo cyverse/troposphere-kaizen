@@ -8,16 +8,19 @@ export default createReactClass({
     render: function () {
         return (
             <ListHeader>
-                <div>
-                    <div style={{ position: 'absolute', left: '8px' }}>
-                        Name
+                <div className="row">
+                    <div className="col-md-5 col-lg-3">
+                        <div style={{ paddingLeft: '16px' }}>
+                            Name
+                        </div>
                     </div>
-                    <div style={{ position: 'absolute', left: '25%' }}>
+                    <div className="col-md-6 col-lg-4">
                         URL
                     </div>
-                    <div style={{ position: 'absolute', left: '60%' }}>
+                    <div className="d-none d-lg-block col-lg-4">
                         Description
                     </div>
+                    <div className="col-md-1 col-lg-1 text-right" />
                 </div>
             </ListHeader>
         );

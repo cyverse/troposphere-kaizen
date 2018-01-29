@@ -1,82 +1,102 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import { MenuItem } from 'material-ui';
-import {
-    ActionDelete,
-    FileFolder,
-    EditorModeEdit
-} from 'material-ui/svg-icons';
-import {
-    IntercomIcon
-} from 'cyverse-ui/es/icons';
-import {
-    MediaCard,
-    MediaCardSection,
-    MediaCardMenu
-} from 'cyverse-ui-next';
-import PayloadStates from '../../../constants/PayloadStates';
-import Identity from './Identity';
-import Url from './Url';
-import Description from './Description';
+import { withRouter } from 'react-router';
+import _ from 'lodash';
+import { Avatar } from 'material-ui';
+import ColorHash from 'color-hash';
+import { MediaCardIdentity } from 'cyverse-ui-next';
+import ExpandableMediaCard from '../../../decorators/ExpandableMediaCard';
+import DetailField from '../../_common/DetailField';
+import DescriptionText from './DescriptionText';
+import UrlText from './UrlText';
+import Menu from './Menu';
 
-export default createReactClass({
+export default ExpandableMediaCard()(withRouter(createReactClass({
     displayName: 'Link',
 
     propTypes: {
-        link: PropTypes.object.isRequired
+        link: PropTypes.object.isRequired,
+        isExpanded: PropTypes.bool.isRequired,
+        onExpand: PropTypes.func.isRequired,
+        onCollapse: PropTypes.func.isRequired,
+        onToggleExpansion: PropTypes.func.isRequired
     },
 
-    getStyles: function() {
-        const {
-            link
-        } = this.props;
+    onClick(event) {
+        const { onToggleExpansion } = this.props;
+        const { menu } = this.refs;
+        const menuNode = ReactDOM.findDOMNode(menu);
 
-        if (
-            link.state === PayloadStates.CREATING ||
-            link.state === PayloadStates.UPDATING ||
-            link.state === PayloadStates.DELETING
-        ) {
-            return {
-              opacity: '0.3'
-            }
+        if (menuNode.contains(event.target)) {
+            return;
         }
 
-        return {};
+        onToggleExpansion();
     },
 
     render: function () {
         const {
-            link
+            link,
+            isExpanded,
+            onExpand,
+            onCollapse,
+            onToggleExpansion
         } = this.props;
-        const styles = this.getStyles();
+        const colorHash = new ColorHash();
 
         return (
-            <MediaCard style={styles}>
-                <MediaCardSection width="25%">
-                    <Identity link={link} />
-                </MediaCardSection>
-                <MediaCardSection left="25%" width="30%">
-                    <Url link={link} />
-                </MediaCardSection>
-                <MediaCardSection left="60%" width="30%">
-                    <Description link={link} />
-                </MediaCardSection>
-                <MediaCardSection right="0%" width="inherit">
-                    <MediaCardMenu>
-                        <MenuItem
-                            primaryText="Edit"
-                            leftIcon={<EditorModeEdit />}
-                            disabled={true}
+            <div>
+                <div className="row clickable" onClick={this.onClick}>
+                    <div className="col-md-5 col-lg-3">
+                        <MediaCardIdentity
+                            primaryText={link.data.title}
+                            secondaryText={`Created ???`}
+                            avatar={(
+                                <Avatar backgroundColor={colorHash.hex(link.id)}>
+                                    {_.toUpper(link.data.title[0])}
+                                </Avatar>
+                            )}
                         />
-                        <MenuItem
-                            primaryText="Delete"
-                            leftIcon={<ActionDelete />}
-                            disabled={true}
-                        />
-                    </MediaCardMenu>
-                </MediaCardSection>
-            </MediaCard>
+                    </div>
+                    <div className="col-md-6 col-lg-4">
+                        <div className="card-header-col text">
+                            <UrlText link={link} />
+                        </div>
+                    </div>
+                    <div className="d-none d-lg-block col-lg-4">
+                        <div className="card-header-col text">
+                            <DescriptionText link={link} />
+                        </div>
+                    </div>
+                    <div className="col-md-1 col-lg-1 text-right">
+                        <Menu ref="menu" link={link} />
+                    </div>
+                </div>
+                {isExpanded ? <hr/> : null}
+                {isExpanded ? (
+                    <div className="list-card-detail">
+                        <div className="row">
+                            <div className="col-7">
+                                <div className="row">
+                                    <div className="col-12">
+                                        <h1>Link Details</h1>
+                                    </div>
+                                </div>
+                                <DetailField label="URL">
+                                    <UrlText link={link} />
+                                </DetailField>
+                                <DetailField label="Description">
+                                    <span className="description-text multiline">
+                                        {link.data.description}
+                                    </span>
+                                </DetailField>
+                            </div>
+                        </div>
+                    </div>
+                ) : null}
+            </div>
         );
     }
-});
+})));

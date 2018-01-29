@@ -19,7 +19,8 @@ export default createReactClass({
     displayName: 'Menu',
 
     propTypes: {
-        volume: PropTypes.object.isRequired
+        volume: PropTypes.object.isRequired,
+        project: PropTypes.object.isRequired
     },
 
     render: function () {

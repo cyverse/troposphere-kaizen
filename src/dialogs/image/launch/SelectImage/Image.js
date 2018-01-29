@@ -3,13 +3,9 @@ import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import { Avatar } from 'material-ui';
 import moment from 'moment';
+import _ from 'lodash';
 import ColorHash from 'color-hash';
-import {
-  MediaCard,
-  MediaCardSection,
-  MediaCardIdentity,
-  MediaCardText
-} from 'cyverse-ui-next';
+import { MediaCardIdentity, MediaCardText } from 'cyverse-ui-next';
 
 export default createReactClass({
     displayName: 'Image',
@@ -71,32 +67,30 @@ export default createReactClass({
 
         return (
             <div
+                className="list-card"
+                style={{ height: '72px', position: 'relative' }}
                 onMouseEnter={this.onMouseEnter}
                 onMouseLeave={this.onMouseLeave}
-                style={{ cursor: 'pointer' }}
             >
-            <MediaCard>
-                <MediaCardSection width="25%">
-                    <MediaCardIdentity
-                        primaryText={image.data.name}
-                        secondaryText={`Created ${moment(image.data.start_date).format('MMM DD YYYY')}`}
-                        avatar={(
-                            <Avatar backgroundColor={colorHash.hex(image.id)}>
-                                {image.data.name[0]}
-                            </Avatar>
-                        )}
-                        isCheckable={isSelectable && (isHovered || checked || isCheckable)}
-                        checked={checked}
-                        onCheck={onCheck}
-                    />
-                </MediaCardSection>
-                <MediaCardSection left="25%" width="65%">
-                    <MediaCardText
-                        text={image.data.description}
-                        maxCharacters={180}
-                    />
-                </MediaCardSection>
-            </MediaCard>
+                <div className="row">
+                    <div className="col-md-9 col-lg-4" style={{ cursor: 'pointer' }}>
+                        <MediaCardIdentity
+                            primaryText={image.data.name}
+                            secondaryText={`Created ${moment(image.data.start_date).format('MMM DD YYYY')}`}
+                            avatar={(
+                                <Avatar backgroundColor={colorHash.hex(image.id)}>
+                                    {_.upperFirst(image.data.name[0])}
+                                </Avatar>
+                            )}
+                            isCheckable={isSelectable && (isHovered || checked || isCheckable)}
+                            checked={checked}
+                            onCheck={onCheck}
+                        />
+                    </div>
+                    <div className="col-md-3 col-lg-8">
+                        <MediaCardText text={image.data.description} />
+                    </div>
+                </div>
             </div>
         );
     }

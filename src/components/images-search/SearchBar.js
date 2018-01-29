@@ -51,7 +51,13 @@ export default withRouter(createReactClass({
                 placeholder="Search Images"
                 value={search}
                 onChange={this.onChange}
-                // onClear={() => {}}
+                onClear={() => {
+                    this.onChange({
+                        target: {
+                            value: ''
+                        }
+                    })
+                }}
             />
         );
     }

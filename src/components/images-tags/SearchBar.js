@@ -17,7 +17,7 @@ export default withRouter(createReactClass({
 
         this.onSearch = _.debounce(this.onSearch, 250);
         return {
-            search: location.query.tag || ''
+            search: location.query.search || ''
         }
     },
 
@@ -38,7 +38,7 @@ export default withRouter(createReactClass({
         router.push({
             pathname: location.pathname,
             query: _.merge({}, location.query, {
-                tag: searchTerm
+                search: searchTerm
             })
         });
     },
@@ -51,7 +51,13 @@ export default withRouter(createReactClass({
                 placeholder="Search Tags"
                 value={search}
                 onChange={this.onChange}
-                // onClear={() => {}}
+                onClear={() => {
+                    this.onChange({
+                        target: {
+                            value: ''
+                        }
+                    })
+                }}
             />
         );
     }

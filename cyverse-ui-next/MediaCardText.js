@@ -6,41 +6,35 @@ export default createReactClass({
     displayName: 'MediaCardText',
 
     propTypes: {
-        text: PropTypes.string.isRequired,
-        maxCharacters: PropTypes.number
+        text: PropTypes.string.isRequired
     },
 
     getDefaultProps() {
-      return {
-          text: '',
-          maxCharacters: 100
-      }
+        return {
+            text: ''
+        }
     },
 
-    getStyles(text) {
-        const { maxCharacters } = this.props;
-
+    getStyles() {
         return {
             color: 'rgba(0, 0, 0, 0.67)',
             marginTop: '18px',
             marginBottom: '18px',
             maxHeight: '36px',
             overflow: 'hidden',
-            lineHeight: text.length < maxCharacters/2 ? '36px' : '18px'
+            lineHeight: '36px',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap'
         };
     },
 
     render: function () {
-        let {
-            text,
-            maxCharacters
-        } = this.props;
-
-        const styles = this.getStyles(text);
+        let { text } = this.props;
+        const styles = this.getStyles();
 
         return (
             <div style={styles}>
-                {text.length > (maxCharacters + 3) ? `${text.slice(0, maxCharacters)}...` : text}
+                {text}
             </div>
         );
     }

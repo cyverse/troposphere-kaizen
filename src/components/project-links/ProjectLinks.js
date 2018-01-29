@@ -62,7 +62,7 @@ createReactClass({
             }
 
             return _.flatten(projectLinks.data.map((projectVolume, index) => {
-                const items = [(
+                return [(
                     <Connect key={projectVolume.id || projectVolume.cid} callback={(getState, props) => {
                         return {
                             link: getState('link.byId', {
@@ -89,25 +89,13 @@ createReactClass({
                         }}
                     </Connect>
                 )];
-
-                if (true || index < (projectLinks.data.length - 1)) {
-                    items.push(
-                        <Divider key={`divider-${projectVolume.id || projectVolume.cid}`}/>
-                    );
-                }
-
-                return items;
             }))
         }));
 
         return (
             <div>
                 <ListHeader />
-                <Paper>
-                    <List style={{ padding: '0px' }}>
-                        {linkListItems}
-                    </List>
-                </Paper>
+                {linkListItems}
                 <LoadMoreButton
                     label="Show More Links"
                     lastPage={lastPage}

@@ -2,7 +2,7 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { MenuItem, Subheader, Divider } from 'material-ui';
+import { MenuItem, Divider } from 'material-ui';
 import {
     ContentSave,
     ActionPowerSettingsNew,
@@ -10,7 +10,13 @@ import {
     FileFolder,
     SocialPersonAdd,
     CommunicationVpnKey,
-    NavigationChevronLeft
+    NavigationChevronLeft,
+    AvPlayArrow,
+    AvPause,
+    AvStop,
+    NavigationRefresh,
+    FileCloudUpload,
+    FileCloudDownload
 } from 'material-ui/svg-icons';
 import {
     IntercomIcon,
@@ -50,22 +56,6 @@ createReactClass({
         actions: PropTypes.object.isRequired
     },
 
-    getStyles: function() {
-        const { instance } = this.props;
-
-        if (
-            instance.state === PayloadStates.CREATING ||
-            instance.state === PayloadStates.UPDATING ||
-            instance.state === PayloadStates.DELETING
-        ) {
-            return {
-              opacity: '0.3'
-            }
-        }
-
-        return {};
-    },
-
     actionEnabled(actionName) {
         const {actions} = this.props;
 
@@ -76,7 +66,6 @@ createReactClass({
 
     render: function () {
         const { instance } = this.props;
-        const styles = this.getStyles();
 
         return (
             <MediaCardMenu>
@@ -86,7 +75,7 @@ createReactClass({
                     menuItems={[
                         <MenuItem
                             primaryText="Reboot"
-                            // leftIcon={<IntercomIcon />}
+                            leftIcon={<ActionPowerSettingsNew />}
                             disabled={!this.actionEnabled('Reboot')}
                             onClick={() => {
                                 lore.dialog.show(() => {
@@ -98,7 +87,7 @@ createReactClass({
                         />,
                         <MenuItem
                             primaryText="Redeploy"
-                            // leftIcon={<IntercomIcon />}
+                            leftIcon={<NavigationRefresh />}
                             disabled={!this.actionEnabled('Redeploy')}
                             onClick={() => {
                                 lore.dialog.show(() => {
@@ -110,7 +99,7 @@ createReactClass({
                         />,
                         <MenuItem
                             primaryText="Resume"
-                            // leftIcon={<IntercomIcon />}
+                            leftIcon={<AvPlayArrow />}
                             disabled={!this.actionEnabled('Resume')}
                             onClick={() => {
                                 lore.dialog.show(() => {
@@ -122,7 +111,7 @@ createReactClass({
                         />,
                         <MenuItem
                             primaryText="Shelve"
-                            // leftIcon={<IntercomIcon />}
+                            leftIcon={<FileCloudUpload />}
                             disabled={!this.actionEnabled('Shelve')}
                             onClick={() => {
                                 lore.dialog.show(() => {
@@ -134,7 +123,7 @@ createReactClass({
                         />,
                         <MenuItem
                             primaryText="Start"
-                            // leftIcon={<IntercomIcon />}
+                            leftIcon={<AvPlayArrow />}
                             disabled={!this.actionEnabled('Start')}
                             onClick={() => {
                                 lore.dialog.show(() => {
@@ -146,7 +135,7 @@ createReactClass({
                         />,
                         <MenuItem
                             primaryText="Stop"
-                            // leftIcon={<IntercomIcon />}
+                            leftIcon={<AvStop />}
                             disabled={!this.actionEnabled('Stop')}
                             onClick={() => {
                                 lore.dialog.show(() => {
@@ -158,7 +147,7 @@ createReactClass({
                         />,
                         <MenuItem
                             primaryText="Suspend"
-                            // leftIcon={<IntercomIcon />}
+                            leftIcon={<AvPause />}
                             disabled={!this.actionEnabled('Suspend')}
                             onClick={() => {
                                 lore.dialog.show(() => {
@@ -170,7 +159,7 @@ createReactClass({
                         />,
                         <MenuItem
                             primaryText="Unshelve"
-                            // leftIcon={<IntercomIcon />}
+                            leftIcon={<FileCloudDownload />}
                             disabled={!this.actionEnabled('Unshelve')}
                             onClick={() => {
                                 lore.dialog.show(() => {

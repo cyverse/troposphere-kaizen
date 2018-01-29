@@ -10,6 +10,10 @@ export default {
         provider: {
             type: 'model',
             model: 'provider'
+        },
+        image: {
+            type: 'model',
+            model: 'image'
         }
     },
 

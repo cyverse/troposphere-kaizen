@@ -58,7 +58,7 @@ export default createReactClass({
                 <div style={styles.page}>
                     <Header />
                     <SearchBar onSearch={this.onSearch} />
-                    <Tags query={{ tag: location.query.tag }}/>
+                    <Tags query={{ search: location.query.search }}/>
                 </div>
             </div>
         );

@@ -10,7 +10,7 @@ import PayloadStates from '../../constants/PayloadStates';
 import LoadMoreButton from '../images-search/_common/LoadMoreButton';
 import ListHeader from '../images-search/_common/ListHeader';
 import { MediaCardPlaceholder } from 'cyverse-ui-next';
-import Image from './Image';
+import Image from '../images-search/_common/Image';
 
 export default connect(function(getState, props) {
     const { project } = props;
@@ -68,7 +68,7 @@ createReactClass({
             }
 
             return _.flatten(projectImages.data.map((projectImage, index) => {
-                const items = [(
+                return [(
                     <Connect key={projectImage.id || projectImage.cid} callback={(getState, props) => {
                         return {
                             image: getState('image.byId', {
@@ -90,30 +90,23 @@ createReactClass({
                                 <Image
                                     key={image.id || image.cid}
                                     image={image}
+                                    project={project}
                                 />
                             );
                         }}
                     </Connect>
                 )];
-
-                if (true || index < (projectImages.data.length - 1)) {
-                    items.push(
-                        <Divider key={`divider-${projectImage.id || projectImage.cid}`}/>
-                    );
-                }
-
-                return items;
             }))
         }));
 
         let title = '';
 
         if (!firstPage.meta || !firstPage.meta.totalCount) {
-            title = `Showing ${imageListItems.length/2} images`;
+            title = `Showing ${imageListItems.length} images`;
         } else if (project) {
-            title = `Showing ${imageListItems.length/2} images for "${project.data.name}"`;
+            title = `Showing ${imageListItems.length} images for "${project.data.name}"`;
         } else {
-            title = `Showing ${imageListItems.length/2} of ${firstPage.meta.totalCount} images`;
+            title = `Showing ${imageListItems.length} of ${firstPage.meta.totalCount} images`;
         }
 
         return (
@@ -123,11 +116,7 @@ createReactClass({
                         {title}
                     </div>
                 </ListHeader>
-                <Paper>
-                    <List style={{ padding: '0px' }}>
-                        {imageListItems}
-                    </List>
-                </Paper>
+                {imageListItems}
                 <LoadMoreButton
                     label="Show More Images"
                     lastPage={lastPage}

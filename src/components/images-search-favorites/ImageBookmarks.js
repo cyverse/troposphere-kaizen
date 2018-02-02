@@ -25,7 +25,9 @@ export default connect(function(getState, props) {
         }, { forceFetchOnMount: true })
     };
 })(
-InfiniteScrolling({ propName: 'imageBookmarks', modelName: 'imageBookmark' })(
+InfiniteScrolling({ propName: 'imageBookmarks', modelName: 'imageBookmark', exclude: function(imageBookmark) {
+    return imageBookmark.state === PayloadStates.DELETED;
+}})(
 createReactClass({
     displayName: 'ImageBookmarks',
 
@@ -68,7 +70,7 @@ createReactClass({
             }
 
             return _.flatten(imageBookmarks.data.map((imageBookmark, index) => {
-                const items = [(
+                return [(
                     <Connect key={imageBookmark.id || imageBookmark.cid} callback={(getState, props) => {
                         return {
                             image: getState('image.byId', {
@@ -95,25 +97,17 @@ createReactClass({
                         }}
                     </Connect>
                 )];
-
-                if (true || index < (imageBookmarks.data.length - 1)) {
-                    items.push(
-                        <Divider key={`divider-${imageBookmark.id || imageBookmark.cid}`}/>
-                    );
-                }
-
-                return items;
             }))
         }));
 
         let title = '';
 
         if (!firstPage.meta || !firstPage.meta.totalCount) {
-            title = `Showing ${imageListItems.length/2} images`;
+            title = `Showing ${imageListItems.length} images`;
         } else if (query.search) {
-            title = `Showing ${imageListItems.length/2} images for "${query.search}"`;
+            title = `Showing ${imageListItems.length} images for "${query.search}"`;
         } else {
-            title = `Showing ${imageListItems.length/2} of ${firstPage.meta.totalCount} images`;
+            title = `Showing ${imageListItems.length} of ${firstPage.meta.totalCount} images`;
         }
 
         return (
@@ -123,11 +117,9 @@ createReactClass({
                         {title}
                     </div>
                 </ListHeader>
-                <Paper>
-                    <List style={{ padding: '0px' }}>
-                        {imageListItems}
-                    </List>
-                </Paper>
+                <div>
+                    {imageListItems}
+                </div>
                 <LoadMoreButton
                     label="Show More Images"
                     lastPage={lastPage}

@@ -62,9 +62,12 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        // parse: function(resp, options) {
-        //   return resp;
-        // },
+        parse: function(resp, options) {
+            if (_.isPlainObject(resp.external_link)) {
+                resp.external_link = resp.external_link.id;
+            }
+            return resp;
+        },
 
         /**
          * Override the sync method if you need to modify data before sending

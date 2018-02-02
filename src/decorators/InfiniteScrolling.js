@@ -47,7 +47,13 @@ export default function(options = {}) {
                 // or deleted, we won't get a change to react to those changes and inform the user.
                 let nextPages = _.remove(pages.map(function(page) {
                     const query = JSON.stringify(page.query);
-                    return storeState[modelName].find[query];
+                    const models = _.assign({}, storeState[modelName].find[query]);
+                    if (options.exclude) {
+                        models.data = _.filter(models.data, function(model) {
+                            return !options.exclude(model);
+                        })
+                    }
+                    return models;
                 }));
 
                 const currentQuery = JSON.stringify(this.props[propName].query.where);

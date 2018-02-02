@@ -7,6 +7,7 @@ import { Pill, ListTabs, ListTab } from 'cyverse-ui-next';
 import { connect } from 'lore-hook-connect';
 import PayloadStates from '../../constants/PayloadStates';
 import IsAuthenticated from '../_common/IsAuthenticated';
+import cacheUpdated from '../../utils/cacheUpdated';
 
 const ROUTES = {
     ALL: '/images/search/all',
@@ -50,7 +51,7 @@ export default withRouter(connect((getState, props) => {
                 page_size: 10,
                 image__search: location.query.search
             }
-        })
+        }, { force: cacheUpdated('imageBookmark') })
     }
 })(
 withRouter(createReactClass({

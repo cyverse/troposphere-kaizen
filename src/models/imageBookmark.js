@@ -2,6 +2,13 @@ import _ from 'lodash';
 
 export default {
 
+    attributes: {
+        image: {
+            type: 'model',
+            model: 'image'
+        }
+    },
+
     properties: {
 
         /**

@@ -10,12 +10,13 @@ import moment from 'moment';
 import ColorHash from 'color-hash';
 import { LaunchIcon } from 'cyverse-ui/es/icons';
 import { MediaCardIdentity, MediaCardText, MediaCardMenu } from 'cyverse-ui-next';
-import { ListCard, ListCardDetail, MDBlock } from 'cyverse-ui';
+import { MDBlock } from 'cyverse-ui';
 import ExpandableMediaCard from '../../../../decorators/ExpandableMediaCard';
 import PayloadStates from '../../../../constants/PayloadStates';
 import ImageLaunchDialog from '../../../../dialogs/image/launch';
 import Tags from './Tags';
 import Versions from './Versions';
+import Bookmark from './Bookmark';
 
 export default ExpandableMediaCard()(withRouter(createReactClass({
     displayName: 'Image',
@@ -76,7 +77,7 @@ export default ExpandableMediaCard()(withRouter(createReactClass({
         return (
             <div>
                 <div className="row clickable" style={styles} onClick={this.onClick}>
-                    <div className="col-md-9 col-lg-4">
+                    <div className="col-md-8 col-lg-4">
                         <MediaCardIdentity
                             primaryText={image.data.name}
                             secondaryText={`Created ${moment(image.data.start_date).format('MMM DD YYYY')}`}
@@ -87,10 +88,10 @@ export default ExpandableMediaCard()(withRouter(createReactClass({
                             )}
                         />
                     </div>
-                    <div className="d-none d-lg-block col-lg-6">
+                    <div className="d-none d-lg-block col-lg-5">
                         <MediaCardText text={image.data.description} />
                     </div>
-                    <div className="col-md-3 col-lg-2 text-right">
+                    <div className="col-md-4 col-lg-3 text-right">
                         <div ref="buttons" style={{ paddingTop: '12px', paddingBottom: '12px', display: 'inline-block' }}>
                             <IconButton tooltip="Launch Instance" tooltipPosition="top-center" onClick={() => {
                                 lore.dialog.show(() => {
@@ -105,6 +106,7 @@ export default ExpandableMediaCard()(withRouter(createReactClass({
                             }}>
                                 <LaunchIcon/>
                             </IconButton>
+                            <Bookmark image={image} />
                         </div>
                         <MediaCardMenu ref="menu">
                             <MenuItem
@@ -124,17 +126,6 @@ export default ExpandableMediaCard()(withRouter(createReactClass({
                         <Versions image={image} />
                     </div>
                 ) : null}
-                {/*<ListCardDetail hide={!isExpanded}>*/}
-                    {/*{isExpanded ? (*/}
-                        {/*<div>*/}
-                            {/*<div style={{ marginBottom: '16px' }}>*/}
-                                {/*<MDBlock text={image.data.description} />*/}
-                            {/*</div>*/}
-                            {/*<Tags image={image} />*/}
-                            {/*<Versions image={image} />*/}
-                        {/*</div>*/}
-                    {/*) : null}*/}
-                {/*</ListCardDetail>*/}
             </div>
         );
     }

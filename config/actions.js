@@ -3,6 +3,7 @@
  *
  * This file is where you define overrides for the default action behaviors.
  */
+import destroy from '../blueprints/actions/destroy';
 
 export default {
 
@@ -25,6 +26,10 @@ export default {
     //   get: function() {...},
     //   update: function() {...},
     // },
+
+    blueprints: {
+        destroy: destroy
+    },
 
     /**
      * Determines whether the client-side id (the cid attribute in a model)

@@ -94,12 +94,12 @@ export default ExpandableMediaCard()(createReactClass({
                             <SizeText instance={instance} />
                         </div>
                     </div>
-                    <div className="d-none d-lg-block col-lg-2">
+                    <div className="d-none d-lg-block col-lg-1">
                         <div className="card-header-col text">
                             <ProviderText instance={instance} />
                         </div>
                     </div>
-                    <div className="col-md-2 col-lg-3 text-right">
+                    <div className="col-md-2 col-lg-4 text-right">
                         <div className="d-none d-lg-inline-block">
                             <QuickActions ref="actions" instance={instance} />
                         </div>

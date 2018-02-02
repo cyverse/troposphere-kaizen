@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default {
 
     properties: {
@@ -71,7 +73,9 @@ export default {
                 status: resp.status.split(" - ")[0],
                 activity: resp.activity
             };
-            return resp;
+            return _.pick(resp, [
+                'state'
+            ]);
         },
 
         /**

@@ -20,10 +20,10 @@ export default createReactClass({
                     <div className="d-none d-lg-block col-lg-1">
                         Size
                     </div>
-                    <div className="d-none d-lg-block col-lg-2">
+                    <div className="d-none d-lg-block col-lg-1">
                         Provider
                     </div>
-                    <div className="col-md-2 col-lg-3" />
+                    <div className="col-md-2 col-lg-4" />
                 </div>
             </ListHeader>
         );

@@ -64,17 +64,24 @@ export default {
                 <Field name={name}>
                     {(field) => {
                         return (
-                            <TextField
-                                name={field.name}
-                                value={field.value}
-                                onChange={field.onChange}
-                                onFocus={field.onFocus}
-                                onBlur={field.onBlur}
-                                errorText={field.touched && field.error}
-                                multiLine={true}
-                                style={{ width: '100%' }}
-                                {...props}
-                            />
+                            <div>
+                                <TextField
+                                    name={field.name}
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    onFocus={field.onFocus}
+                                    onBlur={field.onBlur}
+                                    errorText={field.touched && field.error}
+                                    multiLine={true}
+                                    style={{ width: '100%' }}
+                                    {...props}
+                                />
+                                {props.description ? (
+                                    <PropBarrier className="form-field-explanation">
+                                        {props.description}
+                                    </PropBarrier>
+                                ) : null}
+                            </div>
                         )
                     }}
                 </Field>
@@ -191,44 +198,51 @@ export default {
                 <Field name={name}>
                     {(field) => {
                         return (
-                            <Connect callback={(getState, props) => {
-                                return {
-                                    options: _.isFunction(options) ? options(getState, props) : options
-                                };
-                            }}>
-                                {(connect) => {
-                                    return (
-                                        <SelectField
-                                            value={field.value}
-                                            onChange={(event, key, value) => {
-                                                field.onBlur();
-                                                field.onChange(field.name, value);
-                                            }}
-                                            errorText={field.touched && field.error}
-                                            style={{ width: '100%' }}
-                                            {...other}
-                                        >
-                                            {[
-                                                <MenuItem
-                                                    key={null}
-                                                    value={null}
-                                                    primaryText={''}
-                                                />
-                                            ].concat(
-                                                connect.options.data.map((datum) => {
-                                                    return (
-                                                        <MenuItem
-                                                            key={datum.id}
-                                                            value={datum.id}
-                                                            primaryText={_.isFunction(label) ? label(datum) : datum.data[label]}
-                                                        />
-                                                    );
-                                                })
-                                            )}
-                                        </SelectField>
-                                    )
-                                }}
-                            </Connect>
+                            <div>
+                                <Connect callback={(getState, props) => {
+                                    return {
+                                        options: _.isFunction(options) ? options(getState, props) : options
+                                    };
+                                }}>
+                                    {(connect) => {
+                                        return (
+                                            <SelectField
+                                                value={field.value}
+                                                onChange={(event, key, value) => {
+                                                    field.onBlur();
+                                                    field.onChange(field.name, value);
+                                                }}
+                                                errorText={field.touched && field.error}
+                                                style={{ width: '100%' }}
+                                                {...other}
+                                            >
+                                                {[
+                                                    <MenuItem
+                                                        key={null}
+                                                        value={null}
+                                                        primaryText={''}
+                                                    />
+                                                ].concat(
+                                                    connect.options.data.map((datum) => {
+                                                        return (
+                                                            <MenuItem
+                                                                key={datum.id}
+                                                                value={datum.id}
+                                                                primaryText={_.isFunction(label) ? label(datum) : datum.data[label]}
+                                                            />
+                                                        );
+                                                    })
+                                                )}
+                                            </SelectField>
+                                        )
+                                    }}
+                                </Connect>
+                                {props.description ? (
+                                    <PropBarrier className="form-field-explanation">
+                                        {props.description}
+                                    </PropBarrier>
+                                ) : null}
+                            </div>
                         )
                     }}
                 </Field>
@@ -239,6 +253,7 @@ export default {
                 <Field name={name}>
                     {(field) => {
                         return (
+                            <div>
                             <TextField
                                 name={field.name}
                                 value={field.value}
@@ -249,7 +264,13 @@ export default {
                                 style={{ width: '100%' }}
                                 {...props}
                             />
-                        )
+                                {props.description ? (
+                                    <PropBarrier className="form-field-explanation">
+                                        {props.description}
+                                    </PropBarrier>
+                                ) : null}
+                            </div>
+                        );
                     }}
                 </Field>
             );

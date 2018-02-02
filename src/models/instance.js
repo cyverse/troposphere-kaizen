@@ -14,6 +14,14 @@ export default {
         image: {
             type: 'model',
             model: 'image'
+        },
+        identity: {
+            type: 'model',
+            model: 'identity'
+        },
+        user: {
+            type: 'model',
+            model: 'user'
         }
     },
 
@@ -83,6 +91,14 @@ export default {
 
             if (_.isPlainObject(resp.project)) {
                 resp.project = resp.project.id;
+            }
+
+            if (_.isPlainObject(resp.identity)) {
+                resp.identity = Number(resp.identity.id);
+            }
+
+            if (_.isPlainObject(resp.user)) {
+                resp.user = Number(resp.user.id);
             }
 
             return resp;

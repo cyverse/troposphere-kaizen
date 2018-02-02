@@ -35,6 +35,7 @@ import StartInstanceDialog from '../../../dialogs/instance/start';
 import StopInstanceDialog from '../../../dialogs/instance/stop';
 import SuspendInstanceDialog from '../../../dialogs/instance/suspend';
 import UnshelveInstanceDialog from '../../../dialogs/instance/unshelve';
+import ImageInstanceDialog from '../../../dialogs/instance/image';
 
 export default connect(function(getState, props) {
     const { instance } = props;
@@ -180,7 +181,14 @@ createReactClass({
                 <MenuItem
                     primaryText="Request Image"
                     leftIcon={<ContentSave />}
-                    disabled={true}
+                    disabled={false}
+                    onClick={() => {
+                        lore.dialog.show(() => {
+                            return (
+                                <ImageInstanceDialog instance={instance} />
+                            );
+                        });
+                    }}
                 />
                 <MenuItem
                     primaryText="Reboot"

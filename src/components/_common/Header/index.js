@@ -14,6 +14,7 @@ import { Link, withRouter } from 'react-router';
 import productLogo from '../../../../assets/images/logo_white.png';
 import HeaderLink from './Link';
 import HeaderAvatar from './Avatar';
+import FlopbackToggle from './FlopbackToggle';
 import IsAuthenticated from '../IsAuthenticated';
 import IsPublic from '../IsPublic';
 import { ContentSave, FileFolder } from 'material-ui/svg-icons';
@@ -107,13 +108,16 @@ export default withRouter(createReactClass({
                             </IsAuthenticated>
                             <HeaderLink label="Images" to="/images" matches={[/^\/images\//]} icon={<ContentSave/>}/>
                         </ToolbarGroup>
+                        <ToolbarGroup style={{ position: 'absolute', right: '180px' }}>
+                            <FlopbackToggle label="Flopback" />
+                        </ToolbarGroup>
                         <ToolbarGroup lastChild={true}>
                             <IsAuthenticated>
                                 <HeaderAvatar/>
-                                <DropDownMenu value='user' onChange={this.onMenuChange} {...styles.dropdownMenu}>
-                                    <MenuItem value='user' primaryText={user.data.username}/>
+                                <DropDownMenu value="user" onChange={this.onMenuChange} {...styles.dropdownMenu}>
+                                    <MenuItem value="user" primaryText={user.data.username}/>
                                     <Divider/>
-                                    <MenuItem value='logout' primaryText="Logout"/>
+                                    <MenuItem value="logout" primaryText="Logout"/>
                                 </DropDownMenu>
                             </IsAuthenticated>
                             <IsPublic>

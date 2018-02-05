@@ -19,6 +19,7 @@ export default createReactClass({
     componentWillUnmount() {
         if (this.poll) {
             this.poll.stop();
+            this.pollActions.stop();
         }
     },
 

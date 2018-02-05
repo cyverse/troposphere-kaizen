@@ -74,6 +74,7 @@ export default {
                 activity: resp.activity
             };
             return _.pick(resp, [
+                'name',
                 'state'
             ]);
         },

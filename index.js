@@ -18,6 +18,9 @@ injectTapEventPlugin();
 // the console. Remove this line if you don't want to be able to do that.
 window.lore = lore;
 
+// Set whether the instance and volumes actions should flopback
+window.shouldFlopback = false;
+
 // Hooks
 import auth from 'lore-hook-auth';
 import actions from 'lore-hook-actions';

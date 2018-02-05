@@ -44,6 +44,20 @@ export default function(options) {
             };
 
             proxyModel.save().then(function () {
+                if (window.shouldFlopback) {
+                    console.log('flopback!');
+                    dispatch({
+                        type: ActionTypes.update('volume'),
+                        payload: _.merge(model, {
+                            data: {
+                                state: optimisticState
+                            },
+                            state: PayloadStates.RESOLVED
+                        })
+                    });
+                    return;
+                }
+
                 dispatch({
                     type: ActionTypes.update('volume'),
                     payload: _.merge(model, {

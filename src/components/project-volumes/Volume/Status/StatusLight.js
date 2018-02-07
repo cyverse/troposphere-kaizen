@@ -1,6 +1,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
+import PayloadStates from '../../../../constants/PayloadStates';
 
 export default createReactClass({
     displayName: 'StatusLight',
@@ -11,6 +12,10 @@ export default createReactClass({
 
     render: function () {
         const { volume } = this.props;
+        const isUpdating = (
+            volume.state === PayloadStates.UPDATING ||
+            volume.state === PayloadStates.MANAGED
+        );
 
         if (
             volume.data.state.status === 'available' ||
@@ -22,7 +27,7 @@ export default createReactClass({
         }
 
         return (
-            <span className="status-light transition breathe" />
+            <span className={`status-light transition ${isUpdating ? 'updating': ''}`} />
         );
     }
 });

@@ -27,7 +27,7 @@ export default createReactClass({
         return (
             <div style={{ position: 'relative' }}>
                 <StatusLight volume={volume}/> <StatusText volume={volume} />
-                {showProgress && percentComplete < 100 ? (
+                {false && showProgress && percentComplete < 100 ? (
                     <StatusProgressBar volume={volume} />
                 ) : null}
             </div>

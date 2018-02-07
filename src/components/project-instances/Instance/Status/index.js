@@ -32,7 +32,7 @@ export default createReactClass({
         return (
             <div style={{ position: 'relative' }}>
                 <StatusLight instance={instance}/> <StatusText instance={instance} />
-                {showProgress && percentComplete < 100 ? (
+                {false && showProgress && percentComplete < 100 ? (
                     <StatusProgressBar instance={instance} />
                 ) : null}
             </div>

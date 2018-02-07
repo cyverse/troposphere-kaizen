@@ -10,6 +10,7 @@ export { default as MediaCardMenu } from './MediaCardMenu';
 export { default as MediaCardPlaceholder } from './MediaCardPlaceholder';
 export { default as MediaCardText } from './MediaCardText';
 export { default as Pill } from './Pill';
+export { default as ProgressAvatar } from './ProgressAvatar';
 export { default as SkeletonText } from './SkeletonText';
 export { default as Stagger } from './Stagger';
 export { default as Tooltip } from './Tooltip';

@@ -74,6 +74,10 @@
     top: 10px;
 }
 
+.status-light.updating {
+    opacity: 0.3;
+}
+
 .status-text {
     margin-left: 20px;
 }
@@ -129,4 +133,41 @@
 
 .markdown-body {
     margin-top: 0px !important;
+}
+
+@-webkit-keyframes avatar-breathe {
+    from {
+        opacity: 0.3;
+        filter: alpha(opacity=20)
+    }
+    to {
+        opacity: 0.7;
+        filter: alpha(opacity=100)
+    }
+}
+
+@keyframes avatar-breathe {
+    from {
+        opacity: 0.3;
+        filter: alpha(opacity=20)
+    }
+    to {
+        opacity: 0.7;
+        filter: alpha(opacity=100)
+    }
+}
+
+.avatar-breathe {
+    -webkit-animation-name: avatar-breathe;
+    animation-name: avatar-breathe;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-delay: .2s;
+    animation-delay: .2s;
+    -webkit-animation-timing-function: cubic-bezier(.73, .005, .42, 1.005);
+    animation-timing-function: cubic-bezier(.73, .005, .42, 1.005);
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate
 }

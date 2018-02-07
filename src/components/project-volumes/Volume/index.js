@@ -4,7 +4,6 @@ import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import _ from 'lodash';
-import { Avatar } from 'material-ui';
 import moment from 'moment';
 import ColorHash from 'color-hash';
 import { MediaCardIdentity } from 'cyverse-ui-next';
@@ -17,6 +16,7 @@ import ProviderText from './ProviderText';
 import SizeText from './SizeText';
 import Status from './Status';
 import Polling from './Polling';
+import Avatar from './Avatar';
 
 export default ExpandableMediaCard()(withRouter(createReactClass({
     displayName: 'Volume',
@@ -41,7 +41,7 @@ export default ExpandableMediaCard()(withRouter(createReactClass({
 
         if (
             volume.state === PayloadStates.CREATING ||
-            volume.state === PayloadStates.UPDATING ||
+            // volume.state === PayloadStates.UPDATING ||
             volume.state === PayloadStates.DELETING
         ) {
             return {
@@ -87,9 +87,7 @@ export default ExpandableMediaCard()(withRouter(createReactClass({
                             primaryText={volume.data.name}
                             secondaryText={`Created ${moment(volume.data.start_date).format('MMM DD YYYY')}`}
                             avatar={(
-                                <Avatar backgroundColor={colorHash.hex(volume.id)}>
-                                    {_.toUpper(volume.data.name[0])}
-                                </Avatar>
+                                <Avatar volume={volume} />
                             )}
                         />
                     </div>

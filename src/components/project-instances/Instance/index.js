@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { Avatar } from 'material-ui';
 import moment from 'moment';
 import ColorHash from 'color-hash';
 import { MediaCardIdentity } from 'cyverse-ui-next';
@@ -19,6 +18,7 @@ import ProviderText from './ProviderText';
 import SizeText from './SizeText';
 import Polling from './Polling';
 import InstanceHistory from './InstanceHistory';
+import Avatar from './Avatar';
 
 export default ExpandableMediaCard()(createReactClass({
     displayName: 'Instance',
@@ -36,7 +36,7 @@ export default ExpandableMediaCard()(createReactClass({
 
         if (
             instance.state === PayloadStates.CREATING ||
-            instance.state === PayloadStates.UPDATING ||
+            // volume.state === PayloadStates.UPDATING ||
             instance.state === PayloadStates.DELETING
         ) {
             return {
@@ -78,9 +78,7 @@ export default ExpandableMediaCard()(createReactClass({
                             primaryText={instance.data.name}
                             secondaryText={`Created ${moment(instance.data.start_date).format('MMM DD YYYY')}`}
                             avatar={(
-                                <Avatar backgroundColor={colorHash.hex(instance.id)}>
-                                    {_.toUpper(instance.data.name[0])}
-                                </Avatar>
+                                <Avatar instance={instance}/>
                             )}
                         />
                     </div>

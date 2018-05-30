@@ -48,7 +48,7 @@ export default createReactClass({
     return (
       <div style={styles.container}>
         <RaisedButton
-          onTouchTap={this.props.onLoadMore}
+          onClick={this.props.onLoadMore}
           label={this.props.label}
         />
       </div>

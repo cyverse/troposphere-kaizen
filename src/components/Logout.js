@@ -17,7 +17,7 @@ export default withRouter(createReactClass({
         const { logoutUrl } = lore.config.cas;
 
         // remove user's auth token from localStorage
-        auth.logout();
+        auth.deleteToken();
 
         // If logoutUrl is specified, redirect the user to it, otherwise
         // reset the store and navigate back to the home route

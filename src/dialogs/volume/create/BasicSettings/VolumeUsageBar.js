@@ -52,10 +52,8 @@ createReactClass({
                         where: {
                             provider: identity.data.provider
                         },
-                        exclude: {
-                            where: function(volume) {
-                                return volume.data.provider !== identity.data.provider;
-                            }
+                        exclude: function(volume) {
+                            return volume.data.provider !== identity.data.provider;
                         }
                     })
                 }

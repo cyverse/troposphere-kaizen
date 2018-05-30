@@ -18,7 +18,7 @@ export default function (options = {}) {
 
         return connect(function (getState, props) {
             return {
-                user: auth.isLoggedIn() ? getState('currentUser') : {
+                user: auth.hasToken() ? getState('currentUser') : {
                     state: PayloadStates.ERROR_FETCHING,
                     data: {}
                 }

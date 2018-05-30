@@ -31,7 +31,7 @@ export default createReactClass({
 
         axios.get(accessTokenUrl).then(function (response) {
             const access_token = response.data.body.split('=')[1];
-            auth.login(access_token);
+            auth.saveToken(access_token);
             router.push(JSON.parse(state.redirect));
         }).catch(function (response) {
             const error = response.data;

@@ -67,13 +67,13 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        parse: function(resp, options) {
-            resp.state = {
-                status_raw: resp.status,
-                status: resp.status.split(" - ")[0],
-                activity: resp.activity
+        parse: function(response, options) {
+            response.state = {
+                status_raw: response.status,
+                status: response.status.split(" - ")[0],
+                activity: response.activity
             };
-            return _.pick(resp, [
+            return _.pick(response, [
                 'name',
                 'state'
             ]);

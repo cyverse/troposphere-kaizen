@@ -71,7 +71,7 @@ export default {
          */
 
         headers: function() {
-            if (!auth.isLoggedIn()) {
+            if (!auth.hasToken()) {
                 return {};
             }
 
@@ -120,8 +120,8 @@ export default {
                  * in the application (such as adding, removing or modifying properties)
                  */
 
-                // parse(attributes) {
-                //   return attributes;
+                // parse(response) {
+                //   return response;
                 // }
 
             }
@@ -148,13 +148,13 @@ export default {
                  * automatically be processed by the parse method of the corresponding model.
                  */
 
-                parse: function (attributes) {
+                parse: function (response) {
                     this.meta = {
-                        totalCount: attributes.count,
-                        perPage: attributes.results.length,
-                        nextPage: attributes.next
+                        totalCount: response.count,
+                        perPage: response.results.length,
+                        nextPage: response.next
                     };
-                    return attributes.results;
+                    return response.results;
                 }
 
             }

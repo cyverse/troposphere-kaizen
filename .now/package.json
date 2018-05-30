@@ -1,0 +1,9 @@
+{
+  "name": "troposphere-kaizen",
+  "scripts": {
+    "start": "serve . --single"
+  },
+  "dependencies": {
+    "serve": "latest"
+  }
+}

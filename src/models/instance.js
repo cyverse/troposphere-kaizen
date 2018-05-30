@@ -80,28 +80,28 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        parse: function(resp, options) {
-            resp.provider_uuid = resp.provider.uuid;
-            resp.identity_uuid = resp.identity.uuid;
-            resp.state = {
-                status_raw: resp.status,
-                status: resp.status.split(" - ")[0],
-                activity: resp.activity
+        parse: function(response, options) {
+            response.provider_uuid = response.provider.uuid;
+            response.identity_uuid = response.identity.uuid;
+            response.state = {
+                status_raw: response.status,
+                status: response.status.split(" - ")[0],
+                activity: response.activity
             };
 
-            if (_.isPlainObject(resp.project)) {
-                resp.project = resp.project.id;
+            if (_.isPlainObject(response.project)) {
+                response.project = response.project.id;
             }
 
-            if (_.isPlainObject(resp.identity)) {
-                resp.identity = Number(resp.identity.id);
+            if (_.isPlainObject(response.identity)) {
+                response.identity = Number(response.identity.id);
             }
 
-            if (_.isPlainObject(resp.user)) {
-                resp.user = Number(resp.user.id);
+            if (_.isPlainObject(response.user)) {
+                response.user = Number(response.user.id);
             }
 
-            return resp;
+            return response;
         },
 
         /**

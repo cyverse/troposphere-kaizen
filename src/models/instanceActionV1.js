@@ -65,9 +65,9 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        parse: function (resp, options) {
-            resp.id = resp.action;
-            return resp;
+        parse: function (response, options) {
+            response.id = response.action;
+            return response;
         },
 
         /**

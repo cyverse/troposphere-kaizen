@@ -64,11 +64,11 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        parse: function (resp, options) {
-            if (_.isPlainObject(resp.image)) {
-                resp.image = resp.image.id;
+        parse: function (response, options) {
+            if (_.isPlainObject(response.image)) {
+                response.image = response.image.id;
             }
-            return resp;
+            return response;
         },
 
         /**

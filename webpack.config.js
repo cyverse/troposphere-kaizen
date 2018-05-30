@@ -49,7 +49,6 @@ module.exports = function (env) {
                 'react': path.resolve(__dirname, 'node_modules/react'),
                 'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
                 'cyverse-ui-next': path.resolve(__dirname, 'cyverse-ui-next'),
-                'lore-react-forms': path.resolve(__dirname, './hooks/lore-react-forms'),
                 '../internal/RenderToLayer': path.resolve(__dirname, './material-ui/RenderToLayer')
             }
         },
@@ -172,7 +171,8 @@ module.exports = function (env) {
                 __LORE_ROOT__: JSON.stringify(__dirname),
                 __BASENAME__: JSON.stringify(BASENAME),
                 'process.env': {
-                    'NODE_ENV': JSON.stringify(env.lore || env)
+                    'LORE_ENV': JSON.stringify(env.lore || env),
+                    'NODE_ENV': JSON.stringify(env.webpack || env)
                 }
             }),
             new ProgressBarPlugin(),

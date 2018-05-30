@@ -78,7 +78,7 @@ export default createReactClass({
                                     display: 'block',
                                     width: '100%'
                                 },
-                                onTouchTap: () => {
+                                onClick: () => {
                                     form.callbacks.onHideAdvancedSettings(form.data)
                                 }
                             }

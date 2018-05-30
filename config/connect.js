@@ -70,28 +70,24 @@ export default {
 
         find: _.defaultsDeep({
             defaults: {
-                exclude: {
-                    where: function (model) {
-                        return (
-                            model.state === PayloadStates.DELETED ||
-                            model.state === PayloadStates.ERROR_CREATING ||
-                            model.state === PayloadStates.NOT_FOUND
-                        );
-                    }
+                exclude: function (model) {
+                    return (
+                        model.state === PayloadStates.DELETED ||
+                        model.state === PayloadStates.ERROR_CREATING ||
+                        model.state === PayloadStates.NOT_FOUND
+                    );
                 }
             }
         }, find),
 
         findAll: _.defaultsDeep({
             defaults: {
-                exclude: {
-                    where: function (model) {
-                        return (
-                            model.state === PayloadStates.DELETED ||
-                            model.state === PayloadStates.ERROR_CREATING ||
-                            model.state === PayloadStates.NOT_FOUND
-                        );
-                    }
+                exclude: function (model) {
+                    return (
+                        model.state === PayloadStates.DELETED ||
+                        model.state === PayloadStates.ERROR_CREATING ||
+                        model.state === PayloadStates.NOT_FOUND
+                    );
                 }
             }
         }, findAll),

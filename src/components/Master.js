@@ -15,12 +15,12 @@ import createReactClass from 'create-react-class';
 import { connect } from 'lore-hook-connect';
 import PayloadStates from '../constants/PayloadStates';
 import auth from '../utils/auth';
-import LoadingScreen from './_common/LoadingScreen';
+import RemoveLoadingScreen from './RemoveLoadingScreen';
 import '../../assets/sass/main.scss';
 
 export default connect(function (getState, props) {
     return {
-        user: auth.isLoggedIn() ? getState('currentUser') : {
+        user: auth.hasToken() ? getState('currentUser') : {
             state: PayloadStates.ERROR_FETCHING,
             data: {}
         }
@@ -56,16 +56,16 @@ export default connect(function (getState, props) {
             const { user } = this.props;
 
             if (user.state === PayloadStates.FETCHING) {
-                return (
-                    <LoadingScreen/>
-                )
+              return null;
             }
 
             return (
                 <div>
+                    <RemoveLoadingScreen/>
                     {React.cloneElement(this.props.children)}
                 </div>
             );
         }
 
-    }));
+    })
+);

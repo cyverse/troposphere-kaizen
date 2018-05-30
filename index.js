@@ -14,6 +14,10 @@ import _ from 'lodash';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
+// Import the styles for the loading screen. We're doing that here to make
+// sure they get loaded regardless of the entry point for the application.
+import './assets/sass/loading-screen.scss';
+
 // Allows you to access your lore app globally as well as from within
 // the console. Remove this line if you don't want to be able to do that.
 window.lore = lore;

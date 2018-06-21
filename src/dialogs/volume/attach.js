@@ -73,13 +73,11 @@ export default Dialog()(createReactClass({
                                 field: 'name',
                                 options: (getState, props) => {
                                     return getState('instance.findAll', {
-                                        exclude: {
-                                            where: function(instance) {
-                                                return (
-                                                    instance.data.project !== project.id ||
-                                                    instance.data.provider !== model.data.provider
-                                                );
-                                            }
+                                        exclude: function(instance) {
+                                            return (
+                                                instance.data.project !== project.id ||
+                                                instance.data.provider !== model.data.provider
+                                            );
                                         }
                                     })
                                 }
@@ -92,7 +90,7 @@ export default Dialog()(createReactClass({
                             props: (form) => {
                                 return {
                                     label: 'Cancel',
-                                    onTouchTap: () => {
+                                    onClick: () => {
                                         form.callbacks.onCancel()
                                     }
                                 }
@@ -105,7 +103,7 @@ export default Dialog()(createReactClass({
                                     label: 'Attach',
                                     primary: true,
                                     disabled: form.hasError,
-                                    onTouchTap: () => {
+                                    onClick: () => {
                                         form.callbacks.onSubmit(form.data)
                                     }
                                 }

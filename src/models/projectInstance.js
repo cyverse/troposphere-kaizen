@@ -69,11 +69,11 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        parse: function(resp, options) {
-            if (_.isPlainObject(resp.instance)) {
-                resp.instance = resp.instance.id;
+        parse: function(response, options) {
+            if (_.isPlainObject(response.instance)) {
+                response.instance = response.instance.id;
             }
-            return resp;
+            return response;
         },
 
         /**

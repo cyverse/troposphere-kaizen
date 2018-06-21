@@ -35,13 +35,13 @@ export default {
          * occurrence when interacting with APIs that support pagination).
          */
 
-        parse: function (attributes) {
+        parse: function (response) {
             this.meta = {
-                totalCount: attributes.length,
+                totalCount: response.length,
                 perPage: null,
                 nextPage: null
             };
-            return attributes;
+            return response;
         },
 
         /**

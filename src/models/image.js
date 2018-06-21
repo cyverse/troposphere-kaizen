@@ -62,8 +62,8 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        // parse: function(resp, options) {
-        //   return resp;
+        // parse: function(response, options) {
+        //   return response;
         // },
 
         /**

@@ -62,14 +62,14 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        parse: function (resp, options) {
-            resp.provider_uuid = resp.provider.uuid;
-            resp.identity_uuid = resp.identity.uuid;
+        parse: function (response, options) {
+            response.provider_uuid = response.provider.uuid;
+            response.identity_uuid = response.identity.uuid;
 
-            if (_.isPlainObject(resp.project)) {
-                resp.project = resp.project.id;
+            if (_.isPlainObject(response.project)) {
+                response.project = response.project.id;
             }
-            return resp;
+            return response;
         },
 
         /**

@@ -65,13 +65,13 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        parse: function(resp, options) {
-            resp.state = {
-                status_raw: resp.status,
-                status: resp.status.split(" - ")[0],
-                activity: resp.status.split(" - ")[1] || ''
+        parse: function(response, options) {
+            response.state = {
+                status_raw: response.status,
+                status: response.status.split(" - ")[0],
+                activity: response.status.split(" - ")[1] || ''
             };
-            return _.pick(resp, [
+            return _.pick(response, [
                 'attach_data',
                 'state'
             ]);

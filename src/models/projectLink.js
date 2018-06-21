@@ -62,11 +62,11 @@ export default {
          * properties to absorb breaking API changes.
          */
 
-        parse: function(resp, options) {
-            if (_.isPlainObject(resp.external_link)) {
-                resp.external_link = resp.external_link.id;
+        parse: function(response, options) {
+            if (_.isPlainObject(response.external_link)) {
+                response.external_link = response.external_link.id;
             }
-            return resp;
+            return response;
         },
 
         /**

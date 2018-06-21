@@ -81,7 +81,7 @@ export default Dialog()(createReactClass({
                             props: (form) => {
                                 return {
                                     label: 'Cancel',
-                                    onTouchTap: () => {
+                                    onClick: () => {
                                         form.callbacks.onCancel()
                                     }
                                 }
@@ -94,7 +94,7 @@ export default Dialog()(createReactClass({
                                     label: 'Create',
                                     primary: true,
                                     disabled: form.hasError,
-                                    onTouchTap: () => {
+                                    onClick: () => {
                                         form.callbacks.onSubmit(form.data)
                                     }
                                 }

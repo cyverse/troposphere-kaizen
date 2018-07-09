@@ -3,8 +3,24 @@ import { Field, FormSection, PropBarrier } from 'lore-react-forms';
 import { TextField, Checkbox, SelectField, MenuItem, FlatButton, RaisedButton } from 'material-ui';
 import { Connect } from 'lore-hook-connect';
 import { result as _result } from 'lore-utils';
+import CreateOverlayBlueprint from '../src/dialogs/_blueprints/create/Overlay';
+import DestroyOverlayBlueprint from '../src/dialogs/_blueprints/destroy/Overlay';
+import UpdateOverlayBlueprint from '../src/dialogs/_blueprints/update/Overlay';
 
 export default {
+    defaultBlueprint: 'overlay',
+
+    blueprints: {
+        create: {
+            overlay: CreateOverlayBlueprint
+        },
+        destroy: {
+            overlay: DestroyOverlayBlueprint
+        },
+        update: {
+            overlay: UpdateOverlayBlueprint
+        }
+    },
 
     schemas: {
         default: {

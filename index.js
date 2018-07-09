@@ -32,7 +32,8 @@ import bindActions from 'lore-hook-bind-actions';
 import collections from 'lore-hook-collections';
 import connections from 'lore-hook-connections';
 import connect from 'lore-hook-connect';
-import dialog from 'lore-hook-dialog';
+import dialog from 'lore-hook-dialog-material-ui';
+import dialogs from 'lore-hook-dialogs-material-ui';
 import models from 'lore-hook-models';
 import polling from 'lore-hook-polling';
 import react from 'lore-hook-react';
@@ -50,6 +51,7 @@ lore.summon({
         connections,
         connect,
         dialog,
+        dialogs,
         models,
         polling,
         react,

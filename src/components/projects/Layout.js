@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class';
+import _ from 'lodash';
 import ListHeader from './ListHeader';
 import Projects from './Projects';
 import Header from '../_common/Header';
 import Subheader from '../_common/Subheader';
 import FloatingActionButton from './FloatingActionButton';
-import CreateProjectDialog from '../../dialogs/project/create';
+import validators from '../../utils/validators';
 
 export default createReactClass({
     displayName: 'Layout',
@@ -24,9 +25,13 @@ export default createReactClass({
                 <Subheader title="Project List">
                     <FloatingActionButton onClick={() => {
                         lore.dialog.show(() => {
-                            return (
-                                <CreateProjectDialog />
-                            );
+                            return lore.dialogs.project.create({
+                                request: function (data) {
+                                    return lore.actions.project.create(_.merge({}, data, {
+                                        owner: user.data.username
+                                    })).payload;
+                                }
+                            });
                         });
                     }}/>
                 </Subheader>

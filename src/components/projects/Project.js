@@ -10,8 +10,6 @@ import moment from 'moment';
 import ColorHash from 'color-hash';
 import { MediaCardIdentity, MediaCardText, MediaCardIcons, MediaCardMenu } from 'cyverse-ui-next';
 import ResourceCount from './ResourceCount';
-import UpdateProjectDialog from '../../dialogs/project/update';
-import DestroyProjectDialog from '../../dialogs/project/destroy';
 import PayloadStates from '../../constants/PayloadStates';
 
 export default connect((getState, props) => {
@@ -120,16 +118,12 @@ withRouter(createReactClass({
                         <MediaCardMenu>
                             <MenuItem primaryText="Edit" leftIcon={<EditorModeEdit/>} onClick={() => {
                                 lore.dialog.show(() => {
-                                    return (
-                                        <UpdateProjectDialog model={project} />
-                                    );
+                                    return lore.dialogs.project.update(project);
                                 });
                             }}/>
                             <MenuItem primaryText="Delete" leftIcon={<ActionDelete/>} onClick={() => {
                                 lore.dialog.show(() => {
-                                    return (
-                                        <DestroyProjectDialog model={project} />
-                                    );
+                                    return lore.dialogs.project.destroy(project);
                                 });
                             }}/>
                         </MediaCardMenu>

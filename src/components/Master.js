@@ -50,6 +50,16 @@ export default connect(function (getState, props) {
             // is a good location to attach it to the global lore object.
 
             // lore.router = this.props.router;
+
+            lore.dialog.childContextTypes = {
+                user: PropTypes.object
+            };
+
+            lore.dialog.getChildContext = () => {
+                return {
+                    user: this.props.user
+                };
+            };
         },
 
         render() {

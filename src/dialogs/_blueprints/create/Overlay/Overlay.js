@@ -46,14 +46,14 @@ export default createReactClass({
         return request ? request(data) : lore.actions[modelName].create(data).payload;
     },
 
-    onSubmit: function() {
+    onSubmit: function(customData) {
         const { data } = this.state;
 
         this.setState({
             isSaving: true,
             showSuccessMessage: false,
             hasError: false,
-            request: this.request(data)
+            request: this.request(_.merge({}, data, customData))
         });
     },
 

@@ -102,7 +102,7 @@ export default ExpandableMediaCard()(withRouter(createReactClass({
                                             project={project}
                                         />
                                     );
-                                });
+                                }, { template: 'fullScreenDialog' });
                             }}>
                                 <LaunchIcon/>
                             </IconButton>

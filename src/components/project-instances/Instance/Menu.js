@@ -187,7 +187,7 @@ createReactClass({
                             return (
                                 <ImageInstanceDialog instance={instance} />
                             );
-                        });
+                        }, { template: 'fullScreenDialog' });
                     }}
                 />
                 <MenuItem

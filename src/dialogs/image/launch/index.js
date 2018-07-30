@@ -3,7 +3,6 @@ import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { getState } from 'lore-hook-connect';
-import FullScreenDialog from '../../../../src/decorators/FullScreenDialog';
 import { Overlay, Request } from 'lore-react-forms-material-ui';
 import SelectProject from './SelectProject';
 import SelectImage from './SelectImage';
@@ -15,7 +14,7 @@ import ChangeImageVersion from './ChangeImageVersion';
 import ConfirmationScreen from './ConfirmationScreen';
 import Steps from './_common/Steps';
 
-export default FullScreenDialog()(createReactClass({
+export default createReactClass({
     displayName: 'Image/Launch',
 
     propTypes: {
@@ -360,4 +359,4 @@ export default FullScreenDialog()(createReactClass({
         );
     }
 
-}));
+});

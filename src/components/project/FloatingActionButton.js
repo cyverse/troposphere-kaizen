@@ -71,7 +71,7 @@ export default withRouter(onClickOutside(createReactClass({
                                         router={router}
                                     />
                                 );
-                            });
+                            }, { template: 'fullScreenDialog' });
                         }}
                         backgroundColor={styles.backgroundColor}
                     />
@@ -87,7 +87,7 @@ export default withRouter(onClickOutside(createReactClass({
                                         router={router}
                                     />
                                 );
-                            });
+                            }, { template: 'fullScreenDialog' });
                         }}
                         backgroundColor={styles.backgroundColor}
                     />

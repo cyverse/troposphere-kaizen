@@ -5,7 +5,6 @@ import Header from './Header';
 import SearchBar from './SearchBar';
 import Tags from './Tags';
 import FloatingActionButton from './FloatingActionButton';
-import CreateTagDialog from '../../dialogs/tag/create';
 import IsStaff from '../_common/IsStaff';
 
 const styles = {
@@ -48,9 +47,7 @@ export default createReactClass({
                     <FloatingActionButton
                         onClick={() => {
                             lore.dialog.show(() => {
-                                return (
-                                    <CreateTagDialog />
-                                );
+                                return lore.dialogs.tag.create();
                             });
                         }}
                     />

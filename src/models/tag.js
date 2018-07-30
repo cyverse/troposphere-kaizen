@@ -1,4 +1,129 @@
+import React from 'react';
+import validators from '../utils/validators';
+
+const fields = {
+    data: {
+        name: '',
+        description: '',
+    },
+    validators: {
+        name: [validators.isRequired],
+        description: [validators.isRequired]
+    },
+    fields: [
+        {
+            key: 'name',
+            type: 'string',
+            props: {
+                floatingLabelText: 'Name'
+            }
+        },
+        {
+            key: 'description',
+            type: 'text',
+            props: {
+                floatingLabelText: 'Description'
+            }
+        }
+    ],
+    actions: [
+        {
+            type: 'raised',
+            props: (form) => {
+                return {
+                    label: 'Cancel',
+                    onClick: () => {
+                        form.callbacks.onCancel()
+                    }
+                }
+            }
+        },
+        {
+            // placeholder for submit button
+        }
+    ]
+};
+
 export default {
+
+    dialogs: {
+        create: _.merge({}, fields, {
+            title: 'Create Tag',
+            description: 'Fill out the form to create a tag',
+            actions: [{},
+                {
+                    type: 'raised',
+                    props: (form) => {
+                        return {
+                            label: 'Create',
+                            primary: true,
+                            disabled: form.hasError,
+                            onClick: () => {
+                                form.callbacks.onSubmit(form.data)
+                            }
+                        }
+                    }
+                }
+            ]
+        }),
+        update: _.merge({}, fields, {
+            title: 'Update Tag',
+            description: 'Fill out the form to update the tag',
+            // information: 'This is an informational message',
+            actions: [{},
+                {
+                    type: 'raised',
+                    props: (form) => {
+                        return {
+                            label: 'Update',
+                            primary: true,
+                            disabled: form.hasError,
+                            onClick: () => {
+                                form.callbacks.onSubmit(form.data)
+                            }
+                        }
+                    }
+                }
+            ]
+        }),
+        destroy: _.merge({}, _.pick(fields, ['actions']), {
+            title: 'Delete Tag',
+            // description: 'Fill out the form to delete the tag',
+            information: 'This action is irreversible',
+            fields: [
+                {
+                    key: 'confirm',
+                    type: 'custom',
+                    props: (form) => {
+                        return {
+                            render: () => {
+                                return (
+                                    <div>
+                                        Are you sure you want to delete this tag?
+                                    </div>
+                                );
+                            }
+                        }
+                    }
+                }
+            ],
+            actions: [{},
+                {
+                    type: 'raised',
+                    props: (form) => {
+                        return {
+                            label: 'Delete',
+                            primary: true,
+                            disabled: form.hasError,
+                            onClick: () => {
+                                form.callbacks.onSubmit(form.data)
+                            }
+                        }
+                    }
+                }
+            ]
+        }),
+    },
 
     properties: {
 

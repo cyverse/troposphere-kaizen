@@ -4,21 +4,8 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { ListItem, IconMenu, IconButton, MenuItem } from 'material-ui';
 import { NavigationMoreVert, EditorModeEdit, ActionDelete } from 'material-ui/svg-icons';
-import UpdateTagDialog from '../../dialogs/tag/update';
-import DestroyTagDialog from '../../dialogs/tag/destroy';
 import IsStaff from '../_common/IsStaff';
 import PayloadStates from '../../constants/PayloadStates';
-
-// const styles = {
-//     anchorOrigin: {
-//         horizontal: 'right',
-//         vertical: 'bottom'
-//     },
-//     targetOrigin: {
-//         horizontal: 'right',
-//         vertical: 'top'
-//     }
-// };
 
 export default withRouter(createReactClass({
     displayName: 'Tag',
@@ -92,9 +79,7 @@ export default withRouter(createReactClass({
                                 leftIcon={<EditorModeEdit/>}
                                 onClick={() => {
                                     lore.dialog.show(() => {
-                                        return (
-                                            <UpdateTagDialog model={tag} />
-                                        );
+                                        return lore.dialogs.tag.update(tag);
                                     });
                                 }}
                             />
@@ -103,9 +88,7 @@ export default withRouter(createReactClass({
                                 leftIcon={<ActionDelete/>}
                                 onClick={() => {
                                     lore.dialog.show(() => {
-                                        return (
-                                            <DestroyTagDialog model={tag} />
-                                        );
+                                        return lore.dialogs.tag.destroy(tag);
                                     });
                                 }}
                             />

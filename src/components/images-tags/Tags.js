@@ -19,7 +19,7 @@ export default connect(function(getState, props) {
             where: query,
             pagination: {
                 page: '1',
-                page_size: 10
+                page_size: 1000
             }
         }, { forceFetchOnMount: true })
     };

@@ -12,7 +12,7 @@ export default createReactClass({
     propTypes: {
         model: PropTypes.object.isRequired,
         project: PropTypes.object.isRequired,
-        onCancel: PropTypes.func.isRequired
+        onCancel: PropTypes.func
     },
 
     request: function (data) {

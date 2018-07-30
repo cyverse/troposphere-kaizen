@@ -1,16 +1,14 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
-import OverlayTemplate from '../_templates/OverlayTemplate';
-import validators from '../../utils/validators';
+import CreateOverlayBlueprint from '../_blueprints/create/Overlay';
 
 export default createReactClass({
     displayName: 'Instance/Reboot',
 
     propTypes: {
         model: PropTypes.object.isRequired,
-        onCancel: PropTypes.func.isRequired
+        onCancel: PropTypes.func
     },
 
     request: function (data) {
@@ -24,11 +22,7 @@ export default createReactClass({
     },
 
     render: function () {
-        const {
-            model,
-            onSubmit,
-            onCancel
-        } = this.props;
+        const { onCancel } = this.props;
 
         const {
             schemas,
@@ -37,99 +31,87 @@ export default createReactClass({
         } = lore.config.dialogs;
 
         return (
-            <OverlayTemplate
-                model={model}
+            <CreateOverlayBlueprint
+                modelName="instance"
                 schema={schemas.default}
                 fieldMap={fieldMap}
                 actionMap={actionMap}
-                onSubmit={onSubmit}
                 onCancel={onCancel}
-                config={{
-                    props: (form) => {
-                        return {
-                            title: 'Reboot Instance',
-                            // subtitle: `Submit this form to destroy this ${modelName}`,
-                            information: `WARNING Rebooting an instance will cause it to temporarily shut down and become inaccessible during that time.`,
-                            successMessage: {
-                                title: 'Success!',
-                                message: 'Project destroyed.'
-                            },
-                            reducer: 'instance',
-                            request: this.request
-                        }
-                    },
-                    validators: {},
-                    fields: {
-                        confirm: {
-                            type: 'custom',
-                            props: (form) => {
-                                return {
-                                    render: () => {
-                                        return (
-                                            <div>
-                                                <div style={{ marginBottom: '16px' }}>
-                                                    A 'Reboot' will send an 'ACPI Restart' request to the VM that
-                                                    will start the reboot process for your VM.
-                                                </div>
-                                                <div style={{ marginBottom: '16px' }}>
-                                                    If your VM does not respond to a 'Reboot', there is also the
-                                                    option to send a 'Hard Reboot' which will forcibly restart
-                                                    your VM.
-                                                </div>
-                                                <div>
-                                                    Select one of the two options below to reboot your instance.
-                                                </div>
+                request={this.request}
+                title="Reboot Instance"
+                information="WARNING Rebooting an instance will cause it to temporarily shut down and become inaccessible during that time."
+                validators={{}}
+                fields={[
+                    {
+                        key: 'confirm',
+                        type: 'custom',
+                        props: (form) => {
+                            return {
+                                render: () => {
+                                    return (
+                                        <div>
+                                            <div style={{ marginBottom: '16px' }}>
+                                                A 'Reboot' will send an 'ACPI Restart' request to the VM that
+                                                will start the reboot process for your VM.
                                             </div>
-                                        );
-                                    }
+                                            <div style={{ marginBottom: '16px' }}>
+                                                If your VM does not respond to a 'Reboot', there is also the
+                                                option to send a 'Hard Reboot' which will forcibly restart
+                                                your VM.
+                                            </div>
+                                            <div>
+                                                Select one of the two options below to reboot your instance.
+                                            </div>
+                                        </div>
+                                    );
+                                }
+                            }
+                        }
+                    }
+                ]}
+                actions={[
+                    {
+                        type: 'raised',
+                        props: (form) => {
+                            return {
+                                label: 'Cancel',
+                                onClick: () => {
+                                    form.callbacks.onCancel()
                                 }
                             }
                         }
                     },
-                    actions: [
-                        {
-                            type: 'raised',
-                            props: (form) => {
-                                return {
-                                    label: 'Cancel',
-                                    onClick: () => {
-                                        form.callbacks.onCancel()
-                                    }
-                                }
-                            }
-                        },
-                        {
-                            type: 'raised',
-                            props: (form) => {
-                                return {
-                                    label: 'Reboot',
-                                    primary: true,
-                                    disabled: form.hasError,
-                                    onClick: () => {
-                                        form.callbacks.onSubmit({
-                                            type: 'soft'
-                                        })
-                                    }
-                                }
-                            }
-                        },
-                        {
-                            type: 'raised',
-                            props: (form) => {
-                                return {
-                                    label: 'Hard Reboot',
-                                    primary: true,
-                                    disabled: form.hasError,
-                                    onClick: () => {
-                                        form.callbacks.onSubmit({
-                                            type: 'hard'
-                                        })
-                                    }
+                    {
+                        type: 'raised',
+                        props: (form) => {
+                            return {
+                                label: 'Reboot',
+                                primary: true,
+                                disabled: form.hasError,
+                                onClick: () => {
+                                    form.callbacks.onSubmit({
+                                        type: 'soft'
+                                    })
                                 }
                             }
                         }
-                    ]
-                }}
+                    },
+                    {
+                        type: 'raised',
+                        props: (form) => {
+                            return {
+                                label: 'Hard Reboot',
+                                primary: true,
+                                disabled: form.hasError,
+                                onClick: () => {
+                                    form.callbacks.onSubmit({
+                                        type: 'hard'
+                                    })
+                                }
+                            }
+                        }
+                    }
+                ]}
             />
         );
     }

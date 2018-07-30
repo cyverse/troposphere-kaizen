@@ -21,7 +21,7 @@ export default FullScreenDialog()(createReactClass({
     propTypes: {
         instance: PropTypes.object,
         // router: PropTypes.object.isRequired,
-        onCancel: PropTypes.func.isRequired
+        onCancel: PropTypes.func
     },
 
     request: function(data) {

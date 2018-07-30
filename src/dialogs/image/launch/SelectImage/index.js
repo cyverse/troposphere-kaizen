@@ -5,8 +5,8 @@ import _ from 'lodash';
 import { CardTitle, Paper } from 'material-ui';
 import { Connect } from 'lore-hook-connect';
 import validators from '../../../../utils/validators';
-import CloseButton from '../../../_templates/_common/CloseButton';
-import GenericForm from '../../../_templates/_forms/GenericForm';
+import CloseButton from '../../../_blueprints/_common/CloseButton';
+import { GenericForm } from 'lore-react-forms';
 import Images from '../../../../components/images-search/_common/Images';
 import ImageBookmarks from '../../../../components/images-search-favorites/ImageBookmarks';
 import BasicNavigation from '../_common/BasicNavigation';
@@ -107,15 +107,8 @@ export default createReactClass({
                 data={data}
                 onChange={this.onChange}
                 callbacks={callbacks}
-                schema={schema}
-                fieldMap={fieldMap}
-                actionMap={actionMap}
-                config={{
-                    validators: {
-                        image: [validators.number.isRequired]
-                    },
-                    fields: {},
-                    actions: []
+                validators={{
+                    image: [validators.number.isRequired]
                 }}
             >
                 {(form) => (

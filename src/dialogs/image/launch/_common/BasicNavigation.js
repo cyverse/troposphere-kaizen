@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { CardTitle, Stepper, Step, StepLabel, StepContent } from 'material-ui';
 import { NavigationArrowForward, NavigationArrowBack, ActionSettings } from 'material-ui/svg-icons';
 import { SchemaActions } from 'lore-react-forms';
-import InfoMessage from '../../../_templates/_common/InfoMessage';
+import InfoMessage from '../../../_blueprints/_common/InfoMessage';
 
 export default createReactClass({
     displayName: 'BasicNavigation',

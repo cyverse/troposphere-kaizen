@@ -5,10 +5,9 @@ import _ from 'lodash';
 import { CardTitle } from 'material-ui';
 import { Connect } from 'lore-hook-connect';
 import validators from '../../../../utils/validators';
-import GenericForm from '../../../_templates/_forms/GenericForm';
-import { SchemaFields } from 'lore-react-forms';
-import CloseButton from '../../../_templates/_common/CloseButton';
-import RequestError from '../../../_templates/_common/RequestError';
+import { GenericForm, SchemaFields } from 'lore-react-forms';
+import CloseButton from '../../../_blueprints/_common/CloseButton';
+import { RequestError } from 'lore-react-forms-material-ui';
 import BasicNavigation from '../_common/BasicNavigation';
 import SetDefaults from './SetDefaults';
 import VolumeUsageBar from './VolumeUsageBar';
@@ -85,14 +84,7 @@ export default createReactClass({
                 data={data}
                 onChange={this.onChange}
                 callbacks={callbacks}
-                schema={schema}
-                fieldMap={fieldMap}
-                actionMap={actionMap}
-                config={{
-                    validators: config.validators,
-                    fields: {},
-                    actions: []
-                }}
+                validators={config.validators}
             >
                 {(form) => (
                     <div className="row" style={{ margin: 0, backgroundColor: '#f2f2f2', height: '100%' }}>

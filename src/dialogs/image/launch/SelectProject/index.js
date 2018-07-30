@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class';
 import _ from 'lodash';
 import { CardTitle } from 'material-ui';
-import CloseButton from '../../../_templates/_common/CloseButton';
+import CloseButton from '../../../_blueprints/_common/CloseButton';
 import BasicNavigation from '../_common/BasicNavigation';
-import GenericForm from '../../../_templates/_forms/GenericForm';
+import { GenericForm } from 'lore-react-forms';
 import { SchemaFields } from 'lore-react-forms';
 import validators from '../../../../utils/validators';
 import SetDefaults from './SetDefaults';
@@ -84,14 +84,7 @@ export default createReactClass({
                 data={data}
                 onChange={this.onChange}
                 callbacks={callbacks}
-                schema={schema}
-                fieldMap={fieldMap}
-                actionMap={actionMap}
-                config={{
-                    validators: config.validators,
-                    fields: {},
-                    actions: []
-                }}
+                validators={config.validators}
             >
                 {(form) => (
                     <div className="row" style={{ margin: 0, backgroundColor: '#f2f2f2', height: '100%' }}>

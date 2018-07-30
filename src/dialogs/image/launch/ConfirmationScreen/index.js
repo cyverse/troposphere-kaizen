@@ -4,9 +4,9 @@ import createReactClass from 'create-react-class';
 import _ from 'lodash';
 import { RaisedButton, FlatButton } from 'material-ui';
 import { NavigationCheck } from 'material-ui/svg-icons';
-import CloseButton from '../../../_templates/_common/CloseButton';
+import CloseButton from '../../../_blueprints/_common/CloseButton';
 import BasicNavigation from '../_common/BasicNavigation';
-import GenericForm from '../../../_templates/_forms/GenericForm';
+import { GenericForm } from 'lore-react-forms';
 
 export default createReactClass({
     displayName: 'ConfirmationScreen',
@@ -60,14 +60,6 @@ export default createReactClass({
                 data={data}
                 onChange={this.onChange}
                 callbacks={callbacks}
-                schema={schema}
-                fieldMap={fieldMap}
-                actionMap={actionMap}
-                config={{
-                    validators: {},
-                    fields: {},
-                    actions: []
-                }}
             >
                 {(form) => (
                     <div className="row" style={{ margin: 0, backgroundColor: '#f2f2f2', height: '100%' }}>

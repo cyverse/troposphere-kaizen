@@ -3,11 +3,10 @@ import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { getState } from 'lore-hook-connect';
-import Dialog from '../../../src/decorators/Dialog';
 import OverlayTemplate from '../_templates/OverlayTemplate';
 import validators from '../../utils/validators';
 
-export default Dialog()(createReactClass({
+export default createReactClass({
     displayName: 'Volume/Attach',
 
     propTypes: {
@@ -115,4 +114,4 @@ export default Dialog()(createReactClass({
         );
     }
 
-}));
+});

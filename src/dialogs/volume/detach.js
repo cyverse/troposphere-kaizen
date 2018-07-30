@@ -2,12 +2,11 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import Dialog from '../../../src/decorators/Dialog';
 import OverlayTemplate from '../_templates/OverlayTemplate';
 import validators from '../../utils/validators';
 import ExternalLink from '../../components/_common/ExternalLink';
 
-export default Dialog()(createReactClass({
+export default createReactClass({
     displayName: 'Volume/Detach',
 
     propTypes: {
@@ -113,4 +112,4 @@ export default Dialog()(createReactClass({
         );
     }
 
-}));
+});

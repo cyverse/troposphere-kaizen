@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { CardTitle } from 'material-ui';
 import validators from '../../../../utils/validators';
 import GenericForm from '../../../_templates/_forms/GenericForm';
-import SchemaFields from '../../../_templates/_forms/SchemaFields';
+import { SchemaFields } from 'lore-react-forms';
 import CloseButton from '../../../_templates/_common/CloseButton';
 import RequestError from '../../../_templates/_common/RequestError';
 import BasicNavigation from '../_common/BasicNavigation';
@@ -116,22 +116,24 @@ export default createReactClass({
                                         schema={schema}
                                         fieldMap={fieldMap}
                                         form={form}
-                                        fields={{
-                                            new_version_name: {
+                                        fields={[
+                                            {
+                                                key: 'new_version_name',
                                                 type: 'string',
                                                 props: {
                                                     floatingLabelText: 'Version Name *',
                                                     description: 'Versioning helps users understand how your changes relate to the overall progress of the Application. Versions are alphanumeric (e.g. 2.0-stable, 2.1-beta, 2.2-testing). Please limit name to 30 characters and keep versioning consistent.'
                                                 }
                                             },
-                                            new_version_change_log: {
+                                            {
+                                                key: 'new_version_change_log',
                                                 type: 'text',
                                                 props: {
                                                     floatingLabelText: 'Change Log *',
                                                     description: `Concisely describe what you've changed in this specific version. This description will help users understand how your application has changed over time.`
                                                 }
                                             }
-                                        }}
+                                        ]}
                                     />
                                 </div>
                             </div>

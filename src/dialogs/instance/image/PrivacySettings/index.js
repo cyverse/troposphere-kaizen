@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { CardTitle } from 'material-ui';
 import validators from '../../../../utils/validators';
 import GenericForm from '../../../_templates/_forms/GenericForm';
-import SchemaFields from '../../../_templates/_forms/SchemaFields';
+import { SchemaFields } from 'lore-react-forms';
 import CloseButton from '../../../_templates/_common/CloseButton';
 import RequestError from '../../../_templates/_common/RequestError';
 import BasicNavigation from '../_common/BasicNavigation';
@@ -122,8 +122,9 @@ export default createReactClass({
                                         schema={schema}
                                         fieldMap={fieldMap}
                                         form={form}
-                                        fields={{
-                                            new_application_visibility: {
+                                        fields={[
+                                            {
+                                                key: 'new_application_visibility',
                                                 type: 'select2',
                                                 props: {
                                                     floatingLabelText: 'Image Visibility *',
@@ -156,22 +157,23 @@ export default createReactClass({
                                                     }
                                                 }
                                             }
-                                        }}
+                                        ]}
                                     />
                                     {data.new_application_visibility === 'select' ? (
                                         <SchemaFields
                                             schema={schema}
                                             fieldMap={fieldMap}
                                             form={form}
-                                            fields={{
-                                                access_list: {
+                                            fields={[
+                                                {
+                                                    key: 'access_list',
                                                     type: 'string',
                                                     props: {
                                                         floatingLabelText: 'Usernames',
                                                         description: 'Please include a comma separated list of usernames that should be able to launch this image.'
                                                     }
                                                 }
-                                            }}
+                                            ]}
                                         />
                                     ) : null}
                                 </div>

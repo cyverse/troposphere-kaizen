@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class';
 import { CardTitle, List, ListItem } from 'material-ui';
-import SchemaActions from '../../../_templates/_forms/SchemaActions';
+import { SchemaActions } from 'lore-react-forms';
 import InfoMessage from '../../../_templates/_common/InfoMessage';
 import Steps from './Steps';
 

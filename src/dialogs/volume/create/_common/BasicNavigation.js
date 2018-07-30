@@ -4,7 +4,7 @@ import createReactClass from 'create-react-class';
 import _ from 'lodash';
 import { CardTitle, Stepper, Step, StepLabel, StepContent } from 'material-ui';
 import { NavigationArrowForward, NavigationArrowBack } from 'material-ui/svg-icons';
-import SchemaActions from '../../../_templates/_forms/SchemaActions';
+import { SchemaActions } from 'lore-react-forms';
 import InfoMessage from '../../../_templates/_common/InfoMessage';
 
 export default createReactClass({

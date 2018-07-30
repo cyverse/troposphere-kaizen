@@ -6,7 +6,7 @@ import { CardTitle } from 'material-ui';
 import { Connect } from 'lore-hook-connect';
 import validators from '../../../../utils/validators';
 import GenericForm from '../../../_templates/_forms/GenericForm';
-import SchemaFields from '../../../_templates/_forms/SchemaFields';
+import { SchemaFields } from 'lore-react-forms';
 import CloseButton from '../../../_templates/_common/CloseButton';
 import RequestError from '../../../_templates/_common/RequestError';
 import BasicNavigation from '../_common/BasicNavigation';
@@ -136,14 +136,15 @@ export default createReactClass({
                                             schema={schema}
                                             fieldMap={fieldMap}
                                             form={form}
-                                            fields={{
-                                                name: {
+                                            fields={[
+                                                {
+                                                    key: 'name',
                                                     type: 'string',
                                                     props: {
                                                         floatingLabelText: 'Volume Name'
                                                     }
                                                 }
-                                            }}
+                                            ]}
                                         />
                                     </div>
                                     <div className="col">
@@ -152,8 +153,9 @@ export default createReactClass({
                                             schema={schema}
                                             fieldMap={fieldMap}
                                             form={form}
-                                            fields={{
-                                                identity: {
+                                            fields={[
+                                                {
+                                                    key: 'identity',
                                                     type: 'select2',
                                                     props: {
                                                         floatingLabelText: 'Identity',
@@ -177,13 +179,14 @@ export default createReactClass({
                                                         }
                                                     }
                                                 },
-                                                size: {
+                                                {
+                                                    key: 'size',
                                                     type: 'string',
                                                     props: {
                                                         floatingLabelText: 'Volume Size (GB)'
                                                     }
                                                 }
-                                            }}
+                                            ]}
                                         />
                                     </div>
                                 </div>

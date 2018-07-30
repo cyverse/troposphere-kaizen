@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { CardTitle } from 'material-ui';
 import validators from '../../../../utils/validators';
 import GenericForm from '../../../_templates/_forms/GenericForm';
-import SchemaFields from '../../../_templates/_forms/SchemaFields';
+import { SchemaFields } from 'lore-react-forms';
 import CloseButton from '../../../_templates/_common/CloseButton';
 import RequestError from '../../../_templates/_common/RequestError';
 import BasicNavigation from '../_common/BasicNavigation';
@@ -146,8 +146,9 @@ export default createReactClass({
                                             schema={schema}
                                             fieldMap={fieldMap}
                                             form={form}
-                                            fields={{
-                                                new_version_forked: {
+                                            fields={[
+                                                {
+                                                    key: 'new_version_forked',
                                                     type: 'select2',
                                                     props: {
                                                         floatingLabelText: 'Base Image *',
@@ -175,21 +176,24 @@ export default createReactClass({
                                                         }
                                                     }
                                                 },
-                                                new_application_name: {
+                                                {
+                                                    key: 'new_application_name',
                                                     type: 'string',
                                                     props: {
                                                         floatingLabelText: 'Image Name *',
                                                         description: 'Something meaningful to help users find this image. Please limit name to 30 characters.'
                                                     }
                                                 },
-                                                new_application_description: {
+                                                {
+                                                    key: 'new_application_description',
                                                     type: 'text',
                                                     props: {
                                                         floatingLabelText: 'Image Description *',
                                                         description: 'Concisely describe the tools installed and their purpose. Please include key words that will help users search for this image and decide whether it will suit their needs.'
                                                     }
                                                 },
-                                                new_version_tags: {
+                                                {
+                                                    key: 'new_version_tags',
                                                     type: 'string',
                                                     props: {
                                                         floatingLabelText: 'Image Tags',
@@ -205,7 +209,7 @@ export default createReactClass({
                                                         )
                                                     }
                                                 }
-                                            }}
+                                            ]}
                                         />
                                     </div>
                                 </div>

@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { CardTitle } from 'material-ui';
 import validators from '../../../../utils/validators';
 import GenericForm from '../../../_templates/_forms/GenericForm';
-import SchemaFields from '../../../_templates/_forms/SchemaFields';
+import { SchemaFields } from 'lore-react-forms';
 import CloseButton from '../../../_templates/_common/CloseButton';
 import RequestError from '../../../_templates/_common/RequestError';
 import AdvancedNavigation from '../_common/AdvancedNavigation';
@@ -121,15 +121,16 @@ export default createReactClass({
                                         schema={schema}
                                         fieldMap={fieldMap}
                                         form={form}
-                                        fields={{
-                                            exclude_files: {
+                                        fields={[
+                                            {
+                                                key: 'exclude_files',
                                                 type: 'text',
                                                 props: {
                                                     floatingLabelText: 'Base Image',
                                                     description: 'Write one path per line'
                                                 }
                                             }
-                                        }}
+                                        ]}
                                     />
                                 </div>
                             </div>

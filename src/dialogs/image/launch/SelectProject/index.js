@@ -6,7 +6,7 @@ import { CardTitle } from 'material-ui';
 import CloseButton from '../../../_templates/_common/CloseButton';
 import BasicNavigation from '../_common/BasicNavigation';
 import GenericForm from '../../../_templates/_forms/GenericForm';
-import SchemaFields from '../../../_templates/_forms/SchemaFields';
+import { SchemaFields } from 'lore-react-forms';
 import validators from '../../../../utils/validators';
 import SetDefaults from './SetDefaults';
 
@@ -64,8 +64,9 @@ export default createReactClass({
             validators: {
                 project: [validators.number.isRequired]
             },
-            fields: {
-                project: {
+            fields: [
+                {
+                    key: 'project',
                     type: 'select',
                     props: {
                         floatingLabelText: 'Project',
@@ -75,7 +76,7 @@ export default createReactClass({
                         }
                     }
                 }
-            }
+            ]
         };
 
         return (
@@ -121,7 +122,7 @@ export default createReactClass({
                                             schema={schema}
                                             fieldMap={fieldMap}
                                             form={form}
-                                            fields={_.pick(config.fields, ['project'])}
+                                            fields={config.fields}
                                         />
                                     </div>
                                 </div>

@@ -6,7 +6,7 @@ import { CardTitle } from 'material-ui';
 import { Connect } from 'lore-hook-connect';
 import validators from '../../../../utils/validators';
 import GenericForm from '../../../_templates/_forms/GenericForm';
-import SchemaFields from '../../../_templates/_forms/SchemaFields';
+import { SchemaFields } from 'lore-react-forms';
 import CloseButton from '../../../_templates/_common/CloseButton';
 import RequestError from '../../../_templates/_common/RequestError';
 import BasicNavigation from '../_common/BasicNavigation';
@@ -143,14 +143,16 @@ export default createReactClass({
                                             schema={schema}
                                             fieldMap={fieldMap}
                                             form={form}
-                                            fields={{
-                                                name: {
+                                            fields={[
+                                                {
+                                                    key: 'name',
                                                     type: 'string',
                                                     props: {
                                                         floatingLabelText: 'Instance Name'
                                                     }
                                                 },
-                                                image_version: {
+                                                {
+                                                    key: 'image_version',
                                                     type: 'select',
                                                     props: {
                                                         floatingLabelText: 'Base Image',
@@ -167,7 +169,7 @@ export default createReactClass({
                                                         }
                                                     }
                                                 }
-                                            }}
+                                            ]}
                                         />
                                     </div>
                                     <div className="col">

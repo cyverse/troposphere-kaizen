@@ -37,7 +37,7 @@ export default function create(params) {
             const error = response.data;
 
             dispatch({
-                type: ActionTypes.remove('volume'),
+                type: ActionTypes.update('volume'),
                 payload: payload(model, PayloadStates.ERROR_CREATING, error)
             });
         });

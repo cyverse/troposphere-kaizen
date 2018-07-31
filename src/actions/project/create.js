@@ -34,7 +34,7 @@ export default function create(params) {
                 const error = response.data;
 
                 dispatch({
-                    type: ActionTypes.remove('project'),
+                    type: ActionTypes.update('project'),
                     payload: payload(model, PayloadStates.ERROR_CREATING, error)
                 });
             });
